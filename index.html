@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MagnetoClip — Advanced Download Manager | Capture the Web</title>
+  <meta name="description" content="MagnetoClip is a premier Windows desktop download manager pairing multi-connection HTTP download engine, stream capture, BitTorrent client, and browser integration.">
+  <link rel="icon" type="image/png" href="images/logo.png">
+  
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" id="nav-brand-logo">
+        <img src="images/logo.png" alt="MagnetoClip Logo" width="42" height="42">
+        <span class="brand-text">Magneto<span class="text-cyan">Clip</span></span>
+      </a>
+
+      <nav>
+        <ul class="nav-links" id="primary-nav-links">
+          <li><a href="index.html" class="nav-link active" id="nav-link-home">Home</a></li>
+          <li><a href="download.html" class="nav-link" id="nav-link-download">Download</a></li>
+          <li><a href="buy.html" class="nav-link" id="nav-link-buy">Buy</a></li>
+          <li><a href="docs.html" class="nav-link" id="nav-link-docs">Documentation</a></li>
+          <li><a href="contact.html" class="nav-link" id="nav-link-contact">Contact Us</a></li>
+          <li class="mobile-only-cta">
+            <a href="download.html" class="btn btn-outline-cyan btn-sm btn-block"><i class="fas fa-download"></i> Get Free Trial</a>
+          </li>
+          <li class="mobile-only-cta">
+            <a href="buy.html" class="btn btn-primary btn-sm btn-block"><i class="fas fa-bolt"></i> Buy License</a>
+          </li>
+        </ul>
+      </nav>
+
+      <button class="mobile-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero-section">
+    <div class="container">
+      <div class="hero-grid">
+        
+        <div class="hero-content">
+          <div class="hero-tag">
+            <span class="pulse-dot"></span>
+            <span>Version 0.2.7 Released • Native Windows 10/11</span>
+          </div>
+
+          <h1 class="hero-title">
+            Advanced Download Manager. <br>
+            <span class="text-gradient">Capture the Web.</span>
+          </h1>
+
+          <p class="hero-subtitle">
+           MagnetoClip is a Windows desktop download manager built with Python + PySide6.
+           It pairs an IDM-class multi-connection download core with a browser extension
+           that detects files, media streams and torrents as you browse — then captures
+           them into smart, auto-sorted categories.
+          </p>
+
+          <div class="hero-cta">
+            <a href="https://github.com/Devallix/MagnetoClip-An-Internet-Download-Manager/raw/refs/heads/main/MagnetoClip-Installer-v0.2.7.exe" class="btn btn-primary btn-lg" id="hero-download-cta" data-download-name="MagnetoClip-Installer-v0.2.5.exe">
+              <i class="fab fa-windows"></i> Download for Windows
+            </a>
+            <a href="buy.html" class="btn btn-secondary btn-lg" id="hero-buy-cta">
+              <i class="fas fa-key"></i> Buy Serial Key ($2.50/mo)
+            </a>
+          </div>
+
+          <div class="hero-specs">
+            <div class="spec-item">
+              <i class="fas fa-tachometer-alt"></i>
+              <span>Up to 64 Connections</span>
+            </div>
+            <div class="spec-item">
+              <i class="fas fa-shield-alt"></i>
+              <span>SHA-256 Verified</span>
+            </div>
+            <div class="spec-item">
+              <i class="fas fa-lock"></i>
+              <span>100% Local Privacy</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3D Product Box Hero Media -->
+        <div class="hero-media">
+          <div class="product-showcase">
+            <img src="images/product.png" alt="MagnetoClip Software Packaging" class="product-img" id="hero-product-image">
+            
+            <!-- Floating Interactive Feature Badges -->
+            <div class="floating-badge fb-1">
+              <div class="fb-icon">
+                <i class="fas fa-bolt"></i>
+              </div>
+              <div class="fb-text">
+                <h5>Multi-Segment Core</h5>
+                <span>32 Simultaneous Connections</span>
+              </div>
+            </div>
+
+            <div class="floating-badge fb-2">
+              <div class="fb-icon">
+                <i class="fas fa-magnet"></i>
+              </div>
+              <div class="fb-text">
+                <h5>BitTorrent + Stream Grabber</h5>
+                <span>Sequential Media Preview</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Accelerator Demo Section -->
+  <section class="demo-section" id="engine-demo">
+    <div class="container">
+      <div class="demo-box">
+        <div class="demo-header">
+          <div class="demo-title-group">
+            <span class="badge badge-cyan">Interactive Simulation</span>
+            <h3>Real-Time Byte-Range Splitting Engine</h3>
+            <p>Experience how MagnetoClip dynamically divides transfers into parallel segments for maximum bandwidth.</p>
+          </div>
+          <div class="engine-status-pill">
+            <i class="fas fa-circle" style="font-size: 8px;"></i>
+            <span>Engine Active • Native Port 8477</span>
+          </div>
+        </div>
+
+        <div class="transfer-item">
+          <div class="transfer-meta">
+            <div class="file-info">
+              <div class="file-icon"><i class="fas fa-file-archive"></i></div>
+              <div>
+                <strong>Cyberpunk_Asset_Pack_4K.zip</strong>
+                <div style="font-size: 0.8rem; color: var(--text-muted);">Source: cdn.download-stream.io • Total: 4.80 GB</div>
+              </div>
+            </div>
+            <div style="text-align: right;">
+              <div id="demo-speed" style="font-weight: 700; color: var(--primary-cyan); font-family: var(--font-mono);">94.6 MB/s</div>
+              <div id="demo-percent" style="font-size: 0.85rem; color: var(--text-muted);">74%</div>
+            </div>
+          </div>
+
+          <div class="progress-track">
+            <div class="progress-bar-fill" id="demo-progress-fill"></div>
+          </div>
+
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 6px;">16-Chunk Adaptive Allocation:</div>
+          <div class="chunks-grid">
+            <div class="chunk-segment done"></div>
+            <div class="chunk-segment done"></div>
+            <div class="chunk-segment done"></div>
+            <div class="chunk-segment done"></div>
+            <div class="chunk-segment done"></div>
+            <div class="chunk-segment done"></div>
+            <div class="chunk-segment done"></div>
+            <div class="chunk-segment done"></div>
+            <div class="chunk-segment done"></div>
+            <div class="chunk-segment done"></div>
+            <div class="chunk-segment done"></div>
+            <div class="chunk-segment active"></div>
+            <div class="chunk-segment"></div>
+            <div class="chunk-segment"></div>
+            <div class="chunk-segment"></div>
+            <div class="chunk-segment"></div>
+          </div>
+        </div>
+
+        <div class="demo-controls">
+          <div style="display: flex; gap: 12px;">
+            <button class="btn btn-primary btn-sm" id="demo-start-btn">
+              <i class="fas fa-play"></i> Simulate Turbo Boost
+            </button>
+            <button class="btn btn-secondary btn-sm" id="demo-pause-btn">
+              <i class="fas fa-pause"></i> Test Resumable Offset
+            </button>
+          </div>
+          <span style="font-size: 0.85rem; color: var(--text-muted);">
+            <i class="fas fa-info-circle text-cyan"></i> Auto-saves byte offsets in <code>.mclip</code> JSON sidecar files.
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Features Section -->
+  <section class="features-section" id="features-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-purple">Engineered For Power</span>
+        <h2>Everything You Need in a Modern Download Manager</h2>
+        <p>Built from scratch with Python, PySide6, and libtorrent. No bloat, no invasive tracking, pure performance.</p>
+      </div>
+
+      <div class="features-grid">
+        
+        <!-- Feature 1: Multi-Segment Downloads -->
+        <div class="card feature-card">
+          <div class="feature-icon-wrapper">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h3>Multi-Segment HTTP Engine</h3>
+          <p>Byte-range splitting with adaptive connection allocation (up to 64 connections per download, 32 simultaneous) for accelerated speeds.</p>
+          <div class="feature-tags">
+            <span class="feature-tag-pill">Adaptive Slicing</span>
+            <span class="feature-tag-pill">Auto-Retry Backoff</span>
+            <span class="feature-tag-pill">Speed Cap</span>
+          </div>
+        </div>
+
+        <!-- Feature 2: Browser Companion Extension -->
+        <div class="card feature-card">
+          <div class="feature-icon-wrapper">
+            <i class="fab fa-chrome"></i>
+          </div>
+          <h3>Companion Browser Extension</h3>
+          <p>MV3 extension for Chrome, Edge, Firefox, Brave, Vivaldi & Chromium. Captures links, media streams, and chunked blob URLs via native messaging.</p>
+          <div class="feature-tags">
+            <span class="feature-tag-pill">Native Messaging</span>
+            <span class="feature-tag-pill">Blob Resolution</span>
+            <span class="feature-tag-pill">Sniffer Popup</span>
+          </div>
+        </div>
+
+        <!-- Feature 3: Streaming Media Engine -->
+        <div class="card feature-card">
+          <div class="feature-icon-wrapper">
+            <i class="fas fa-play-circle"></i>
+          </div>
+          <h3>Streaming Media Capture</h3>
+          <p>Dedicated yt-dlp & FFmpeg bridge supporting 30+ media sites, plus direct HLS (<code>.m3u8</code>) and DASH (<code>.mpd</code>) live streams.</p>
+          <div class="feature-tags">
+            <span class="feature-tag-pill">1080p / 4K</span>
+            <span class="feature-tag-pill">Audio Only</span>
+            <span class="feature-tag-pill">Track Merge</span>
+          </div>
+        </div>
+
+        <!-- Feature 4: BitTorrent Client -->
+        <div class="card feature-card">
+          <div class="feature-icon-wrapper">
+            <i class="fas fa-magnet"></i>
+          </div>
+          <h3>Built-In Torrent Engine</h3>
+          <p>libtorrent powered BitTorrent client with DHT, PEX, magnet links, sequential downloading for instant video preview, and auto-seeding controls.</p>
+          <div class="feature-tags">
+            <span class="feature-tag-pill">libtorrent</span>
+            <span class="feature-tag-pill">Magnet Handlers</span>
+            <span class="feature-tag-pill">Sequential Play</span>
+          </div>
+        </div>
+
+        <!-- Feature 5: Smart Organization & Analytics -->
+        <div class="card feature-card">
+          <div class="feature-icon-wrapper">
+            <i class="fas fa-chart-pie"></i>
+          </div>
+          <h3>Auto-Sorting & Analytics</h3>
+          <p>Auto-categorization into 8 smart categories (Video, Audio, Compressed, Docs, Apps, etc.) with 14-day speed charts calculated 100% locally.</p>
+          <div class="feature-tags">
+            <span class="feature-tag-pill">70+ Rules</span>
+            <span class="feature-tag-pill">14-Day Charts</span>
+            <span class="feature-tag-pill">Zero Telemetry</span>
+          </div>
+        </div>
+
+        <!-- Feature 6: Remote Control Dashboard -->
+        <div class="card feature-card">
+          <div class="feature-icon-wrapper">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h3>Phone & Remote Dashboard</h3>
+          <p>Control MagnetoClip on your local network (port 8477) via Bearer + HMAC token and instant QR-code mobile pairing. Never exposes filesystem.</p>
+          <div class="feature-tags">
+            <span class="feature-tag-pill">QR Pairing</span>
+            <span class="feature-tag-pill">HMAC Security</span>
+            <span class="feature-tag-pill">Local Network</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Matrix Section -->
+  <section class="comparison-section" id="comparison-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-cyan">Performance Benchmark</span>
+        <h2>Why Power Users Choose MagnetoClip</h2>
+        <p>Compare MagnetoClip's modern PySide6 architecture with legacy download managers.</p>
+      </div>
+
+      <div class="comparison-table-wrapper">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Feature Capability</th>
+              <th class="highlight-col"><span class="text-cyan">MagnetoClip v0.2.7</span></th>
+              <th>Legacy IDM</th>
+              <th>Default Browser Downloader</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Multi-Connection Acceleration</strong></td>
+              <td class="highlight-col"><i class="fas fa-check-circle icon-check"></i> Up to 64 Connections</td>
+              <td><i class="fas fa-check-circle icon-check"></i> Up to 32 Connections</td>
+              <td><i class="fas fa-times-circle icon-cross"></i> Single Connection (1x)</td>
+            </tr>
+            <tr>
+              <td><strong>Resumable JSON Sidecar (<code>.mclip</code>)</strong></td>
+              <td class="highlight-col"><i class="fas fa-check-circle icon-check"></i> Crash-proof Byte Offsets</td>
+              <td><i class="fas fa-check-circle icon-check"></i> Proprietary Temp Files</td>
+              <td><i class="fas fa-times-circle icon-cross"></i> Unreliable / Often Restarts</td>
+            </tr>
+            <tr>
+              <td><strong>Integrated BitTorrent + Magnets</strong></td>
+              <td class="highlight-col"><i class="fas fa-check-circle icon-check"></i> Built-in libtorrent Core</td>
+              <td><i class="fas fa-times-circle icon-cross"></i> Not Supported</td>
+              <td><i class="fas fa-times-circle icon-cross"></i> Not Supported</td>
+            </tr>
+            <tr>
+              <td><strong>Stream & HLS/DASH Grabber</strong></td>
+              <td class="highlight-col"><i class="fas fa-check-circle icon-check"></i> Native yt-dlp + FFmpeg</td>
+              <td><i class="fas fa-check-circle icon-check"></i> Basic TS sniffer</td>
+              <td><i class="fas fa-times-circle icon-cross"></i> Not Supported</td>
+            </tr>
+            <tr>
+              <td><strong>Remote Phone Web Dashboard</strong></td>
+              <td class="highlight-col"><i class="fas fa-check-circle icon-check"></i> QR Code Token Pairing</td>
+              <td><i class="fas fa-times-circle icon-cross"></i> Not Supported</td>
+              <td><i class="fas fa-times-circle icon-cross"></i> Not Supported</td>
+            </tr>
+            <tr>
+              <td><strong>Integrity Hashing</strong></td>
+              <td class="highlight-col"><i class="fas fa-check-circle icon-check"></i> MD5/SHA256/BLAKE2b</td>
+              <td><i class="fas fa-times-circle icon-cross"></i> Basic MD5 only</td>
+              <td><i class="fas fa-times-circle icon-cross"></i> None</td>
+            </tr>
+            <tr>
+              <td><strong>User Interface & Themes</strong></td>
+              <td class="highlight-col"><i class="fas fa-check-circle icon-check"></i> Modern Cyber Dark / Light</td>
+              <td><i class="fas fa-exclamation-triangle" style="color: var(--warning);"></i> 90s Windows 98 Look</td>
+              <td><i class="fas fa-minus" style="color: var(--text-dim);"></i> Minimal Tab Dropdown</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="features-section" style="background: rgba(4, 7, 13, 0.6);" id="faq-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-purple">Got Questions?</span>
+        <h2>Frequently Asked Questions</h2>
+        <p>Everything you need to know about MagnetoClip licensing, compatibility, and features.</p>
+      </div>
+
+      <div class="faq-accordion">
+        
+        <div class="faq-item open">
+          <div class="faq-question">
+            <span>How does the license key activation work?</span>
+            <i class="fas fa-chevron-down faq-arrow"></i>
+          </div>
+          <div class="faq-answer">
+            When you purchase a license, you receive a serial key in the format <code>MGCL-XXXXX-XXXXX-XXXXX-XXXXX</code>. Simply paste it into MagnetoClip's Settings &gt; License dialog. The key is cryptographically signed with Ed25519 and securely bound to your PC using the Windows Credential Manager keyring.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Can I transfer my license to a new PC?</span>
+            <i class="fas fa-chevron-down faq-arrow"></i>
+          </div>
+          <div class="faq-answer">
+            Yes! MagnetoClip features self-service deactivation right inside the desktop application. Deactivating your current PC immediately frees your activation slot on the license server so you can activate your new machine.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Which browsers are supported by the companion extension?</span>
+            <i class="fas fa-chevron-down faq-arrow"></i>
+          </div>
+          <div class="faq-answer">
+            Our Manifest V3 companion extension supports Google Chrome, Microsoft Edge, Mozilla Firefox, Brave, Vivaldi, and Chromium browsers via high-speed Native Messaging.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Is my browsing and download history private?</span>
+            <i class="fas fa-chevron-down faq-arrow"></i>
+          </div>
+          <div class="faq-answer">
+            100% private. MagnetoClip computes all download statistics, categories, and speed analytics locally on your machine. No telemetry or download URLs are ever sent to our servers.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner Section -->
+  <section class="cta-banner-section" style="padding: 90px 0; text-align: center;">
+    <div class="container">
+      <div class="card cta-banner-card" style="background: linear-gradient(135deg, rgba(13, 21, 39, 0.9) 0%, rgba(20, 32, 59, 0.9) 100%); border-color: rgba(0, 210, 255, 0.4); padding: 60px 40px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(0, 210, 255, 0.15);">
+        <h2 style="font-size: 2.4rem; margin-bottom: 16px;">Ready to Accelerate Your Downloads?</h2>
+        <p style="max-width: 600px; margin: 0 auto 32px auto; font-size: 1.1rem;">
+          Join thousands of power users enjoying multi-segment speeds, integrated torrents, and video stream captures.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+          <a href="https://github.com/Devallix/MagnetoClip-An-Internet-Download-Manager/raw/refs/heads/main/MagnetoClip-Installer-v0.2.5.exe" class="btn btn-primary btn-lg" id="bottom-download-cta" data-download-name="MagnetoClip-Installer-v0.2.5.exe">
+            <i class="fas fa-download"></i> Download MagnetoClip Free
+          </a>
+          <a href="buy.html" class="btn btn-secondary btn-lg" id="bottom-buy-cta">
+            <i class="fas fa-shopping-cart"></i> View Pricing &amp; Buy
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <img src="images/logo.png" alt="MagnetoClip Logo" width="36" height="36">
+            <span class="brand-text">Magneto<span class="text-cyan">Clip</span></span>
+          </a>
+          <p>Advanced Windows desktop download manager. Accelerate, capture, and manage all your web media with high-speed precision.</p>
+          <div style="font-size: 0.85rem; color: var(--text-dim);">
+            Developed by <strong>Devallix</strong>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="download.html">Download App</a></li>
+            <li><a href="buy.html">Buy License</a></li>
+            <li><a href="docs.html">User Guide &amp; Docs</a></li>
+            <li><a href="contact.html">Contact &amp; Support</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Product Features</h4>
+          <ul class="footer-links">
+            <li><a href="docs.html#engine">Multi-Segment Engine</a></li>
+            <li><a href="docs.html#browser">Browser Extension</a></li>
+            <li><a href="docs.html#media">Stream Grabber (yt-dlp)</a></li>
+            <li><a href="docs.html#torrent">libtorrent Client</a></li>
+            <li><a href="docs.html#remote">Remote Dashboard (8477)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Legal &amp; Security</h4>
+          <ul class="footer-links">
+            <li><a href="docs.html#licensing">EULA &amp; License Terms</a></li>
+            <li><a href="docs.html#security">Privacy &amp; Security Policy</a></li>
+            <li><a href="contact.html">Report an Issue</a></li>
+            <li><a href="buy.html">Refund Policy</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 MagnetoClip by Devallix. All rights reserved.</div>
+        <div>Compatible with Windows 10 &amp; Windows 11 (64-Bit)</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>

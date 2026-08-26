@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us &amp; Technical Support — MagnetoClip</title>
+  <meta name="description" content="Get support, submit feature requests, report bugs, or reach out to the MagnetoClip developer team.">
+  <link rel="icon" type="image/png" href="images/logo.png">
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" id="nav-brand-logo">
+        <img src="images/logo.png" alt="MagnetoClip Logo" width="42" height="42">
+        <span class="brand-text">Magneto<span class="text-cyan">Clip</span></span>
+      </a>
+
+      <nav>
+        <ul class="nav-links" id="primary-nav-links">
+          <li><a href="index.html" class="nav-link" id="nav-link-home">Home</a></li>
+          <li><a href="download.html" class="nav-link" id="nav-link-download">Download</a></li>
+          <li><a href="buy.html" class="nav-link" id="nav-link-buy">Buy</a></li>
+          <li><a href="docs.html" class="nav-link" id="nav-link-docs">Documentation</a></li>
+          <li><a href="contact.html" class="nav-link active" id="nav-link-contact">Contact Us</a></li>
+          <li class="mobile-only-cta">
+            <a href="download.html" class="btn btn-outline-cyan btn-sm btn-block"><i class="fas fa-download"></i> Get Free Trial</a>
+          </li>
+          <li class="mobile-only-cta">
+            <a href="buy.html" class="btn btn-primary btn-sm btn-block"><i class="fas fa-bolt"></i> Buy License</a>
+          </li>
+        </ul>
+      </nav>
+
+      <button class="mobile-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-cyan">We're Here to Help</span>
+        <h1>Get in Touch with the <span class="text-gradient">Team</span></h1>
+        <p>Have questions about features, license activation, or need dedicated technical support? Reach out directly.</p>
+      </div>
+
+      <div class="contact-grid">
+        
+        <!-- Contact Info & Direct Channels -->
+        <div class="contact-info-card">
+          <div class="card">
+            <h3 style="margin-bottom: 20px;">Direct Channels</h3>
+            
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+              <div>
+                <strong>Support &amp; Inquiries</strong>
+                <div><a href="mailto:support@magnetoclip.app" class="text-cyan">support@magnetoclip.app</a></div>
+                <span style="font-size: 0.8rem; color: var(--text-dim);">Average response time: &lt; 4 hours</span>
+              </div>
+            </div>
+
+            <div class="contact-item" style="margin-top: 20px;">
+              <div class="contact-icon" style="background: rgba(168, 85, 247, 0.15); color: var(--primary-purple);">
+                <i class="fab fa-discord"></i>
+              </div>
+              <div>
+                <strong>Discord Community</strong>
+                <div><a href="https://discord.gg" target="_blank" class="text-purple">Join MagnetoClip Community</a></div>
+                <span style="font-size: 0.8rem; color: var(--text-dim);">Live chat with developers and power users</span>
+              </div>
+            </div>
+
+            <div class="contact-item" style="margin-top: 20px;">
+              <div class="contact-icon" style="background: rgba(236, 72, 153, 0.15); color: var(--primary-magenta);">
+                <i class="fab fa-github"></i>
+              </div>
+              <div>
+                <strong>Bug Tracker &amp; Issues</strong>
+                <div><a href="https://github.com" target="_blank" style="color: var(--primary-magenta);">Submit GitHub Issue</a></div>
+                <span style="font-size: 0.8rem; color: var(--text-dim);">Public issue tracking and feature requests</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="background: rgba(13, 21, 39, 0.5);">
+            <h4 style="margin-bottom: 8px;"><i class="fas fa-key text-cyan"></i> Lost Your License Key?</h4>
+            <p style="font-size: 0.9rem; margin-bottom: 16px;">
+              Enter your purchase email address in our self-service recovery system to receive a copy of your serial key instantly.
+            </p>
+            <button class="btn btn-secondary btn-sm" onclick="showToast('License lookup: Please email support@magnetoclip.app with your order ID', 'info')">
+              <i class="fas fa-search"></i> Recover License
+            </button>
+          </div>
+        </div>
+
+        <!-- Interactive Contact Form -->
+        <div class="card">
+          <h3 style="margin-bottom: 24px;"><i class="fas fa-paper-plane text-cyan"></i> Send Us a Message</h3>
+
+          <form id="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="contact-name">Your Name</label>
+                <input type="text" id="contact-name" class="form-control" placeholder="Alex Morgan" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="contact-email">Email Address</label>
+                <input type="email" id="contact-email" class="form-control" placeholder="alex@example.com" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contact-category">Inquiry Topic</label>
+              <select id="contact-category" class="form-control">
+                <option value="technical">Technical Support &amp; Engine</option>
+                <option value="licensing">License Key &amp; Billing Assistance</option>
+                <option value="feature">Feature Request</option>
+                <option value="bug">Bug Report / Crash Diagnostic</option>
+                <option value="other">General Question / Feedback</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contact-subject">Subject</label>
+              <input type="text" id="contact-subject" class="form-control" placeholder="e.g., Question about 64-connection engine" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contact-message">Message</label>
+              <textarea id="contact-message" class="form-control" rows="5" placeholder="Provide details so we can assist you quickly..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block" id="contact-submit-btn">
+              <i class="fas fa-paper-plane"></i> Send Support Ticket
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <img src="images/logo.png" alt="MagnetoClip Logo" width="36" height="36">
+            <span class="brand-text">Magneto<span class="text-cyan">Clip</span></span>
+          </a>
+          <p>Advanced Windows desktop download manager. Accelerate, capture, and manage all your web media with high-speed precision.</p>
+          <div style="font-size: 0.85rem; color: var(--text-dim);">
+            Developed by <strong>Devallix</strong>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="download.html">Download App</a></li>
+            <li><a href="buy.html">Buy License</a></li>
+            <li><a href="docs.html">User Guide &amp; Docs</a></li>
+            <li><a href="contact.html">Contact &amp; Support</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Product Features</h4>
+          <ul class="footer-links">
+            <li><a href="docs.html#engine">Multi-Segment Engine</a></li>
+            <li><a href="docs.html#browser">Browser Extension</a></li>
+            <li><a href="docs.html#media">Stream Grabber (yt-dlp)</a></li>
+            <li><a href="docs.html#torrent">libtorrent Client</a></li>
+            <li><a href="docs.html#remote">Remote Dashboard (8477)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Legal &amp; Security</h4>
+          <ul class="footer-links">
+            <li><a href="docs.html#licensing">EULA &amp; License Terms</a></li>
+            <li><a href="docs.html#security">Privacy &amp; Security Policy</a></li>
+            <li><a href="contact.html">Report an Issue</a></li>
+            <li><a href="buy.html">Refund Policy</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 MagnetoClip by Devallix. All rights reserved.</div>
+        <div>Compatible with Windows 10 &amp; Windows 11 (64-Bit)</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    document.getElementById('contact-form')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('contact-submit-btn');
+      const name = document.getElementById('contact-name').value;
+      
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting Ticket...';
+      
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-check"></i> Ticket Submitted!';
+        window.showToast?.(`Thank you ${name}! Your support ticket has been received. Ticket ID: #MCL-TK-${Math.floor(1000 + Math.random() * 9000)}`, 'success');
+        document.getElementById('contact-form').reset();
+        
+        setTimeout(() => {
+          btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Support Ticket';
+        }, 3000);
+      }, 1000);
+    });
+  </script>
+</body>
+</html>

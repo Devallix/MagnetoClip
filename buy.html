@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buy MagnetoClip — Choose Your Plan &amp; Instant License Checkout</title>
+  <meta name="description" content="Purchase MagnetoClip serial license key. Choose from Personal, Pro, and Enterprise tiers with instant Ed25519 serial key delivery and receipt generation.">
+  <link rel="icon" type="image/png" href="images/logo.png">
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" id="nav-brand-logo">
+        <img src="images/logo.png" alt="MagnetoClip Logo" width="42" height="42">
+        <span class="brand-text">Magneto<span class="text-cyan">Clip</span></span>
+      </a>
+
+      <nav>
+        <ul class="nav-links" id="primary-nav-links">
+          <li><a href="index.html" class="nav-link" id="nav-link-home">Home</a></li>
+          <li><a href="download.html" class="nav-link" id="nav-link-download">Download</a></li>
+          <li><a href="buy.html" class="nav-link active" id="nav-link-buy">Buy</a></li>
+          <li><a href="docs.html" class="nav-link" id="nav-link-docs">Documentation</a></li>
+          <li><a href="contact.html" class="nav-link" id="nav-link-contact">Contact Us</a></li>
+          <li class="mobile-only-cta">
+            <a href="download.html" class="btn btn-outline-cyan btn-sm btn-block"><i class="fas fa-download"></i> Get Free Trial</a>
+          </li>
+          <li class="mobile-only-cta">
+            <a href="buy.html" class="btn btn-primary btn-sm btn-block"><i class="fas fa-bolt"></i> Buy License</a>
+          </li>
+        </ul>
+      </nav>
+
+      <button class="mobile-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Pricing Header & Toggle -->
+  <section class="pricing-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-cyan">Flexible Licensing</span>
+        <h1>Unlock <span class="text-gradient">MagnetoClip Pro</span></h1>
+        <p>Get maximum multi-segment speed, unlimited stream grabbing, built-in torrent client, and full updates.</p>
+      </div>
+
+      <!-- Billing Cycle Selector -->
+      <div class="billing-toggle-container">
+        <button class="billing-toggle-btn" data-cycle="monthly">Monthly</button>
+        <button class="billing-toggle-btn active" data-cycle="annual">
+          Annual (1 Year) <span class="save-badge">Save 38%</span>
+        </button>
+        <button class="billing-toggle-btn" data-cycle="two-year">
+          2 Years Plan <span class="save-badge">Best Value</span>
+        </button>
+      </div>
+
+      <!-- Pricing Cards Grid -->
+      <div class="pricing-grid">
+        
+        <!-- Personal Plan -->
+        <div class="pricing-card" data-plan="personal">
+          <div class="pricing-header">
+            <h3 class="pricing-name">Personal</h3>
+            <p class="pricing-desc">For individual users seeking reliable acceleration.</p>
+            <div class="price-display">
+              <span class="price-currency">$</span>
+              <span class="price-amount" id="price-personal">3.00</span>
+              <span class="price-period">/ month</span>
+            </div>
+            <div class="billing-note" id="billed-personal">Billed $36 annually</div>
+          </div>
+
+          <ul class="features-list">
+            <li><i class="fas fa-check-circle"></i> 1 PC Machine Binding License</li>
+            <li><i class="fas fa-check-circle"></i> Up to 32 Parallel Connections</li>
+            <li><i class="fas fa-check-circle"></i> Resumable <code>.mclip</code> Engine</li>
+            <li><i class="fas fa-check-circle"></i> Standard Browser Extensions</li>
+            <li><i class="fas fa-check-circle"></i> Limited Support (Email ticket)</li>
+            <li class="disabled"><i class="fas fa-times-circle"></i> 64-Stream Turbo Mode</li>
+            <li class="disabled"><i class="fas fa-times-circle"></i> 24/7 Priority Unlimited Support</li>
+          </ul>
+
+          <button class="btn btn-secondary btn-block" data-select-plan="personal" id="btn-select-personal">
+            Select Personal Plan
+          </button>
+        </div>
+
+        <!-- Pro Plan (Featured) -->
+        <div class="pricing-card featured" data-plan="pro">
+          <div class="popular-ribbon">Most Popular</div>
+          <div class="pricing-header">
+            <h3 class="pricing-name text-gradient">Pro</h3>
+            <p class="pricing-desc">Full power for streaming, torrents &amp; heavy files.</p>
+            <div class="price-display">
+              <span class="price-currency">$</span>
+              <span class="price-amount" id="price-pro">2.50</span>
+              <span class="price-period">/ month</span>
+            </div>
+            <div class="billing-note" id="billed-pro">Billed $30 annually ($2.50/mo)</div>
+          </div>
+
+          <ul class="features-list">
+            <li><i class="fas fa-check-circle"></i> 1 PC Machine Binding License</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Up to 64 Connections Turbo Core</strong></li>
+            <li><i class="fas fa-check-circle"></i> <strong>Unlimited Support</strong> via Priority Queue</li>
+            <li><i class="fas fa-check-circle"></i> yt-dlp &amp; FFmpeg Stream Grabber</li>
+            <li><i class="fas fa-check-circle"></i> Full BitTorrent + Sequential Preview</li>
+            <li><i class="fas fa-check-circle"></i> Remote Dashboard Phone QR Pairing</li>
+            <li><i class="fas fa-check-circle"></i> Self-Service PC License Transfer</li>
+          </ul>
+
+          <button class="btn btn-primary btn-block btn-lg" data-select-plan="pro" id="btn-select-pro">
+            <i class="fas fa-bolt"></i> Select Pro Plan
+          </button>
+        </div>
+
+        <!-- Enterprise Plan -->
+        <div class="pricing-card" data-plan="enterprise">
+          <div class="pricing-header">
+            <h3 class="pricing-name">Enterprise</h3>
+            <p class="pricing-desc">Long-term ultra value with extended VIP support.</p>
+            <div class="price-display">
+              <span class="price-currency">$</span>
+              <span class="price-amount" id="price-enterprise">2.00</span>
+              <span class="price-period">/ month</span>
+            </div>
+            <div class="billing-note" id="billed-enterprise">Billed $48 for 2 years ($2.00/mo)</div>
+          </div>
+
+          <ul class="features-list">
+            <li><i class="fas fa-check-circle"></i> 1 PC Extended 2-Year License</li>
+            <li><i class="fas fa-check-circle"></i> <strong>2 Years Unlimited VIP Support</strong></li>
+            <li><i class="fas fa-check-circle"></i> All Pro Engine &amp; Torrent Features</li>
+            <li><i class="fas fa-check-circle"></i> High-Speed Proxy Manager (HTTP/SOCKS5)</li>
+            <li><i class="fas fa-check-circle"></i> Automated Background Updates</li>
+            <li><i class="fas fa-check-circle"></i> Instant Activation Key Re-issuance</li>
+          </ul>
+
+          <button class="btn btn-secondary btn-block" data-select-plan="enterprise" id="btn-select-enterprise">
+            Select Enterprise Plan
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Checkout Section -->
+  <section class="checkout-section" id="checkout-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-cyan">Instant Delivery</span>
+        <h2>Complete Your Purchase</h2>
+        <p>Instant serial key generation and email delivery upon secure confirmation.</p>
+      </div>
+
+      <div class="checkout-grid">
+        
+        <!-- Payment Details Form -->
+        <div class="checkout-card">
+          <h3 style="margin-bottom: 24px;"><i class="fas fa-lock text-cyan"></i> Payment Information</h3>
+
+          <div class="payment-tabs">
+            <button type="button" class="payment-tab-btn active" data-method="card">
+              <i class="fas fa-credit-card"></i> Credit / Debit Card
+            </button>
+            <button type="button" class="payment-tab-btn" data-method="paypal">
+              <i class="fab fa-paypal"></i> PayPal
+            </button>
+            <button type="button" class="payment-tab-btn" data-method="crypto">
+              <i class="fab fa-bitcoin"></i> Crypto / Web3
+            </button>
+          </div>
+
+          <form id="checkout-form">
+            
+            <div id="card-payment-fields">
+              <div class="form-group">
+                <label class="form-label" for="customer-name">Full Name / Cardholder Name</label>
+                <input type="text" id="customer-name" class="form-control" placeholder="Alex Morgan" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="customer-email">Email Address (for License Key Delivery)</label>
+                <input type="email" id="customer-email" class="form-control" placeholder="alex@example.com" required>
+                <span style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; display: block;">
+                  <i class="fas fa-shield-alt text-cyan"></i> Your activation serial key and receipt will be emailed here.
+                </span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="card-number">Card Number</label>
+                <div style="position: relative;">
+                  <input type="text" id="card-number" class="form-control" placeholder="4242 •••• •••• 4242" maxlength="19" required>
+                  <i class="fas fa-credit-card" style="position: absolute; right: 16px; top: 16px; color: var(--text-dim);"></i>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="card-expiry">Expiry Date</label>
+                  <input type="text" id="card-expiry" class="form-control" placeholder="MM/YY" maxlength="5" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="card-cvv">Security Code (CVV)</label>
+                  <input type="password" id="card-cvv" class="form-control" placeholder="123" maxlength="4" required>
+                </div>
+              </div>
+            </div>
+
+            <div id="alt-payment-fields" style="display: none; padding: 20px 0; text-align: center;">
+              <p style="margin-bottom: 16px; font-size: 0.95rem;">You will be redirected to complete your payment securely, then automatically returned with your generated serial key.</p>
+              <div class="form-group">
+                <label class="form-label" for="alt-customer-email">Delivery Email Address</label>
+                <input type="email" id="alt-customer-email" class="form-control" placeholder="alex@example.com">
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block" id="pay-submit-btn" style="margin-top: 24px;">
+              Pay &amp; Activate License
+            </button>
+          </form>
+        </div>
+
+        <!-- Order Summary Column -->
+        <div>
+          <div class="order-summary-card">
+            <h3 class="summary-title"><i class="fas fa-receipt text-cyan"></i> Order Summary</h3>
+
+            <div class="summary-row">
+              <span>Selected Product:</span>
+              <strong id="summary-plan-name">Pro Plan</strong>
+            </div>
+
+            <div class="summary-row">
+              <span>Billing Cycle:</span>
+              <span id="summary-billing-cycle">Annual (1 Year)</span>
+            </div>
+
+            <div class="summary-row">
+              <span>License Format:</span>
+              <span>Ed25519 Signed Key</span>
+            </div>
+
+            <div class="summary-row">
+              <span>Subtotal:</span>
+              <span id="summary-base-price">$30.00</span>
+            </div>
+
+            <div class="summary-row" id="summary-discount-row" style="display: none; color: #f472b6;">
+              <span>Promo Discount:</span>
+              <span id="summary-discount-amount">-$0.00</span>
+            </div>
+
+            <div class="summary-row">
+              <span>Estimated Tax:</span>
+              <span id="summary-tax">$0.00</span>
+            </div>
+
+            <!-- Coupon Code Field -->
+            <div class="coupon-group">
+              <input type="text" id="coupon-code" class="form-control coupon-input" placeholder="Promo Code (e.g. MAGNETO20)">
+              <button type="button" id="apply-coupon-btn" class="btn btn-secondary btn-sm">Apply</button>
+            </div>
+            <div id="coupon-msg" style="display: none; margin-bottom: 12px;"></div>
+
+            <div class="summary-row total">
+              <span>Total Due:</span>
+              <span class="total-amount" id="summary-total">$30.00</span>
+            </div>
+
+            <div class="guarantee-badge">
+              <i class="fas fa-shield-check"></i>
+              <div>
+                <strong>30-Day Money-Back Guarantee</strong>
+                <div>100% Risk-free. Self-service deactivation included.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Purchase Success & Email Delivery Modal -->
+  <div class="modal-overlay" id="purchase-success-modal">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close modal">&times;</button>
+      
+      <div style="text-align: center; margin-bottom: 24px;">
+        <div style="width: 68px; height: 68px; border-radius: 50%; background: rgba(0, 210, 255, 0.15); border: 2px solid var(--primary-cyan); color: var(--primary-cyan); display: inline-flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 16px; box-shadow: 0 0 25px rgba(0, 210, 255, 0.3);">
+          <i class="fas fa-envelope-open-text"></i>
+        </div>
+        <h2 style="font-size: 1.8rem; margin-bottom: 8px;">License Sent via Email!</h2>
+        <p style="font-size: 0.95rem; color: #cbd5e1;">Your payment was successful. We have dispatched your authentic serial key directly to your email address.</p>
+      </div>
+
+      <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 18px; margin-bottom: 20px; font-size: 0.9rem;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+          <span style="color: var(--text-muted);">Order Reference:</span>
+          <strong id="modal-order-no">MCL-849201</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+          <span style="color: var(--text-muted);">Purchased Plan:</span>
+          <strong id="modal-plan-name">Pro Plan (ANNUAL)</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+          <span style="color: var(--text-muted);">Key Sent To:</span>
+          <strong id="modal-customer-email" class="text-cyan">user@example.com</strong>
+        </div>
+      </div>
+
+      <div style="background: rgba(0, 210, 255, 0.06); border: 1px solid rgba(0, 210, 255, 0.25); border-radius: var(--radius-md); padding: 16px; text-align: left; font-size: 0.88rem; color: #e2e8f0; margin-bottom: 24px;">
+        <strong style="color: var(--primary-cyan); display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+          <i class="fas fa-info-circle"></i> Next Steps &amp; Activation:
+        </strong>
+        <ol style="padding-left: 20px; line-height: 1.6; color: #cbd5e1;">
+          <li>Check your email inbox (and spam/promotions folder) for an email from <code>licenses@magnetoclip.app</code>.</li>
+          <li>Copy your unique <code>MGCL-XXXXX-...</code> activation serial key from the email.</li>
+          <li>Launch MagnetoClip on your Windows PC and go to <strong>Settings &gt; License</strong> to paste and activate.</li>
+        </ol>
+      </div>
+
+      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <button class="btn btn-primary btn-sm" id="download-receipt-btn">
+          <i class="fas fa-file-invoice"></i> Download Invoice / Receipt (.txt)
+        </button>
+        <button class="btn btn-secondary btn-sm" id="resend-email-btn">
+          <i class="fas fa-paper-plane"></i> Resend Email
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <img src="images/logo.png" alt="MagnetoClip Logo" width="36" height="36">
+            <span class="brand-text">Magneto<span class="text-cyan">Clip</span></span>
+          </a>
+          <p>Advanced Windows desktop download manager. Accelerate, capture, and manage all your web media with high-speed precision.</p>
+          <div style="font-size: 0.85rem; color: var(--text-dim);">
+            Developed by <strong>Devallix</strong>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="download.html">Download App</a></li>
+            <li><a href="buy.html">Buy License</a></li>
+            <li><a href="docs.html">User Guide &amp; Docs</a></li>
+            <li><a href="contact.html">Contact &amp; Support</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Product Features</h4>
+          <ul class="footer-links">
+            <li><a href="docs.html#engine">Multi-Segment Engine</a></li>
+            <li><a href="docs.html#browser">Browser Extension</a></li>
+            <li><a href="docs.html#media">Stream Grabber (yt-dlp)</a></li>
+            <li><a href="docs.html#torrent">libtorrent Client</a></li>
+            <li><a href="docs.html#remote">Remote Dashboard (8477)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Legal &amp; Security</h4>
+          <ul class="footer-links">
+            <li><a href="docs.html#licensing">EULA &amp; License Terms</a></li>
+            <li><a href="docs.html#security">Privacy &amp; Security Policy</a></li>
+            <li><a href="contact.html">Report an Issue</a></li>
+            <li><a href="buy.html">Refund Policy</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 MagnetoClip by Devallix. All rights reserved.</div>
+        <div>Compatible with Windows 10 &amp; Windows 11 (64-Bit)</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/checkout.js"></script>
+</body>
+</html>

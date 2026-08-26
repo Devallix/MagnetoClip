@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Guide &amp; Technical Documentation — MagnetoClip</title>
+  <meta name="description" content="Official end-user manual and technical documentation for MagnetoClip download manager: setup, licensing, multi-segment downloads, browser integration, torrents, and troubleshooting.">
+  <link rel="icon" type="image/png" href="images/logo.png">
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" id="nav-brand-logo">
+        <img src="images/logo.png" alt="MagnetoClip Logo" width="42" height="42">
+        <span class="brand-text">Magneto<span class="text-cyan">Clip</span></span>
+      </a>
+
+      <nav>
+        <ul class="nav-links" id="primary-nav-links">
+          <li><a href="index.html" class="nav-link" id="nav-link-home">Home</a></li>
+          <li><a href="download.html" class="nav-link" id="nav-link-download">Download</a></li>
+          <li><a href="buy.html" class="nav-link" id="nav-link-buy">Buy</a></li>
+          <li><a href="docs.html" class="nav-link active" id="nav-link-docs">Documentation</a></li>
+          <li><a href="contact.html" class="nav-link" id="nav-link-contact">Contact Us</a></li>
+          <li class="mobile-only-cta">
+            <a href="download.html" class="btn btn-outline-cyan btn-sm btn-block"><i class="fas fa-download"></i> Get Free Trial</a>
+          </li>
+          <li class="mobile-only-cta">
+            <a href="buy.html" class="btn btn-primary btn-sm btn-block"><i class="fas fa-bolt"></i> Buy License</a>
+          </li>
+        </ul>
+      </nav>
+
+      <button class="mobile-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Docs Container -->
+  <div class="container">
+    <div class="docs-layout">
+      
+      <!-- Sticky Sidebar Navigation -->
+      <aside class="docs-sidebar">
+        <button class="docs-sidebar-toggle" id="docs-sidebar-toggle" aria-expanded="false">
+          <span><i class="fas fa-list-ul"></i> Table of Contents (13 Sections)</span>
+          <i class="fas fa-chevron-down toggle-icon"></i>
+        </button>
+
+        <div class="docs-sidebar-content" id="docs-sidebar-content">
+          <div class="docs-search">
+            <input type="text" id="docs-search-input" class="form-control" placeholder="Search user manual &amp; docs...">
+          </div>
+
+          <div class="docs-nav-group">
+            <div class="docs-nav-title">Quick Navigation</div>
+            <ul class="docs-nav-list">
+              <li><a href="#section-1" class="docs-nav-link active">1. Getting Started</a></li>
+              <li><a href="#section-2" class="docs-nav-link">2. Activating License</a></li>
+              <li><a href="#section-3" class="docs-nav-link">3. Interface Tour</a></li>
+              <li><a href="#section-4" class="docs-nav-link">4. Adding Downloads</a></li>
+              <li><a href="#section-5" class="docs-nav-link">5. Browser Integration</a></li>
+              <li><a href="#section-6" class="docs-nav-link">6. Capturing Streams</a></li>
+              <li><a href="#section-7" class="docs-nav-link">7. Torrents Client</a></li>
+              <li><a href="#section-8" class="docs-nav-link">8. Remote Dashboard</a></li>
+              <li><a href="#section-9" class="docs-nav-link">9. Proxy Profiles</a></li>
+              <li><a href="#section-10" class="docs-nav-link">10. Settings Reference</a></li>
+              <li><a href="#section-11" class="docs-nav-link">11. System Tray</a></li>
+              <li><a href="#section-12" class="docs-nav-link">12. Data Storage &amp; Privacy</a></li>
+              <li><a href="#section-13" class="docs-nav-link">13. Troubleshooting</a></li>
+            </ul>
+          </div>
+
+          <div style="margin-top: 24px; padding: 16px; background: rgba(0, 210, 255, 0.05); border: 1px solid rgba(0, 210, 255, 0.2); border-radius: var(--radius-md);">
+            <div style="font-size: 0.85rem; font-weight: 700; color: var(--primary-cyan); margin-bottom: 4px;">Need Assistance?</div>
+            <p style="font-size: 0.8rem; margin-bottom: 10px;">Can't find what you're looking for?</p>
+            <a href="contact.html" class="btn btn-outline-cyan btn-sm btn-block">
+              <i class="fas fa-headset"></i> Contact Support
+            </a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Docs Content -->
+      <main class="docs-content">
+        
+        <div style="margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid var(--border-color);">
+          <span class="badge badge-cyan" style="margin-bottom: 12px;">Official User Guide</span>
+          <h1 style="font-size: 2.4rem; margin-bottom: 8px;">MagnetoClip <span class="text-gradient">User Manual</span></h1>
+          <p style="font-size: 1.1rem; color: #cbd5e1;">
+            Comprehensive documentation covering setup, activation, download acceleration, browser extensions, torrents, remote control, and system architecture.
+          </p>
+        </div>
+
+        <!-- 1. Getting Started -->
+        <article class="docs-article" id="section-1">
+          <h2>1. Getting Started</h2>
+          <p>
+            MagnetoClip is a Windows desktop download manager that captures files, videos, music, documents, and torrents from the web into smart, auto-sorted categories. It pairs an IDM-class multi-connection download core with a companion browser extension that detects downloadable content in real time as you browse.
+          </p>
+
+          <h3>System Requirements</h3>
+          <ul style="padding-left: 20px; color: #cbd5e1; line-height: 1.8; margin-bottom: 16px;">
+            <li><strong>Operating System:</strong> Windows 10 or Windows 11 (64-Bit editions).</li>
+            <li><strong>Network:</strong> An active internet connection for multi-chunk downloads and stream capture.</li>
+            <li><strong>License:</strong> A valid serial key (release builds only — development builds skip licensing).</li>
+          </ul>
+
+          <h3>Starting the App</h3>
+          <p>
+            Launch <strong>MagnetoClip</strong> from the Windows Start menu or desktop shortcut. A splash screen appears while the application initializes local SQLite databases and network engines, after which the main window opens on the <strong>Overview</strong> page.
+          </p>
+          <div class="docs-callout">
+            <div class="docs-callout-title"><i class="fas fa-info-circle text-cyan"></i> First Launch Activation</div>
+            If you started MagnetoClip for the first time, you will be prompted to activate your serial license key before accessing the main window.
+          </div>
+        </article>
+
+        <!-- 2. Activating Your License -->
+        <span id="licensing"></span>
+        <article class="docs-article" id="section-2">
+          <h2>2. Activating Your License</h2>
+          <p>
+            Each serial key binds cryptographically to one PC. License keys follow the Ed25519 standard format:
+          </p>
+          
+          <div class="license-key-box" style="margin: 16px 0; font-size: 1.15rem;">
+            MGCL-XXXXX-XXXXX-XXXXX-XXXXX
+          </div>
+
+          <h3>Step-by-Step Activation</h3>
+          <ol style="padding-left: 20px; color: #cbd5e1; line-height: 1.8; margin-bottom: 20px;">
+            <li>When the <strong>Activate MagnetoClip</strong> dialog appears, paste or type your serial key. Extra spaces, hyphens, and lowercase characters are normalized automatically.</li>
+            <li>Click <strong>Activate</strong>.</li>
+            <li>On success, the application unlocks immediately. The PC's unique machine ID is recorded by the license server, binding this computer as the authorized hardware.</li>
+            <li>If the key is already bound to another PC, the dialog displays the specific hostname holding the activation. Deactivate it on that machine first (<strong>Settings &rarr; License &rarr; Deactivate this PC&hellip;</strong>) or contact support to request a reset.</li>
+          </ol>
+
+          <h3>License Activation Messages Reference</h3>
+          <div class="docs-table-wrapper">
+            <table class="docs-table">
+              <thead>
+                <tr>
+                  <th>Status Message</th>
+                  <th>Meaning &amp; Recommended Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>Could not reach the license server</code></td>
+                  <td>Check your internet connection and proxy settings, then retry.</td>
+                </tr>
+                <tr>
+                  <td><code>This serial key has been revoked</code></td>
+                  <td>The license key was disabled by the vendor &mdash; contact customer support.</td>
+                </tr>
+                <tr>
+                  <td><code>This serial key has expired</code></td>
+                  <td>The subscription term has concluded &mdash; renew your plan to continue.</td>
+                </tr>
+                <tr>
+                  <td><code>That serial was not recognized</code></td>
+                  <td>Typographical error in the serial key &mdash; re-check the email receipt.</td>
+                </tr>
+                <tr>
+                  <td><code>Too many attempts</code></td>
+                  <td>Rate-limiting safety triggered &mdash; wait approximately 60 seconds and retry.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="docs-callout purple">
+            <div class="docs-callout-title"><i class="fas fa-shield-alt text-purple"></i> OS Credential Store Security</div>
+            Your serial key is stored securely in the <strong>Windows Credential Manager</strong> (OS Keyring) &mdash; never in plaintext configuration files. On subsequent launches, MagnetoClip silently validates the signed token against the server.
+          </div>
+
+          <h3>Moving Your License to Another PC</h3>
+          <p>
+            To migrate your license to a new PC: open <strong>Settings</strong> on the current machine, scroll down to <strong>License</strong>, and click <strong>Deactivate this PC&hellip;</strong>. This frees your slot immediately on the license server so your key can be used on the new computer.
+          </p>
+        </article>
+
+        <!-- 3. Interface Tour -->
+        <article class="docs-article" id="section-3">
+          <h2>3. Interface Tour</h2>
+          <p>
+            The top toolbar switches between pages, while the collapsible left sidebar filters the download workbench. Use the &#9776; toggle button to collapse the sidebar for extra screen workspace.
+          </p>
+
+          <h3>Overview Page</h3>
+          <p>
+            A real-time command dashboard featuring four live stat cards (<strong>Active downloads</strong>, <strong>Completed</strong>, <strong>Total downloaded</strong>, <strong>Current speed</strong>) plus up to five recent transfer cards with dynamic progress bars, throughput speeds, and time estimates (ETAs).
+          </p>
+
+          <h3>Downloads Workbench</h3>
+          <p>
+            The central management hub. Each item row displays filename, file size, segmented color progress bar, percentage, speed, remaining time, and addition timestamp.
+          </p>
+          <div class="docs-callout">
+            <strong>Toolbar Controls:</strong> Select All &middot; Add &middot; Start &middot; Pause &middot; Remove
+          </div>
+
+          <h4>Context Menu Actions (Right-Click Row):</h4>
+          <ul style="padding-left: 20px; color: #cbd5e1; line-height: 1.8; margin-bottom: 16px;">
+            <li><strong>Completed downloads:</strong> Open File, Open File Location (reveals in Windows Explorer), Restart Download.</li>
+            <li><strong>Failed downloads:</strong> Retry Download (re-engages multi-connection chunks).</li>
+            <li><strong>Active / Paused / Queued:</strong> Pause / Resume / Start immediately.</li>
+            <li><strong>Universal actions:</strong> Copy Source URL, Remove from List.</li>
+          </ul>
+          <p>Double-clicking any download row opens the <strong>Download Details</strong> modal with full segment telemetry, connection status, and manual overrides.</p>
+
+          <h4>Sidebar Filter Categories:</h4>
+          <p>
+            Filter by <strong>All Downloads</strong>, <strong>Finished</strong>, <strong>Unfinished</strong>, or any of the 8 smart categories: <em>Image, Video, Audio, Document, Compressed, App/Software, Torrent, Other</em>. Real-time counter badges show exact matching item counts.
+          </p>
+
+          <h3>Detected Page</h3>
+          <p>
+            Gathers all multimedia files and stream links detected by the browser extension: filename, size, MIME type, source URL, and timestamp. Select items and click <strong>Download</strong>, or double-click to start immediately.
+          </p>
+
+          <h3>Completed Page</h3>
+          <p>
+            A focused historical archive containing only finished, failed, or stopped downloads for rapid search and opening.
+          </p>
+
+          <h3>Analytics Page</h3>
+          <p>
+            Six comprehensive telemetry cards (total files, completed, failed, data transferred, average speed, peak speed), two 14-day history bar charts (<strong>Downloads per day</strong> &amp; <strong>Bandwidth per day</strong>), and a full per-category storage breakdown &mdash; all calculated 100% locally.
+          </p>
+        </article>
+
+        <!-- 4. Adding Downloads -->
+        <span id="engine"></span>
+        <article class="docs-article" id="section-4">
+          <h2>4. Adding Downloads</h2>
+          <p>
+            Click the <strong>Add</strong> button on the Downloads page (or paste directly from clipboard).
+          </p>
+
+          <h3>New Download Dialog Fields</h3>
+          <div class="docs-table-wrapper">
+            <table class="docs-table">
+              <thead>
+                <tr>
+                  <th>Dialog Field</th>
+                  <th>Description &amp; Supported Inputs</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>URL</strong></td>
+                  <td>Accepts standard <code>http://</code>, <code>https://</code>, internal browser <code>blob:</code>, and <code>magnet:</code> URIs.</td>
+                </tr>
+                <tr>
+                  <td><strong>Filename</strong></td>
+                  <td>Optional custom name (retains server-provided name if left blank).</td>
+                </tr>
+                <tr>
+                  <td><strong>Save to</strong></td>
+                  <td>Target folder (defaults to your configured download path or category subfolder).</td>
+                </tr>
+                <tr>
+                  <td><strong>Category</strong></td>
+                  <td>Pre-selected automatically based on file extension matching rules.</td>
+                </tr>
+                <tr>
+                  <td><strong>Connections</strong></td>
+                  <td>Allocates 1 to 64 parallel TCP connection segments for this transfer.</td>
+                </tr>
+                <tr>
+                  <td><strong>Proxy profile</strong></td>
+                  <td>Route download through a saved proxy configuration or Direct.</td>
+                </tr>
+                <tr>
+                  <td><strong>Username / Password</strong></td>
+                  <td>Optional HTTP Basic-Auth credentials (stored securely in Windows Credential Manager).</td>
+                </tr>
+                <tr>
+                  <td><strong>Cookies</strong></td>
+                  <td>Custom header-style cookies (e.g. <code>session_id=xyz789; token=abc</code>).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Understanding <code>blob:</code> URLs</h3>
+          <div class="docs-callout warning">
+            <div class="docs-callout-title"><i class="fas fa-code-branch text-warning"></i> Browser-Exclusive Blob Fetching</div>
+            Right-clicking and copying link addresses on modern web video players often produces <code>blob:https://...</code> addresses that only exist in browser memory. When the MagnetoClip companion extension is installed, the app requests the raw stream bytes directly through native messaging &mdash; simply keep the source browser tab open until the transfer finishes.
+          </div>
+
+          <h3>Multi-Segment Resilience &amp; Sidecars</h3>
+          <p>
+            Transfers are split into byte ranges fetched simultaneously. State is recorded continuously in a <code>.mclip</code> JSON sidecar file. If your machine restarts or experiences connection loss, downloads resume from the exact byte offset without wasting bandwidth.
+          </p>
+          <p>
+            <strong>Download Status Flow:</strong> <code>Queued</code> &rarr; <code>Scheduled</code> &rarr; <code>Connecting</code> &rarr; <code>Downloading</code> &rarr; <code>Paused</code> &rarr; <code>Retrying</code> &rarr; <code>Verifying</code> &rarr; <code>Completed</code> (or <code>Failed</code> / <code>Verification Failed</code>).
+          </p>
+        </article>
+
+        <!-- 5. Browser Integration -->
+        <span id="browser"></span>
+        <article class="docs-article" id="section-5">
+          <h2>5. Browser Integration</h2>
+          <p>
+            The Manifest V3 companion extension bridges MagnetoClip with your web browsers via Chrome Native Messaging to detect media, intercept links, and capture chunked streams.
+          </p>
+          <p>
+            <strong>Supported Browsers:</strong> Google Chrome, Microsoft Edge, Mozilla Firefox, Brave, Vivaldi, and Chromium.
+          </p>
+
+          <h3>Setup Instructions</h3>
+          <ol style="padding-left: 20px; color: #cbd5e1; line-height: 1.8; margin-bottom: 20px;">
+            <li>Open the <strong>Browser</strong> page in MagnetoClip and tick <strong>Enable browser integration</strong>.</li>
+            <li>Under <strong>Installed browsers</strong>, locate your browser and click <strong>Install host</strong> (registers the native messaging registry key).</li>
+            <li>Under <strong>Browser extension</strong>, click <strong>Prepare extension</strong> and load it:
+              <ul style="padding-left: 20px; margin-top: 6px;">
+                <li><strong>Chrome / Edge / Brave / Vivaldi / Chromium:</strong> Open <code>chrome://extensions</code>, enable <strong>Developer mode</strong>, click <strong>Load unpacked</strong>, and select the extension folder shown on the screen.</li>
+                <li><strong>Firefox:</strong> Open <code>about:debugging#/runtime/this-firefox</code>, click <strong>Load Temporary Add-on</strong>, and select the extension manifest file.</li>
+              </ul>
+            </li>
+            <li>The status indicator at the bottom turns <span class="text-cyan">Green</span> when connected.</li>
+          </ol>
+
+          <h3>Capture Modes &amp; Settings</h3>
+          <div class="docs-table-wrapper">
+            <table class="docs-table">
+              <thead>
+                <tr>
+                  <th>Option</th>
+                  <th>Functionality</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Enable browser integration</strong></td>
+                  <td>Master toggle for the native messaging bridge.</td>
+                </tr>
+                <tr>
+                  <td><strong>Capture media streams</strong></td>
+                  <td>Detects embedded video and audio streams as pages load.</td>
+                </tr>
+                <tr>
+                  <td><strong>Make MagnetoClip default downloader</strong></td>
+                  <td>Intercepts all browser download requests and passes them to the acceleration engine.</td>
+                </tr>
+                <tr>
+                  <td><strong>Show confirmation dialog</strong></td>
+                  <td>Displays a popup prompt before queuing captured media.</td>
+                </tr>
+                <tr>
+                  <td><strong>Notify when files are found</strong></td>
+                  <td>Fires Windows tray notification balloons upon detection.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            When a file is intercepted, the <strong>Downloadable File Detected</strong> popup offers four quick actions: <strong>Download now</strong>, <strong>Download later</strong> (queues to list), <strong>Skip</strong>, or <strong>Skip all</strong> (suppresses alerts for 1 hour or permanently).
+          </p>
+        </article>
+
+        <!-- 6. Capturing Files and Streaming Media -->
+        <span id="media"></span>
+        <article class="docs-article" id="section-6">
+          <h2>6. Capturing Files and Streaming Media</h2>
+          <p>
+            MagnetoClip recognizes over 100 extensions across 10 media categories and automatically sorts them into dedicated folders when <strong>Auto-categorize by file type</strong> is enabled.
+          </p>
+
+          <h3>Embedded yt-dlp &amp; FFmpeg Bridge</h3>
+          <p>
+            Streaming services are processed through a dedicated engine supporting dozens of video and music platforms, alongside direct HTTP Live Streaming (<code>.m3u8</code>) and Dynamic Adaptive Streaming over HTTP (<code>.mpd</code>) manifests.
+          </p>
+
+          <div class="docs-callout purple">
+            <div class="docs-callout-title"><i class="fas fa-sliders-h text-purple"></i> Streaming Quality Selector</div>
+            Select your preferred global quality under <strong>Settings &rarr; Streaming media quality</strong>:
+            <ul style="padding-left: 20px; margin-top: 8px;">
+              <li><strong>Best Available:</strong> Downloads highest available video resolution and bitrate.</li>
+              <li><strong>1080p Full HD:</strong> Caps video resolution at 1920&times;1080.</li>
+              <li><strong>720p HD:</strong> Optimizes bandwidth with standard high definition.</li>
+              <li><strong>Audio Only:</strong> Extracts audio track directly into MP3/AAC container.</li>
+            </ul>
+          </div>
+          <p>
+            Separate audio and video DASH streams are multiplexed automatically by the bundled FFmpeg binary into a single synchronized container with metadata intact.
+          </p>
+        </article>
+
+        <!-- 7. Torrents -->
+        <span id="torrent"></span>
+        <article class="docs-article" id="section-7">
+          <h2>7. Torrents (libtorrent Client)</h2>
+          <p>
+            The dedicated <strong>Torrents</strong> page provides complete BitTorrent capability without requiring third-party clients.
+          </p>
+
+          <h3>Adding Torrents</h3>
+          <ul style="padding-left: 20px; color: #cbd5e1; line-height: 1.8; margin-bottom: 16px;">
+            <li><strong>Add Magnet:</strong> Paste a magnet URI (<code>magnet:?xt=urn:btih:...</code>) or <code>.torrent</code> URL.</li>
+            <li><strong>Upload File:</strong> Select a local <code>.torrent</code> file from disk.</li>
+            <li><strong>Metadata Preview:</strong> Displays torrent name, total size, tracker list, info hash, and full interactive file selection tree.</li>
+          </ul>
+
+          <h3>System Protocol Registration</h3>
+          <p>
+            Register MagnetoClip as your default handler in <strong>Settings &rarr; Torrent</strong>:
+          </p>
+          <ul style="padding-left: 20px; color: #cbd5e1; line-height: 1.8; margin-bottom: 20px;">
+            <li><strong>Register to open .torrent files:</strong> Double-clicking <code>.torrent</code> files in Windows opens MagnetoClip.</li>
+            <li><strong>Register magnet: links:</strong> Clicking magnet links on web pages launches the download dialogue.</li>
+          </ul>
+
+          <h3>Torrent Engine Configuration (Settings &rarr; Torrent)</h3>
+          <div class="docs-table-wrapper">
+            <table class="docs-table">
+              <thead>
+                <tr>
+                  <th>Setting</th>
+                  <th>Default</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Enable DHT</strong></td>
+                  <td><code>On</code></td>
+                  <td>Distributed Hash Table for decentralized trackerless peer discovery.</td>
+                </tr>
+                <tr>
+                  <td><strong>Enable PEX</strong></td>
+                  <td><code>On</code></td>
+                  <td>Peer Exchange between connected swarms.</td>
+                </tr>
+                <tr>
+                  <td><strong>Enable Encryption</strong></td>
+                  <td><code>On</code></td>
+                  <td>Obfuscates BitTorrent protocol traffic from ISP throttling.</td>
+                </tr>
+                <tr>
+                  <td><strong>Listen Port</strong></td>
+                  <td><code>6881</code></td>
+                  <td>Incoming TCP/UDP peer connection port.</td>
+                </tr>
+                <tr>
+                  <td><strong>Max Connections</strong></td>
+                  <td><code>200</code></td>
+                  <td>Global peer connection ceiling.</td>
+                </tr>
+                <tr>
+                  <td><strong>Max Upload Slots</strong></td>
+                  <td><code>4</code></td>
+                  <td>Simultaneous upload slots allocated per torrent.</td>
+                </tr>
+                <tr>
+                  <td><strong>Max Active Torrents</strong></td>
+                  <td><code>5</code></td>
+                  <td>Maximum unfinished torrents in active rotation.</td>
+                </tr>
+                <tr>
+                  <td><strong>Max Active Downloads</strong></td>
+                  <td><code>3</code></td>
+                  <td>Concurrent transferring torrent limit.</td>
+                </tr>
+                <tr>
+                  <td><strong>Sequential Download</strong></td>
+                  <td><code>Off</code></td>
+                  <td>Fetches pieces in chronological order for near-instant video preview playback.</td>
+                </tr>
+                <tr>
+                  <td><strong>Auto-Seed</strong></td>
+                  <td><code>Off</code></td>
+                  <td>Maintains active seeding upon 100% transfer completion.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <!-- 8. Remote Dashboard -->
+        <span id="remote"></span>
+        <article class="docs-article" id="section-8">
+          <h2>8. Remote Dashboard (Port 8477)</h2>
+          <p>
+            Control and monitor your downloads from a smartphone, tablet, or secondary PC on the same local network.
+          </p>
+
+          <div class="code-box">
+            <div class="code-header">
+              <span>Remote Control Setup</span>
+              <button class="copy-btn"><i class="fas fa-copy"></i> Copy</button>
+            </div>
+            <pre><code>1. Open Settings -> Remote Control
+2. Tick "Enable remote dashboard" (Default port: 8477)
+3. Click "Show QR..." and scan with your phone camera
+4. Authenticate using the generated Bearer + HMAC token</code></pre>
+          </div>
+
+          <p>
+            Clicking <strong>Regenerate Token</strong> instantly revokes all paired mobile devices. The remote web application runs on a lightweight Python <code>aiohttp</code> server and never exposes local files or credentials outside the network.
+          </p>
+        </article>
+
+        <!-- 9. Proxy Profiles -->
+        <article class="docs-article" id="section-9">
+          <h2>9. Proxy Profiles</h2>
+          <p>
+            Manage multiple proxy servers under <strong>Settings &rarr; Proxy &rarr; Manage proxy profiles&hellip;</strong>:
+          </p>
+          <ul style="padding-left: 20px; color: #cbd5e1; line-height: 1.8; margin-bottom: 16px;">
+            <li><strong>Protocol Support:</strong> <code>HTTP</code>, <code>HTTPS</code>, and <code>SOCKS5</code>.</li>
+            <li><strong>Credentials:</strong> Usernames and passwords are encrypted in the Windows Credential Manager keyring &mdash; never stored in plaintext SQLite databases.</li>
+            <li><strong>Routing:</strong> Set a global default proxy or choose a specific profile per individual download in the Add dialog.</li>
+          </ul>
+        </article>
+
+        <!-- 10. Settings Reference -->
+        <article class="docs-article" id="section-10">
+          <h2>10. Settings Reference</h2>
+
+          <h3>Downloads Configuration</h3>
+          <div class="docs-table-wrapper">
+            <table class="docs-table">
+              <thead>
+                <tr>
+                  <th>Setting</th>
+                  <th>Default</th>
+                  <th>Valid Range / Options</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Simultaneous downloads</strong></td>
+                  <td><code>3</code></td>
+                  <td>1 &ndash; 32 concurrent transfers</td>
+                </tr>
+                <tr>
+                  <td><strong>Connections per download</strong></td>
+                  <td><code>8</code></td>
+                  <td>1 &ndash; 64 multi-segment connections</td>
+                </tr>
+                <tr>
+                  <td><strong>Max bandwidth</strong></td>
+                  <td><code>Unlimited (0)</code></td>
+                  <td>Custom MB/s throttle ceiling</td>
+                </tr>
+                <tr>
+                  <td><strong>Network timeout</strong></td>
+                  <td><code>30 s</code></td>
+                  <td>5 &ndash; 300 seconds</td>
+                </tr>
+                <tr>
+                  <td><strong>Max retries</strong></td>
+                  <td><code>5</code></td>
+                  <td>0 &ndash; 20 exponential backoff attempts</td>
+                </tr>
+                <tr>
+                  <td><strong>Custom User-Agent</strong></td>
+                  <td><em>(empty)</em></td>
+                  <td>Custom browser header string</td>
+                </tr>
+                <tr>
+                  <td><strong>Default download folder</strong></td>
+                  <td><code>Downloads</code></td>
+                  <td>Custom Windows file system directory</td>
+                </tr>
+                <tr>
+                  <td><strong>Auto-categorize by file type</strong></td>
+                  <td><code>On</code></td>
+                  <td>Toggle smart sorting</td>
+                </tr>
+                <tr>
+                  <td><strong>Theme</strong></td>
+                  <td><code>Dark</code></td>
+                  <td>Cyber Dark / Clean Light</td>
+                </tr>
+                <tr>
+                  <td><strong>Start with system</strong></td>
+                  <td><code>On</code></td>
+                  <td>Windows startup auto-launch</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Updates Engine</h3>
+          <p>
+            MagnetoClip periodically queries the secure update endpoint. Press <strong>Check Now</strong> in Settings to trigger a manual check. Updates are downloaded, verified with SHA-256 signatures, and applied automatically with an application restart.
+          </p>
+        </article>
+
+        <!-- 11. System Tray -->
+        <article class="docs-article" id="section-11">
+          <h2>11. System Tray</h2>
+          <p>
+            MagnetoClip minimizes to the Windows taskbar notification area (System Tray). Hovering over the icon displays active download counts and aggregate throughput speed.
+          </p>
+
+          <h4>Tray Context Menu:</h4>
+          <ul style="padding-left: 20px; color: #cbd5e1; line-height: 1.8; margin-bottom: 16px;">
+            <li><strong>Open MagnetoClip:</strong> Restores main window.</li>
+            <li><strong>Pause All / Resume All:</strong> Global transfer state override.</li>
+            <li><strong>Open Remote&hellip;:</strong> Displays mobile pairing QR code.</li>
+            <li><strong>License&hellip;:</strong> Displays masked key and validation status.</li>
+            <li><strong>Exit:</strong> Terminates engines and saves all <code>.mclip</code> sidecars.</li>
+          </ul>
+          <p>Clicking a finished download notification balloon reveals the downloaded file directly in Windows Explorer.</p>
+        </article>
+
+        <!-- 12. Data Storage & Privacy -->
+        <span id="security"></span>
+        <article class="docs-article" id="section-12">
+          <h2>12. Where MagnetoClip Stores Your Data</h2>
+          <div class="docs-table-wrapper">
+            <table class="docs-table">
+              <thead>
+                <tr>
+                  <th>Data Category</th>
+                  <th>Storage Location &amp; Protection</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Downloads Database</strong></td>
+                  <td>SQLite WAL-mode database in <code>%APPDATA%\MagnetoClip</code></td>
+                </tr>
+                <tr>
+                  <td><strong>Serial License Key</strong></td>
+                  <td>Windows Credential Manager (OS Encrypted Keyring)</td>
+                </tr>
+                <tr>
+                  <td><strong>Proxy Credentials</strong></td>
+                  <td>Windows Credential Manager</td>
+                </tr>
+                <tr>
+                  <td><strong>Application Logs</strong></td>
+                  <td>Structured JSON logs with automated credential scrubbing</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="docs-callout">
+            <div class="docs-callout-title"><i class="fas fa-user-shield text-cyan"></i> Privacy Guarantee</div>
+            All metrics shown on the <strong>Analytics</strong> page are computed 100% locally from your local SQLite database. No browsing history, file names, or download URLs are ever transmitted to external servers.
+          </div>
+        </article>
+
+        <!-- 13. Troubleshooting -->
+        <article class="docs-article" id="section-13">
+          <h2>13. Troubleshooting</h2>
+          <p>Quick solutions to common configuration and networking questions:</p>
+
+          <div class="faq-accordion" style="margin-top: 24px;">
+            
+            <div class="faq-item open">
+              <div class="faq-question">
+                <span>The app asks for a serial key on every start</span>
+                <i class="fas fa-chevron-down faq-arrow"></i>
+              </div>
+              <div class="faq-answer">
+                Verify your internet connection; the desktop application must reach the license server to validate the bound machine token. If the network is operating normally, re-enter the serial key once to refresh the Windows Credential Manager entry.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>"Verification failed" error on a completed download</span>
+                <i class="fas fa-chevron-down faq-arrow"></i>
+              </div>
+              <div class="faq-answer">
+                The transferred file checksum (MD5/SHA-256) did not match the manifest supplied by the server. Right-click the download item and choose <strong>Retry Download</strong> to re-fetch corrupted chunks.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Blob URL download hangs at 0%</span>
+                <i class="fas fa-chevron-down faq-arrow"></i>
+              </div>
+              <div class="faq-answer">
+                <code>blob:</code> resources reside inside the active browser tab memory. Keep the source browser tab open until the native messaging transfer reaches 100%.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Browser extension is not detecting media files</span>
+                <i class="fas fa-chevron-down faq-arrow"></i>
+              </div>
+              <div class="faq-answer">
+                In MagnetoClip, navigate to the <strong>Browser</strong> page and ensure: (1) Browser integration is enabled, (2) Host is installed for your browser, (3) Extension is loaded, and (4) The status dot is Green. Afterward, reload the target web page.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>BitTorrent transfers show zero connected peers</span>
+                <i class="fas fa-chevron-down faq-arrow"></i>
+              </div>
+              <div class="faq-answer">
+                Enable <strong>DHT</strong> and <strong>PEX</strong> under <em>Settings &gt; Torrent</em>. Verify that incoming TCP/UDP port <strong>6881</strong> is permitted through Windows Defender Firewall and router NAT rules.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Remote dashboard unreachable from smartphone</span>
+                <i class="fas fa-chevron-down faq-arrow"></i>
+              </div>
+              <div class="faq-answer">
+                Ensure both your PC and phone are connected to the same Wi-Fi network. Check that the port (8477) server status shows <em>Running</em> in MagnetoClip, then scan a fresh QR code after regenerating the token.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Forgot which PC holds my license key</span>
+                <i class="fas fa-chevron-down faq-arrow"></i>
+              </div>
+              <div class="faq-answer">
+                The activation error message names the specific bound hostname. Deactivate the license on that computer under <em>Settings &gt; License</em>, or contact <a href="mailto:support@magnetoclip.app" class="text-cyan">support@magnetoclip.app</a> to request a machine binding reset.
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+      </main>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <img src="images/logo.png" alt="MagnetoClip Logo" width="36" height="36">
+            <span class="brand-text">Magneto<span class="text-cyan">Clip</span></span>
+          </a>
+          <p>Advanced Windows desktop download manager. Accelerate, capture, and manage all your web media with high-speed precision.</p>
+          <div style="font-size: 0.85rem; color: var(--text-dim);">
+            Developed by <strong>Devallix</strong>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="download.html">Download App</a></li>
+            <li><a href="buy.html">Buy License</a></li>
+            <li><a href="docs.html">User Guide &amp; Docs</a></li>
+            <li><a href="contact.html">Contact &amp; Support</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>User Manual</h4>
+          <ul class="footer-links">
+            <li><a href="docs.html#section-2">License Activation</a></li>
+            <li><a href="docs.html#section-5">Browser Extension</a></li>
+            <li><a href="docs.html#section-6">Stream Capture</a></li>
+            <li><a href="docs.html#section-7">libtorrent Engine</a></li>
+            <li><a href="docs.html#section-13">Troubleshooting Guide</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Legal &amp; Security</h4>
+          <ul class="footer-links">
+            <li><a href="docs.html#section-2">EULA &amp; Terms</a></li>
+            <li><a href="docs.html#section-12">Data Privacy Policy</a></li>
+            <li><a href="contact.html">Support Desk</a></li>
+            <li><a href="buy.html">Refund Policy</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 MagnetoClip by Devallix. All rights reserved.</div>
+        <div>Compatible with Windows 10 &amp; Windows 11 (64-Bit)</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/docs.js"></script>
+</body>
+</html>

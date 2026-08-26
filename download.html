@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download MagnetoClip v0.2.5 — Official Windows Download Manager</title>
+  <meta name="description"
+    content="Download the latest version of MagnetoClip for Windows 10/11. Includes standard installer, portable release, and companion browser extensions.">
+  <link rel="icon" type="image/png" href="images/logo.png">
+
+  <!-- Google Fonts & Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Top Navigation -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" id="nav-brand-logo">
+        <img src="images/logo.png" alt="MagnetoClip Logo" width="42" height="42">
+        <span class="brand-text">Magneto<span class="text-cyan">Clip</span></span>
+      </a>
+
+      <nav>
+        <ul class="nav-links" id="primary-nav-links">
+          <li><a href="index.html" class="nav-link" id="nav-link-home">Home</a></li>
+          <li><a href="download.html" class="nav-link active" id="nav-link-download">Download</a></li>
+          <li><a href="buy.html" class="nav-link" id="nav-link-buy">Buy</a></li>
+          <li><a href="docs.html" class="nav-link" id="nav-link-docs">Documentation</a></li>
+          <li><a href="contact.html" class="nav-link" id="nav-link-contact">Contact Us</a></li>
+          <li class="mobile-only-cta">
+            <a href="download.html" class="btn btn-outline-cyan btn-sm btn-block"><i class="fas fa-download"></i> Get Free Trial</a>
+          </li>
+          <li class="mobile-only-cta">
+            <a href="buy.html" class="btn btn-primary btn-sm btn-block"><i class="fas fa-bolt"></i> Buy License</a>
+          </li>
+        </ul>
+      </nav>
+
+      <button class="mobile-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Download Hero Section -->
+  <section class="download-hero">
+    <div class="container">
+      <span class="badge badge-cyan" style="margin-bottom: 16px;">Latest Release v0.2.7</span>
+      <h1 style="margin-bottom: 16px;">Download <span class="text-gradient">MagnetoClip</span> for Windows</h1>
+      <p style="max-width: 680px; margin: 0 auto 40px auto; font-size: 1.15rem;">
+        Get the full desktop application, companion browser extensions, and cryptographic release checksums. Free 14-day
+        full trial included.
+      </p>
+
+      <!-- Download Options Grid -->
+      <div class="download-cards-grid">
+
+        <!-- Standard Windows Installer -->
+        <div class="download-option-card">
+          <div class="download-os-icon">
+            <i class="fab fa-windows"></i>
+          </div>
+          <span class="badge badge-cyan" style="margin-bottom: 12px;">Recommended</span>
+          <h3 style="font-size: 1.5rem; margin-bottom: 8px;">Windows Installer</h3>
+          <p style="font-size: 0.9rem; margin-bottom: 24px;">
+            Full installer with desktop integration, and auto-updater.
+          </p>
+
+          <a href="https://github.com/Devallix/MagnetoClip-An-Internet-Download-Manager/raw/refs/heads/main/MagnetoClip-Installer-v0.2.7.exe"
+            class="btn btn-primary btn-lg btn-block" style="margin-bottom: 16px;" id="btn-download-installer"
+            data-download-name="MagnetoClip-Installer-v0.2.7.exe">
+            <i class="fas fa-download"></i> Download .EXE (64-Bit)
+          </a>
+
+          <div style="font-size: 0.8rem; color: var(--text-dim);">
+            File: <code>MagnetoClip-Installer-v0.2.7.exe</code> • Size: 76.6 MB
+          </div>
+        </div>
+
+        <!-- Portable ZIP Edition -->
+        <div class="download-option-card">
+          <div class="download-os-icon" style="background: rgba(168, 85, 247, 0.15); color: var(--primary-purple);">
+            <i class="fas fa-file-archive"></i>
+          </div>
+          <span class="badge badge-purple" style="margin-bottom: 12px;">Standalone</span>
+          <h3 style="font-size: 1.5rem; margin-bottom: 8px;">Portable ZIP Edition</h3>
+          <p style="font-size: 0.9rem; margin-bottom: 24px;">
+            Zero installation required. Extract and run directly from a USB drive or local folder with all configs kept
+            isolated.
+          </p>
+
+          <a href="https://github.com/Devallix/MagnetoClip-An-Internet-Download-Manager/raw/refs/heads/main/releases/MagnetoClip-0.2.7.zip"
+            class="btn btn-secondary btn-lg btn-block" style="margin-bottom: 16px;" id="btn-download-portable"
+            data-download-name="MagnetoClip-0.2.7.zip">
+            <i class="fas fa-archive"></i> Download .ZIP (Portable)
+          </a>
+
+          <div style="font-size: 0.8rem; color: var(--text-dim);">
+            File: <code>MagnetoClip-0.2.7.zip</code> • Size: 74.9 MB
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Browser Extensions Section -->
+  <section class="browser-extensions-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-purple">Seamless Integration</span>
+        <h2>Companion Browser Extensions</h2>
+        <p>Integrate MagnetoClip with your favorite browser to automatically intercept downloads, detect video streams,
+          and capture torrent links.</p>
+      </div>
+
+      <div class="extension-grid">
+
+        <div class="ext-card">
+          <div class="ext-icon" style="color: #4285F4;"><i class="fab fa-chrome"></i></div>
+          <h4 style="margin-bottom: 8px;">Google Chrome</h4>
+          <p style="font-size: 0.85rem; margin-bottom: 16px;">Manifest V3 extension for Chrome 100+.</p>
+        </div>
+
+        <div class="ext-card">
+          <div class="ext-icon" style="color: #0078D7;"><i class="fab fa-edge"></i></div>
+          <h4 style="margin-bottom: 8px;">Microsoft Edge</h4>
+          <p style="font-size: 0.85rem; margin-bottom: 16px;">Official Edge Add-on with native messaging host.</p>
+        </div>
+
+        <div class="ext-card">
+          <div class="ext-icon" style="color: #FF7139;"><i class="fab fa-firefox-browser"></i></div>
+          <h4 style="margin-bottom: 8px;">Mozilla Firefox</h4>
+          <p style="font-size: 0.85rem; margin-bottom: 16px;">Firefox AMO verified companion add-on.</p>
+        </div>
+
+        <div class="ext-card">
+          <div class="ext-icon" style="color: #FB542B;"><i class="fab fa-brave"></i></div>
+          <h4 style="margin-bottom: 8px;">Brave &amp; Vivaldi</h4>
+          <p style="font-size: 0.85rem; margin-bottom: 16px;">Direct Chromium compatibility with policy auto-install.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SHA-256 Checksums Table -->
+  <section class="download-page-section" style="padding: 60px 0;">
+    <div class="container">
+      <div class="card">
+        <h3 style="margin-bottom: 12px;"><i class="fas fa-shield-alt text-cyan"></i> Cryptographic Integrity &amp;
+          Hashes</h3>
+        <p style="margin-bottom: 24px; font-size: 0.95rem;">
+          Verify that your downloaded binaries are authentic, untampered, and built directly from the official release
+          pipeline.
+        </p>
+
+          <div class="hash-box-row" style="display: flex; flex-direction: column; gap: 16px;">
+
+          <div
+            style="background: #050811; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <strong>MagnetoClip-Installer-v0.2.7.exe</strong>
+              <button class="btn btn-sm btn-secondary"
+                onclick="window.copyToClipboard('c99af07a31a287931b25c4e491312c979ea25976904b85cef7c19dcde0931e55', 'SHA-256 Checksum copied!')">
+                <i class="fas fa-copy"></i> Copy Hash
+              </button>
+            </div>
+            <code
+              style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--primary-cyan); word-break: break-all;">
+              SHA-256: c99af07a31a287931b25c4e491312c979ea25976904b85cef7c19dcde0931e55
+            </code>
+          </div>
+
+          <div
+            style="background: #050811; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <strong>MagnetoClip-0.2.7.zip</strong>
+              <button class="btn btn-sm btn-secondary"
+                onclick="window.copyToClipboard('03927c2551220900290a8d141d606014e0279cad94ed0d34a1320b77331d095c', 'SHA-256 Checksum copied!')">
+                <i class="fas fa-copy"></i> Copy Hash
+              </button>
+            </div>
+            <code
+              style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--primary-purple); word-break: break-all;">
+              SHA-256: 03927c2551220900290a8d141d606014e0279cad94ed0d34a1320b77331d095c
+            </code>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- System Requirements Section -->
+  <section class="download-page-section" style="padding: 40px 0 100px 0;">
+    <div class="container">
+      <div class="card">
+        <h3 style="margin-bottom: 20px;"><i class="fas fa-laptop-code text-purple"></i> System Requirements &amp;
+          Runtime</h3>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px;">
+          <div>
+            <h5 style="color: var(--primary-cyan); margin-bottom: 6px;">Operating System</h5>
+            <p style="font-size: 0.9rem;">Windows 10 / Windows 11 (64-Bit editions)</p>
+          </div>
+          <div>
+            <h5 style="color: var(--primary-cyan); margin-bottom: 6px;">Processor &amp; RAM</h5>
+            <p style="font-size: 0.9rem;">Dual-core 1.5 GHz+, 2 GB RAM (4 GB recommended for high-speed 64-stream
+              chunking)</p>
+          </div>
+          <div>
+            <h5 style="color: var(--primary-cyan); margin-bottom: 6px;">Disk Storage</h5>
+            <p style="font-size: 0.9rem;">150 MB free disk space for application files + temp directory buffer</p>
+          </div>
+          <div>
+            <h5 style="color: var(--primary-cyan); margin-bottom: 6px;">Bundled Runtimes</h5>
+            <p style="font-size: 0.9rem;">Embedded PySide6, FFmpeg, libtorrent &amp; yt-dlp. No extra dependencies
+              required.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <img src="images/logo.png" alt="MagnetoClip Logo" width="36" height="36">
+            <span class="brand-text">Magneto<span class="text-cyan">Clip</span></span>
+          </a>
+          <p>Advanced Windows desktop download manager. Accelerate, capture, and manage all your web media with
+            high-speed precision.</p>
+          <div style="font-size: 0.85rem; color: var(--text-dim);">
+            Developed by <strong>Devallix</strong>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="download.html">Download App</a></li>
+            <li><a href="buy.html">Buy License</a></li>
+            <li><a href="docs.html">User Guide &amp; Docs</a></li>
+            <li><a href="contact.html">Contact &amp; Support</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Product Features</h4>
+          <ul class="footer-links">
+            <li><a href="docs.html#engine">Multi-Segment Engine</a></li>
+            <li><a href="docs.html#browser">Browser Extension</a></li>
+            <li><a href="docs.html#media">Stream Grabber (yt-dlp)</a></li>
+            <li><a href="docs.html#torrent">libtorrent Client</a></li>
+            <li><a href="docs.html#remote">Remote Dashboard (8477)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Legal &amp; Security</h4>
+          <ul class="footer-links">
+            <li><a href="docs.html#licensing">EULA &amp; License Terms</a></li>
+            <li><a href="docs.html#security">Privacy &amp; Security Policy</a></li>
+            <li><a href="contact.html">Report an Issue</a></li>
+            <li><a href="buy.html">Refund Policy</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 MagnetoClip by Devallix. All rights reserved.</div>
+        <div>Compatible with Windows 10 &amp; Windows 11 (64-Bit)</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>

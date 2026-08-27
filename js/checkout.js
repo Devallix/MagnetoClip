@@ -219,7 +219,7 @@ function initPricingAndCheckout() {
 
       const fullName = `${firstname} ${lastname}`;
       const finalTotal = getFinalTotal();
-      const amountInKobo = Math.round(finalTotal * 100);
+      const amountInCedis = Math.round(finalTotal * 100);
 
       if (typeof PaystackPop === 'undefined') {
         window.showToast?.('Payment system failed to load. Please refresh and try again.', 'danger');
@@ -233,8 +233,8 @@ function initPricingAndCheckout() {
         const handler = PaystackPop.setup({
           key: PAYSTACK_PUBLIC_KEY,
           email: email,
-          amount: amountInKobo,
-          currency: 'USD',
+          amount: amountInCedis,
+          currency: 'GHS',
           metadata: {
             custom_fields: [
               { display_name: 'First Name', variable_name: 'first_name', value: firstname },

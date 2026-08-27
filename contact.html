@@ -14,6 +14,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- EmailJS SDK — https://www.emailjs.com/ -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 
@@ -67,12 +70,12 @@
               <div class="contact-icon"><i class="fas fa-envelope"></i></div>
               <div>
                 <strong>Support &amp; Inquiries</strong>
-                <div><a href="mailto:support@magnetoclip.app" class="text-cyan">support@magnetoclip.app</a></div>
-                <span style="font-size: 0.8rem; color: var(--text-dim);">Average response time: &lt; 4 hours</span>
+                <div><a href="mailto:compaxxe555@gmail.com" class="text-cyan">compaxxe555@gmail.com</a></div>
+                <span style="font-size: 0.8rem; color: var(--text-dim);">Average response time: &lt; 10 min</span>
               </div>
             </div>
-
-            <div class="contact-item" style="margin-top: 20px;">
+            
+            <!-- <div class="contact-item" style="margin-top: 20px;">
               <div class="contact-icon" style="background: rgba(168, 85, 247, 0.15); color: var(--primary-purple);">
                 <i class="fab fa-discord"></i>
               </div>
@@ -92,15 +95,15 @@
                 <div><a href="https://github.com" target="_blank" style="color: var(--primary-magenta);">Submit GitHub Issue</a></div>
                 <span style="font-size: 0.8rem; color: var(--text-dim);">Public issue tracking and feature requests</span>
               </div>
-            </div>
+            </div> -->
           </div>
-
+           
           <div class="card" style="background: rgba(13, 21, 39, 0.5);">
             <h4 style="margin-bottom: 8px;"><i class="fas fa-key text-cyan"></i> Lost Your License Key?</h4>
             <p style="font-size: 0.9rem; margin-bottom: 16px;">
               Enter your purchase email address in our self-service recovery system to receive a copy of your serial key instantly.
             </p>
-            <button class="btn btn-secondary btn-sm" onclick="showToast('License lookup: Please email support@magnetoclip.app with your order ID', 'info')">
+            <button class="btn btn-secondary btn-sm" onclick="showToast('License lookup: Please email support with your order email address')">
               <i class="fas fa-search"></i> Recover License
             </button>
           </div>
@@ -212,24 +215,76 @@
 
   <script src="js/main.js"></script>
   <script>
+    /*
+     * ========================================================
+     *  CONTACT FORM — Real Email Delivery via EmailJS
+     * ========================================================
+     *  SETUP INSTRUCTIONS:
+     *  1. Create a free account at https://www.emailjs.com/
+     *  2. Add an Email Service (Gmail, Outlook, etc.) → copy the Service ID
+     *  3. Create an Email Template with these variables:
+     *       {{from_name}}    — sender's name
+     *       {{from_email}}   — sender's email
+     *       {{topic}}        — inquiry category
+     *       {{subject}}      — ticket subject
+     *       {{message}}      — ticket body
+     *       {{to_email}}     — support@magnetoclip.app
+     *  4. Copy the Template ID
+     *  5. Go to Account → API Keys → copy your Public Key
+     *  6. Replace the three placeholder values below.
+     * ========================================================
+     */
+    const EMAILJS_SERVICE_ID  = 'service_4ekolq3';    // e.g. 'service_abc1234'
+    const EMAILJS_TEMPLATE_ID = 'template_fipj8kk';   // e.g. 'template_xyz5678'
+    const EMAILJS_PUBLIC_KEY  = '0R1GPAZSkmXszyoyc';     // e.g. 'abcdefGHIJKlmnoPQRST'
+
+    // Initialize EmailJS with your public key
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+
     document.getElementById('contact-form')?.addEventListener('submit', (e) => {
       e.preventDefault();
       const btn = document.getElementById('contact-submit-btn');
-      const name = document.getElementById('contact-name').value;
-      
+      const name  = document.getElementById('contact-name').value.trim();
+      const email = document.getElementById('contact-email').value.trim();
+      const topic = document.getElementById('contact-category').value;
+      const subject = document.getElementById('contact-subject').value.trim();
+      const message = document.getElementById('contact-message').value.trim();
+
+      if (!name || !email || !subject || !message) {
+        window.showToast?.('Please fill in all required fields.', 'danger');
+        return;
+      }
+
+      // Disable button and show loading state
       btn.disabled = true;
-      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting Ticket...';
-      
-      setTimeout(() => {
-        btn.disabled = false;
-        btn.innerHTML = '<i class="fas fa-check"></i> Ticket Submitted!';
-        window.showToast?.(`Thank you ${name}! Your support ticket has been received. Ticket ID: #MCL-TK-${Math.floor(1000 + Math.random() * 9000)}`, 'success');
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending Ticket...';
+
+      // Send email via EmailJS
+      emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+        from_name:  name,
+        from_email: email,
+        topic:      topic,
+        subject:    subject,
+        message:    message,
+        to_email:   'compaxxe555@gmail.com'
+      })
+      .then(() => {
+        const ticketId = `MCL-TK-${Math.floor(1000 + Math.random() * 9000)}`;
+        btn.innerHTML = '<i class="fas fa-check"></i> Ticket Sent!';
+        window.showToast?.(`Thank you ${name}! Your support ticket has been sent. Ticket ID: #${ticketId}`, 'success');
         document.getElementById('contact-form').reset();
-        
+
         setTimeout(() => {
+          btn.disabled = false;
           btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Support Ticket';
         }, 3000);
-      }, 1000);
+      })
+      .catch((err) => {
+        console.error('EmailJS error:', err);
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Support Ticket';
+        window.showToast?.('Failed to send ticket. Please try again or email us directly at compaxxe555@gmail.com', 'danger');
+      });
     });
   </script>
 </body>

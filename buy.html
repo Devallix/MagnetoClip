@@ -14,6 +14,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Paystack Payment Gateway -->
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <!-- EmailJS SDK — https://www.emailjs.com/ -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 
@@ -77,10 +82,10 @@
             <p class="pricing-desc">For individual users seeking reliable acceleration.</p>
             <div class="price-display">
               <span class="price-currency">$</span>
-              <span class="price-amount" id="price-personal">3.00</span>
+              <span class="price-amount" id="price-personal">1.86</span>
               <span class="price-period">/ month</span>
             </div>
-            <div class="billing-note" id="billed-personal">Billed $36 annually</div>
+            <div class="billing-note" id="billed-personal">Billed $22.30 annually</div>
           </div>
 
           <ul class="features-list">
@@ -173,64 +178,33 @@
         <div class="checkout-card">
           <h3 style="margin-bottom: 24px;"><i class="fas fa-lock text-cyan"></i> Payment Information</h3>
 
-          <div class="payment-tabs">
-            <button type="button" class="payment-tab-btn active" data-method="card">
-              <i class="fas fa-credit-card"></i> Credit / Debit Card
-            </button>
-            <button type="button" class="payment-tab-btn" data-method="paypal">
-              <i class="fab fa-paypal"></i> PayPal
-            </button>
-            <button type="button" class="payment-tab-btn" data-method="crypto">
-              <i class="fab fa-bitcoin"></i> Crypto / Web3
-            </button>
-          </div>
-
           <form id="checkout-form">
-            
-            <div id="card-payment-fields">
+            <div class="form-row">
               <div class="form-group">
-                <label class="form-label" for="customer-name">Full Name / Cardholder Name</label>
-                <input type="text" id="customer-name" class="form-control" placeholder="Alex Morgan" required>
+                <label class="form-label" for="customer-firstname">First Name</label>
+                <input type="text" id="customer-firstname" class="form-control" placeholder="Alex" required>
               </div>
-
               <div class="form-group">
-                <label class="form-label" for="customer-email">Email Address (for License Key Delivery)</label>
-                <input type="email" id="customer-email" class="form-control" placeholder="alex@example.com" required>
-                <span style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; display: block;">
-                  <i class="fas fa-shield-alt text-cyan"></i> Your activation serial key and receipt will be emailed here.
-                </span>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="card-number">Card Number</label>
-                <div style="position: relative;">
-                  <input type="text" id="card-number" class="form-control" placeholder="4242 •••• •••• 4242" maxlength="19" required>
-                  <i class="fas fa-credit-card" style="position: absolute; right: 16px; top: 16px; color: var(--text-dim);"></i>
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label" for="card-expiry">Expiry Date</label>
-                  <input type="text" id="card-expiry" class="form-control" placeholder="MM/YY" maxlength="5" required>
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="card-cvv">Security Code (CVV)</label>
-                  <input type="password" id="card-cvv" class="form-control" placeholder="123" maxlength="4" required>
-                </div>
+                <label class="form-label" for="customer-lastname">Last Name</label>
+                <input type="text" id="customer-lastname" class="form-control" placeholder="Morgan" required>
               </div>
             </div>
 
-            <div id="alt-payment-fields" style="display: none; padding: 20px 0; text-align: center;">
-              <p style="margin-bottom: 16px; font-size: 0.95rem;">You will be redirected to complete your payment securely, then automatically returned with your generated serial key.</p>
-              <div class="form-group">
-                <label class="form-label" for="alt-customer-email">Delivery Email Address</label>
-                <input type="email" id="alt-customer-email" class="form-control" placeholder="alex@example.com">
-              </div>
+            <div class="form-group">
+              <label class="form-label" for="customer-email">Email Address</label>
+              <input type="email" id="customer-email" class="form-control" placeholder="alex@example.com" required>
+              <span style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; display: block;">
+                <i class="fas fa-shield-alt text-cyan"></i> A purchase confirmation will be sent to this email.
+              </span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="pay-amount">Total Amount</label>
+              <input type="text" id="pay-amount" class="form-control" readonly style="font-weight: 600; font-size: 1.1rem; cursor: default;">
             </div>
 
             <button type="submit" class="btn btn-primary btn-lg btn-block" id="pay-submit-btn" style="margin-top: 24px;">
-              Pay &amp; Activate License
+              <i class="fas fa-lock"></i> Pay Now
             </button>
           </form>
         </div>
@@ -296,17 +270,17 @@
     </div>
   </section>
 
-  <!-- Purchase Success & Email Delivery Modal -->
+  <!-- Purchase Success Modal -->
   <div class="modal-overlay" id="purchase-success-modal">
     <div class="modal-card">
       <button class="modal-close-btn" id="modal-close-btn" aria-label="Close modal">&times;</button>
       
       <div style="text-align: center; margin-bottom: 24px;">
         <div style="width: 68px; height: 68px; border-radius: 50%; background: rgba(0, 210, 255, 0.15); border: 2px solid var(--primary-cyan); color: var(--primary-cyan); display: inline-flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 16px; box-shadow: 0 0 25px rgba(0, 210, 255, 0.3);">
-          <i class="fas fa-envelope-open-text"></i>
+          <i class="fas fa-check-circle"></i>
         </div>
-        <h2 style="font-size: 1.8rem; margin-bottom: 8px;">License Sent via Email!</h2>
-        <p style="font-size: 0.95rem; color: #cbd5e1;">Your payment was successful. We have dispatched your authentic serial key directly to your email address.</p>
+        <h2 style="font-size: 1.8rem; margin-bottom: 8px;">Payment Successful!</h2>
+        <p style="font-size: 0.95rem; color: #cbd5e1;">Your payment has been confirmed. A purchase confirmation email has been sent to your inbox.</p>
       </div>
 
       <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 18px; margin-bottom: 20px; font-size: 0.9rem;">
@@ -316,31 +290,28 @@
         </div>
         <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
           <span style="color: var(--text-muted);">Purchased Plan:</span>
-          <strong id="modal-plan-name">Pro Plan (ANNUAL)</strong>
+          <strong id="modal-plan-name">Pro Plan (Annual)</strong>
         </div>
         <div style="display: flex; justify-content: space-between;">
-          <span style="color: var(--text-muted);">Key Sent To:</span>
+          <span style="color: var(--text-muted);">Email:</span>
           <strong id="modal-customer-email" class="text-cyan">user@example.com</strong>
         </div>
       </div>
 
       <div style="background: rgba(0, 210, 255, 0.06); border: 1px solid rgba(0, 210, 255, 0.25); border-radius: var(--radius-md); padding: 16px; text-align: left; font-size: 0.88rem; color: #e2e8f0; margin-bottom: 24px;">
         <strong style="color: var(--primary-cyan); display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-          <i class="fas fa-info-circle"></i> Next Steps &amp; Activation:
+          <i class="fas fa-info-circle"></i> What's Next:
         </strong>
         <ol style="padding-left: 20px; line-height: 1.6; color: #cbd5e1;">
-          <li>Check your email inbox (and spam/promotions folder) for an email from <code>licenses@magnetoclip.app</code>.</li>
-          <li>Copy your unique <code>MGCL-XXXXX-...</code> activation serial key from the email.</li>
-          <li>Launch MagnetoClip on your Windows PC and go to <strong>Settings &gt; License</strong> to paste and activate.</li>
+          <li>Check your email inbox (and spam/promotions folder) for your purchase confirmation.</li>
+          <li>Our team will process your order and send your license details shortly.</li>
+          <li>For any questions, contact us at <code>compaxxe555@gmail.com</code>.</li>
         </ol>
       </div>
 
-      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-        <button class="btn btn-primary btn-sm" id="download-receipt-btn">
-          <i class="fas fa-file-invoice"></i> Download Invoice / Receipt (.txt)
-        </button>
-        <button class="btn btn-secondary btn-sm" id="resend-email-btn">
-          <i class="fas fa-paper-plane"></i> Resend Email
+      <div style="text-align: center;">
+        <button class="btn btn-primary btn-sm" id="modal-close-success-btn">
+          <i class="fas fa-thumbs-up"></i> Got It
         </button>
       </div>
     </div>

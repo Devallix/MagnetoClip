@@ -1,17 +1,29 @@
 /**
- * MagnetoClip - Checkout & Licensing Engine
- * Handles Pricing Plans, Discounts, Form Validation, License Key Generation, and Receipt Download.
+ * MagnetoClip - Checkout & Payment Engine
+ * Handles Pricing Plans, Discounts, Paystack Payment, and EmailJS Notifications.
  */
 
+// ── Config ────────────────────────────────────────────────────────
+const PAYSTACK_PUBLIC_KEY = 'pk_test_cb41932561435e820ba7979f380f46f6a9cdb2b7';
+
+const EMAILJS_SERVICE_ID  = 'service_4ekolq3';
+const EMAILJS_TEMPLATE_ID = 'template_1enrz1l';
+const EMAILJS_PUBLIC_KEY  = '0R1GPAZSkmXszyoyc';
+
+const SITE_BASE_URL = 'https://devallix.github.io/MagnetoClip';
+
 document.addEventListener('DOMContentLoaded', () => {
+  if (typeof emailjs !== 'undefined') {
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+  }
   initPricingAndCheckout();
 });
 
 function initPricingAndCheckout() {
   // Pricing state
-  let currentBillingCycle = 'annual'; // 'monthly', 'annual', 'two-year'
-  let selectedPlan = 'pro'; // 'personal', 'pro', 'enterprise'
-  let appliedDiscount = 0; // percentage
+  let currentBillingCycle = 'annual';
+  let selectedPlan = 'pro';
+  let appliedDiscount = 0;
 
   const plans = {
     personal: {
@@ -19,8 +31,8 @@ function initPricingAndCheckout() {
       devices: '1 PC',
       support: 'Limited Support',
       monthly: { pricePerMonth: 3.00, total: 3.00, billedDesc: 'Billed $3 monthly' },
-      annual: { pricePerMonth: 3.00, total: 36.00, billedDesc: 'Billed $36 annually' },
-      'two-year': { pricePerMonth: 3.00, total: 72.00, billedDesc: 'Billed $72 for 2 years' }
+      annual: { pricePerMonth: 1.86, total: 22.30, billedDesc: 'Billed $22.30 annually' },
+      'two-year': { pricePerMonth: 1.80, total: 43.20, billedDesc: 'Billed $43.20 for 2 years' }
     },
     pro: {
       name: 'Pro Plan',
@@ -44,7 +56,7 @@ function initPricingAndCheckout() {
   const billingBtns = document.querySelectorAll('.billing-toggle-btn');
   const planCards = document.querySelectorAll('.pricing-card');
   const selectPlanBtns = document.querySelectorAll('[data-select-plan]');
-  
+
   const summaryPlanName = document.getElementById('summary-plan-name');
   const summaryBillingCycle = document.getElementById('summary-billing-cycle');
   const summaryBasePrice = document.getElementById('summary-base-price');
@@ -59,18 +71,17 @@ function initPricingAndCheckout() {
 
   const checkoutForm = document.getElementById('checkout-form');
   const paySubmitBtn = document.getElementById('pay-submit-btn');
+  const payAmountInput = document.getElementById('pay-amount');
 
   // Modal elements
   const modal = document.getElementById('purchase-success-modal');
   const modalCloseBtn = document.getElementById('modal-close-btn');
-  const modalLicenseKey = document.getElementById('modal-license-key');
+  const modalCloseSuccessBtn = document.getElementById('modal-close-success-btn');
   const modalPlanName = document.getElementById('modal-plan-name');
   const modalCustomerEmail = document.getElementById('modal-customer-email');
   const modalOrderNo = document.getElementById('modal-order-no');
-  const copyKeyBtn = document.getElementById('copy-license-btn');
-  const downloadReceiptBtn = document.getElementById('download-receipt-btn');
 
-  // Setup Billing Toggle
+  // ── Billing Toggle ────────────────────────────────────────────
   billingBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       billingBtns.forEach(b => b.classList.remove('active'));
@@ -81,7 +92,7 @@ function initPricingAndCheckout() {
     });
   });
 
-  // Setup Plan Selection
+  // ── Plan Selection ────────────────────────────────────────────
   selectPlanBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
@@ -91,7 +102,6 @@ function initPricingAndCheckout() {
         highlightSelectedPlan();
         updateOrderSummary();
 
-        // Scroll to checkout section smoothly
         const checkoutSec = document.getElementById('checkout-section');
         if (checkoutSec) {
           checkoutSec.scrollIntoView({ behavior: 'smooth' });
@@ -121,7 +131,7 @@ function initPricingAndCheckout() {
     const proBilledEl = document.getElementById('billed-pro');
     const entBilledEl = document.getElementById('billed-enterprise');
 
-    if (personalPriceEl) personalPriceEl.innerText = plans.personal[currentBillingCycle].pricePerMonth.toFixed(currentBillingCycle === 'annual' && plans.personal.annual.pricePerMonth % 1 !== 0 ? 2 : 2);
+    if (personalPriceEl) personalPriceEl.innerText = plans.personal[currentBillingCycle].pricePerMonth.toFixed(2);
     if (proPriceEl) proPriceEl.innerText = plans.pro[currentBillingCycle].pricePerMonth.toFixed(2);
     if (entPriceEl) entPriceEl.innerText = plans.enterprise[currentBillingCycle].pricePerMonth.toFixed(2);
 
@@ -130,10 +140,18 @@ function initPricingAndCheckout() {
     if (entBilledEl) entBilledEl.innerText = plans.enterprise[currentBillingCycle].billedDesc;
   }
 
+  function getFinalTotal() {
+    const planData = plans[selectedPlan];
+    const cycleData = planData[currentBillingCycle];
+    const baseTotal = cycleData.total;
+    const discountVal = appliedDiscount > 0 ? baseTotal * (appliedDiscount / 100) : 0;
+    return baseTotal - discountVal;
+  }
+
   function updateOrderSummary() {
     const planData = plans[selectedPlan];
     const cycleData = planData[currentBillingCycle];
-    
+
     if (summaryPlanName) summaryPlanName.innerText = planData.name;
     if (summaryBillingCycle) {
       summaryBillingCycle.innerText = currentBillingCycle === 'monthly' ? 'Monthly' : currentBillingCycle === 'annual' ? 'Annual (1 Year)' : '2 Years Access';
@@ -152,15 +170,15 @@ function initPricingAndCheckout() {
     }
 
     const subtotalAfterDiscount = baseTotal - discountVal;
-    const estimatedTax = 0.00; // Digital tax free promo
     if (summaryTax) summaryTax.innerText = `$0.00`;
 
-    const finalTotal = subtotalAfterDiscount + estimatedTax;
+    const finalTotal = subtotalAfterDiscount;
     if (summaryTotal) summaryTotal.innerText = `$${finalTotal.toFixed(2)}`;
-    if (paySubmitBtn) paySubmitBtn.innerText = `Pay $${finalTotal.toFixed(2)} & Activate`;
+    if (payAmountInput) payAmountInput.value = `$${finalTotal.toFixed(2)}`;
+    if (paySubmitBtn) paySubmitBtn.innerHTML = `<i class="fas fa-lock"></i> Pay $${finalTotal.toFixed(2)} Now`;
   }
 
-  // Coupon Code
+  // ── Coupon Code ───────────────────────────────────────────────
   if (applyCouponBtn && couponInput) {
     applyCouponBtn.addEventListener('click', () => {
       const code = couponInput.value.trim().toUpperCase();
@@ -181,170 +199,106 @@ function initPricingAndCheckout() {
     });
   }
 
-  // Credit Card Form Formatters
-  const cardNumberInput = document.getElementById('card-number');
-  const cardExpiryInput = document.getElementById('card-expiry');
-  const cardCvvInput = document.getElementById('card-cvv');
-
-  cardNumberInput?.addEventListener('input', (e) => {
-    let value = e.target.value.replace(/\D/g, '').substring(0, 16);
-    let formatted = value.match(/.{1,4}/g)?.join(' ') || value;
-    e.target.value = formatted;
-  });
-
-  cardExpiryInput?.addEventListener('input', (e) => {
-    let value = e.target.value.replace(/\D/g, '').substring(0, 4);
-    if (value.length >= 3) {
-      e.target.value = `${value.substring(0, 2)}/${value.substring(2)}`;
-    } else {
-      e.target.value = value;
-    }
-  });
-
-  cardCvvInput?.addEventListener('input', (e) => {
-    e.target.value = e.target.value.replace(/\D/g, '').substring(0, 4);
-  });
-
-  // Payment tab switching
-  const paymentTabs = document.querySelectorAll('.payment-tab-btn');
-  paymentTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      paymentTabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      const method = tab.getAttribute('data-method');
-      const cardFields = document.getElementById('card-payment-fields');
-      const altFields = document.getElementById('alt-payment-fields');
-      if (method === 'card') {
-        if (cardFields) cardFields.style.display = 'block';
-        if (altFields) altFields.style.display = 'none';
-      } else {
-        if (cardFields) cardFields.style.display = 'none';
-        if (altFields) altFields.style.display = 'block';
-      }
-    });
-  });
-
-  // Generate Serial Key
-  function generateSerialKey() {
-    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-    function segment(len) {
-      let s = '';
-      for (let i = 0; i < len; i++) {
-        s += chars.charAt(Math.floor(Math.random() * chars.length));
-      }
-      return s;
-    }
-    return `MGCL-${segment(5)}-${segment(5)}-${segment(5)}-${segment(5)}`;
-  }
-
-  // Handle Checkout Submit
+  // ── Checkout Form → Paystack ──────────────────────────────────
   if (checkoutForm) {
     checkoutForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const emailInput = document.getElementById('customer-email');
-      const email = emailInput ? emailInput.value.trim() : 'customer@example.com';
-      const nameInput = document.getElementById('customer-name');
-      const name = nameInput ? nameInput.value.trim() : 'MagnetoClip User';
+      const firstname = document.getElementById('customer-firstname')?.value.trim();
+      const lastname = document.getElementById('customer-lastname')?.value.trim();
+      const email = document.getElementById('customer-email')?.value.trim();
 
+      if (!firstname || !lastname) {
+        window.showToast?.('Please enter your first and last name', 'danger');
+        return;
+      }
       if (!email || !email.includes('@')) {
-        window.showToast?.('Please enter a valid email address for license key delivery', 'danger');
+        window.showToast?.('Please enter a valid email address', 'danger');
         return;
       }
 
-      // Simulate payment processing
+      const fullName = `${firstname} ${lastname}`;
+      const finalTotal = getFinalTotal();
+      const amountInKobo = Math.round(finalTotal * 100);
+
       paySubmitBtn.disabled = true;
-      paySubmitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Processing Secure Payment...';
+      paySubmitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Initializing Payment...';
 
-      setTimeout(() => {
-        paySubmitBtn.disabled = false;
-        updateOrderSummary();
+      const handler = PaystackPop.setup({
+        key: PAYSTACK_PUBLIC_KEY,
+        email: email,
+        amount: amountInKobo,
+        currency: 'USD',
+        metadata: {
+          custom_fields: [
+            { display_name: 'First Name', variable_name: 'first_name', value: firstname },
+            { display_name: 'Last Name', variable_name: 'last_name', value: lastname },
+            { display_name: 'Plan', variable_name: 'plan', value: plans[selectedPlan].name },
+            { display_name: 'Billing Cycle', variable_name: 'billing_cycle', value: currentBillingCycle }
+          ]
+        },
+        onSuccess: (transaction) => {
+          const orderId = `MCL-${Math.floor(100000 + Math.random() * 900000)}`;
+          const planLabel = `${plans[selectedPlan].name} (${currentBillingCycle.charAt(0).toUpperCase() + currentBillingCycle.slice(1)})`;
 
-        const orderId = `MCL-${Math.floor(100000 + Math.random() * 900000)}`;
+          // Send purchase notification email via EmailJS
+          if (typeof emailjs !== 'undefined') {
+            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+              from_name: fullName,
+              from_email: email,
+              plan_name: planLabel,
+              amount_paid: `$${finalTotal.toFixed(2)}`,
+              order_id: orderId,
+              transaction_ref: transaction.reference,
+              product_image: `${SITE_BASE_URL}/images/product.png`,
+              logo_image: `${SITE_BASE_URL}/images/logo.png`,
+              to_email: 'compaxxe555@gmail.com'
+            })
+            .then(() => {
+              showSuccessModal(fullName, email, orderId, planLabel);
+              window.showToast?.('Payment confirmed! Confirmation email sent.', 'success');
+            })
+            .catch((err) => {
+              console.error('EmailJS error:', err);
+              showSuccessModal(fullName, email, orderId, planLabel);
+              window.showToast?.('Payment confirmed! Email delivery may be delayed.', 'warning');
+            });
+          } else {
+            showSuccessModal(fullName, email, orderId, planLabel);
+          }
+        },
+        onClose: () => {
+          paySubmitBtn.disabled = false;
+          paySubmitBtn.innerHTML = `<i class="fas fa-lock"></i> Pay $${finalTotal.toFixed(2)} Now`;
+          window.showToast?.('Payment cancelled. You can try again anytime.', 'info');
+        }
+      });
 
-        if (modalPlanName) modalPlanName.innerText = `${plans[selectedPlan].name} (${currentBillingCycle.toUpperCase()})`;
-        if (modalCustomerEmail) modalCustomerEmail.innerText = email;
-        if (modalOrderNo) modalOrderNo.innerText = orderId;
-
-        // Open modal
-        modal?.classList.add('active');
-        window.showToast?.(`Payment approved! License sent to ${email}`, 'success');
-
-        // Resend email button
-        const resendBtn = document.getElementById('resend-email-btn');
-        resendBtn?.addEventListener('click', () => {
-          window.showToast?.(`License key re-sent to ${email}`, 'success');
-        });
-
-        // Download receipt button
-        downloadReceiptBtn?.addEventListener('click', () => {
-          downloadReceipt(name, email, orderId, plans[selectedPlan].name, summaryTotal?.innerText || '$0.00');
-        });
-
-      }, 1500);
+      handler.openIframe();
     });
   }
 
-  // Modal close
-  modalCloseBtn?.addEventListener('click', () => {
-    modal?.classList.remove('active');
-  });
+  function showSuccessModal(name, email, orderId, planLabel) {
+    paySubmitBtn.disabled = false;
+    paySubmitBtn.innerHTML = `<i class="fas fa-lock"></i> Pay Now`;
 
+    if (modalPlanName) modalPlanName.innerText = planLabel;
+    if (modalCustomerEmail) modalCustomerEmail.innerText = email;
+    if (modalOrderNo) modalOrderNo.innerText = orderId;
+
+    modal?.classList.add('active');
+  }
+
+  // ── Modal Close ───────────────────────────────────────────────
+  const closeModal = () => modal?.classList.remove('active');
+
+  modalCloseBtn?.addEventListener('click', closeModal);
+  modalCloseSuccessBtn?.addEventListener('click', closeModal);
   modal?.addEventListener('click', (e) => {
-    if (e.target === modal) modal.classList.remove('active');
+    if (e.target === modal) closeModal();
   });
 
-  // Initial summary sync
+  // ── Initial Sync ──────────────────────────────────────────────
   updatePricingCards();
   updateOrderSummary();
-}
-
-function downloadReceipt(name, email, orderId, plan, total) {
-  const receiptContent = `=====================================================
-MAGNETOCLIP SOFTWARE INVOICE & ORDER CONFIRMATION
-Developed by Devallix | https://magnetoclip.app
-=====================================================
-
-Order Number   : ${orderId}
-Date           : ${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}
-Status         : PAID & COMPLETED
-Customer Name  : ${name}
-Delivery Email : ${email}
-
------------------------------------------------------
-ITEM DESCRIPTION                               AMOUNT
------------------------------------------------------
-MagnetoClip Desktop App License                ${total}
-Plan: ${plan}
-Platform: Windows 10/11 (64-bit)
-
------------------------------------------------------
-TOTAL AMOUNT PAID:                             ${total}
-Payment Method: 256-Bit SSL Encrypted Card
------------------------------------------------------
-
-LICENSE SERIAL KEY DELIVERY:
-Your cryptographically signed Ed25519 serial activation
-key has been dispatched directly to:
---> ${email}
-
-ACTIVATION INSTRUCTIONS:
-1. Open the license delivery email in your inbox.
-2. Launch MagnetoClip on your Windows PC.
-3. Navigate to Settings > License and paste your key.
-4. Click 'Activate Now' to unlock full functionality.
-
-Thank you for choosing MagnetoClip!
-Support: support@magnetoclip.app
-=====================================================`;
-
-  const blob = new Blob([receiptContent], { type: 'text/plain;charset=utf-8' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = `MagnetoClip-Receipt-${orderId}.txt`;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  window.showToast?.('Receipt downloaded successfully!', 'success');
 }

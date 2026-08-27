@@ -219,62 +219,73 @@ function initPricingAndCheckout() {
 
       const fullName = `${firstname} ${lastname}`;
       const finalTotal = getFinalTotal();
-      const amountInCedis = Math.round(finalTotal * 100);
+      const amountInKobo = Math.round(finalTotal * 100);
+
+      if (typeof PaystackPop === 'undefined') {
+        window.showToast?.('Payment system failed to load. Please refresh and try again.', 'danger');
+        return;
+      }
 
       paySubmitBtn.disabled = true;
       paySubmitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Initializing Payment...';
 
-      const handler = PaystackPop.setup({
-        key: PAYSTACK_PUBLIC_KEY,
-        email: email,
-        amount: amountInCedis,
-        currency: 'GHS',
-        metadata: {
-          custom_fields: [
-            { display_name: 'First Name', variable_name: 'first_name', value: firstname },
-            { display_name: 'Last Name', variable_name: 'last_name', value: lastname },
-            { display_name: 'Plan', variable_name: 'plan', value: plans[selectedPlan].name },
-            { display_name: 'Billing Cycle', variable_name: 'billing_cycle', value: currentBillingCycle }
-          ]
-        },
-        onSuccess: (transaction) => {
-          const orderId = `MCL-${Math.floor(100000 + Math.random() * 900000)}`;
-          const planLabel = `${plans[selectedPlan].name} (${currentBillingCycle.charAt(0).toUpperCase() + currentBillingCycle.slice(1)})`;
+      try {
+        const handler = PaystackPop.setup({
+          key: PAYSTACK_PUBLIC_KEY,
+          email: email,
+          amount: amountInKobo,
+          currency: 'USD',
+          metadata: {
+            custom_fields: [
+              { display_name: 'First Name', variable_name: 'first_name', value: firstname },
+              { display_name: 'Last Name', variable_name: 'last_name', value: lastname },
+              { display_name: 'Plan', variable_name: 'plan', value: plans[selectedPlan].name },
+              { display_name: 'Billing Cycle', variable_name: 'billing_cycle', value: currentBillingCycle }
+            ]
+          },
+          onSuccess: (transaction) => {
+            const orderId = `MCL-${Math.floor(100000 + Math.random() * 900000)}`;
+            const planLabel = `${plans[selectedPlan].name} (${currentBillingCycle.charAt(0).toUpperCase() + currentBillingCycle.slice(1)})`;
 
-          // Send purchase notification email via EmailJS
-          if (typeof emailjs !== 'undefined') {
-            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-              from_name: fullName,
-              from_email: email,
-              plan_name: planLabel,
-              amount_paid: `$${finalTotal.toFixed(2)}`,
-              order_id: orderId,
-              transaction_ref: transaction.reference,
-              product_image: `${SITE_BASE_URL}/images/product.png`,
-              logo_image: `${SITE_BASE_URL}/images/logo.png`,
-              to_email: 'compaxxe555@gmail.com'
-            })
-            .then(() => {
+            if (typeof emailjs !== 'undefined') {
+              emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+                from_name: fullName,
+                from_email: email,
+                plan_name: planLabel,
+                amount_paid: `$${finalTotal.toFixed(2)}`,
+                order_id: orderId,
+                transaction_ref: transaction.reference,
+                product_image: `${SITE_BASE_URL}/images/product.png`,
+                logo_image: `${SITE_BASE_URL}/images/logo.png`,
+                to_email: 'compaxxe555@gmail.com'
+              })
+              .then(() => {
+                showSuccessModal(fullName, email, orderId, planLabel);
+                window.showToast?.('Payment confirmed! Confirmation email sent.', 'success');
+              })
+              .catch((err) => {
+                console.error('EmailJS error:', err?.text || err?.message || err);
+                showSuccessModal(fullName, email, orderId, planLabel);
+                window.showToast?.('Payment confirmed! Email delivery failed — check console.', 'warning');
+              });
+            } else {
               showSuccessModal(fullName, email, orderId, planLabel);
-              window.showToast?.('Payment confirmed! Confirmation email sent.', 'success');
-            })
-            .catch((err) => {
-              console.error('EmailJS error:', err);
-              showSuccessModal(fullName, email, orderId, planLabel);
-              window.showToast?.('Payment confirmed! Email delivery may be delayed.', 'warning');
-            });
-          } else {
-            showSuccessModal(fullName, email, orderId, planLabel);
+            }
+          },
+          onClose: () => {
+            paySubmitBtn.disabled = false;
+            paySubmitBtn.innerHTML = `<i class="fas fa-lock"></i> Pay $${finalTotal.toFixed(2)} Now`;
+            window.showToast?.('Payment cancelled. You can try again anytime.', 'info');
           }
-        },
-        onClose: () => {
-          paySubmitBtn.disabled = false;
-          paySubmitBtn.innerHTML = `<i class="fas fa-lock"></i> Pay $${finalTotal.toFixed(2)} Now`;
-          window.showToast?.('Payment cancelled. You can try again anytime.', 'info');
-        }
-      });
+        });
 
-      handler.openIframe();
+        handler.openIframe();
+      } catch (err) {
+        console.error('Paystack error:', err);
+        paySubmitBtn.disabled = false;
+        paySubmitBtn.innerHTML = `<i class="fas fa-lock"></i> Pay $${finalTotal.toFixed(2)} Now`;
+        window.showToast?.('Failed to initialize payment. Please try again.', 'danger');
+      }
     });
   }
 

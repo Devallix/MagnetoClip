@@ -4,7 +4,7 @@
   "private": true,
   "description": "MagnetoClip static site with Vercel serverless API (Paystack verification, EmailJS license email, Splitforms contact proxy).",
   "engines": {
-    "node": "20.x"
+    "node": "24.x"
   },
   "scripts": {
     "dev": "vercel dev",

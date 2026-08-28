@@ -235,7 +235,7 @@ function initPricingAndCheckout() {
             ]
           },
           onSuccess: (transaction) => {
-            verifyAndComplete(transaction);
+            verifyAndComplete(transaction, fullName, email, finalTotal);
           },
           onClose: () => {
             paySubmitBtn.disabled = false;
@@ -254,7 +254,7 @@ function initPricingAndCheckout() {
     });
   }
 
-  async function verifyAndComplete(transaction) {
+  async function verifyAndComplete(transaction, fullName, email, finalTotal) {
     const reference = transaction && transaction.reference;
 
     if (!reference) {
@@ -321,7 +321,7 @@ function initPricingAndCheckout() {
 
   function resetPayButton() {
     paySubmitBtn.disabled = false;
-    paySubmitBtn.innerHTML = `<i class="fas fa-lock"></i> Pay $${finalTotal.toFixed(2)} Now`;
+    paySubmitBtn.innerHTML = `<i class="fas fa-lock"></i> Pay $${getFinalTotal().toFixed(2)} Now`;
   }
 
   function showSuccessModal(name, email, orderId, planLabel) {

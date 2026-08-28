@@ -1,21 +1,12 @@
 /**
  * MagnetoClip - Checkout & Payment Engine
- * Handles Pricing Plans, Discounts, Paystack Payment, and EmailJS Notifications.
+ * Handles Pricing Plans, Discounts, Paystack Payment, and server-side verification.
  */
 
 // ── Config ────────────────────────────────────────────────────────
-const PAYSTACK_PUBLIC_KEY = 'pk_test_cb41932561435e820ba7979f380f46f6a9cdb2b7';
-
-const EMAILJS_SERVICE_ID  = 'service_4ekolq3';
-const EMAILJS_TEMPLATE_ID = 'template_1enrz1l';
-const EMAILJS_PUBLIC_KEY  = '0R1GPAZSkmXszyoyc';
-
-const SITE_BASE_URL = 'https://devallix.github.io/MagnetoClip';
+// PAYSTACK_PUBLIC_KEY & SITE_BASE_URL live in js/config.js.
 
 document.addEventListener('DOMContentLoaded', () => {
-  if (typeof emailjs !== 'undefined') {
-    emailjs.init(EMAILJS_PUBLIC_KEY);
-  }
   initPricingAndCheckout();
 });
 
@@ -30,25 +21,25 @@ function initPricingAndCheckout() {
       name: 'Personal Plan',
       devices: '1 PC',
       support: 'Limited Support',
-      monthly: { pricePerMonth: 3.00, total: 3.00, billedDesc: 'Billed $3 monthly' },
-      annual: { pricePerMonth: 1.86, total: 22.30, billedDesc: 'Billed $22.30 annually' },
-      'two-year': { pricePerMonth: 1.80, total: 43.20, billedDesc: 'Billed $43.20 for 2 years' }
+      monthly: { pricePerMonth: 35.00, total: 35.00, billedDesc: 'Billed GHS 35.00 monthly' },
+      annual: { pricePerMonth: 21.00, total: 252.00, billedDesc: 'Billed GHS 252.00 annually (GHS 21.00/mo)' },
+      'two-year': { pricePerMonth: 20.00, total: 480.00, billedDesc: 'Billed GHS 480.00 for 2 years (GHS 20.00/mo)' }
     },
     pro: {
       name: 'Pro Plan',
-      devices: '1 PC',
+      devices: '2 PC',
       support: 'Unlimited Priority Support',
-      monthly: { pricePerMonth: 4.00, total: 4.00, billedDesc: 'Billed $4 monthly' },
-      annual: { pricePerMonth: 2.50, total: 30.00, billedDesc: 'Billed $30 annually ($2.50/mo)' },
-      'two-year': { pricePerMonth: 2.50, total: 60.00, billedDesc: 'Billed $60 for 2 years' }
+      monthly: { pricePerMonth: 46.00, total: 46.00, billedDesc: 'Billed GHS 46.00 monthly' },
+      annual: { pricePerMonth: 27.60, total: 331.20, billedDesc: 'Billed GHS 331.20 annually (GHS 27.60/mo)' },
+      'two-year': { pricePerMonth: 26.00, total: 624.00, billedDesc: 'Billed GHS 624.00 for 2 years (GHS 26.00/mo)' }
     },
     enterprise: {
       name: 'Enterprise Plan',
-      devices: '1 PC (Extended)',
+      devices: '3 PC (Extended)',
       support: '2 Years Unlimited VIP Support',
-      monthly: { pricePerMonth: 5.00, total: 5.00, billedDesc: 'Billed $5 monthly' },
-      annual: { pricePerMonth: 3.00, total: 36.00, billedDesc: 'Billed $36 annually' },
-      'two-year': { pricePerMonth: 2.00, total: 48.00, billedDesc: 'Billed $48 for 2 years ($2.00/mo)' }
+      monthly: { pricePerMonth: 58.50, total: 58.50, billedDesc: 'Billed GHS 58.50 monthly' },
+      annual: { pricePerMonth: 35.10, total: 421.20, billedDesc: 'Billed GHS 421.20 annually (GHS 35.10/mo)' },
+      'two-year': { pricePerMonth: 34.00, total: 816.00, billedDesc: 'Billed GHS 816.00 for 2 years (GHS 34.00/mo)' }
     }
   };
 
@@ -244,33 +235,7 @@ function initPricingAndCheckout() {
             ]
           },
           onSuccess: (transaction) => {
-            const orderId = `MCL-${Math.floor(100000 + Math.random() * 900000)}`;
-            const planLabel = `${plans[selectedPlan].name} (${currentBillingCycle.charAt(0).toUpperCase() + currentBillingCycle.slice(1)})`;
-
-            if (typeof emailjs !== 'undefined') {
-              emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-                from_name: fullName,
-                from_email: email,
-                plan_name: planLabel,
-                amount_paid: `$${finalTotal.toFixed(2)}`,
-                order_id: orderId,
-                transaction_ref: transaction.reference,
-                product_image: `${SITE_BASE_URL}/images/product.png`,
-                logo_image: `${SITE_BASE_URL}/images/logo.png`,
-                to_email: 'compaxxe555@gmail.com'
-              })
-              .then(() => {
-                showSuccessModal(fullName, email, orderId, planLabel);
-                window.showToast?.('Payment confirmed! Confirmation email sent.', 'success');
-              })
-              .catch((err) => {
-                console.error('EmailJS error:', err?.text || err?.message || err);
-                showSuccessModal(fullName, email, orderId, planLabel);
-                window.showToast?.('Payment confirmed! Email delivery failed — check console.', 'warning');
-              });
-            } else {
-              showSuccessModal(fullName, email, orderId, planLabel);
-            }
+            verifyAndComplete(transaction);
           },
           onClose: () => {
             paySubmitBtn.disabled = false;
@@ -289,6 +254,71 @@ function initPricingAndCheckout() {
     });
   }
 
+  async function verifyAndComplete(transaction) {
+    const reference = transaction && transaction.reference;
+
+    if (!reference) {
+      resetPayButton();
+      window.showToast?.('Payment confirmation could not be verified. Please contact support.', 'danger');
+      return;
+    }
+
+    paySubmitBtn.disabled = true;
+    paySubmitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Verifying Payment...';
+
+    try {
+      const res = await fetch('api/verify-payment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reference })
+      });
+      const data = await res.json().catch(() => null);
+
+      if (!(res.ok && data && data.ok)) {
+        throw new Error(data && data.message ? data.message : 'Payment could not be verified');
+      }
+
+      const orderId = `MCL-${Math.floor(100000 + Math.random() * 900000)}`;
+      const planLabel = `${plans[selectedPlan].name} (${currentBillingCycle.charAt(0).toUpperCase() + currentBillingCycle.slice(1)})`;
+      const billingLabel = currentBillingCycle === 'monthly'
+        ? 'Monthly'
+        : currentBillingCycle === 'annual'
+          ? 'Annual (1 Year)'
+          : '2 Years Access';
+
+      const orderData = {
+        orderId,
+        planName: plans[selectedPlan].name,
+        planLabel,
+        billingCycle: billingLabel,
+        fullName,
+        email,
+        amountLabel: `$${finalTotal.toFixed(2)}`,
+        transactionRef: reference,
+        transactionDate: new Date().toISOString()
+      };
+
+      try {
+        sessionStorage.setItem('mcl_order', JSON.stringify(orderData));
+      } catch (err) {
+        console.error('Failed to persist order details:', err);
+      }
+
+      showSuccessModal(fullName, email, orderId, planLabel);
+      window.showToast?.('Payment confirmed! Redirecting to confirmation...', 'success');
+      setTimeout(redirectToConfirmation, 3000);
+    } catch (err) {
+      console.error('Payment verification error:', err?.message || err);
+      resetPayButton();
+      window.showToast?.('Payment not verified. Please contact support for assistance.', 'danger');
+    }
+  }
+
+  function resetPayButton() {
+    paySubmitBtn.disabled = false;
+    paySubmitBtn.innerHTML = `<i class="fas fa-lock"></i> Pay $${finalTotal.toFixed(2)} Now`;
+  }
+
   function showSuccessModal(name, email, orderId, planLabel) {
     paySubmitBtn.disabled = false;
     paySubmitBtn.innerHTML = `<i class="fas fa-lock"></i> Pay Now`;
@@ -301,10 +331,24 @@ function initPricingAndCheckout() {
   }
 
   // ── Modal Close ───────────────────────────────────────────────
+  let redirectedToConfirmation = false;
+
+  function redirectToConfirmation() {
+    if (redirectedToConfirmation) return;
+    redirectedToConfirmation = true;
+    window.location.href = 'confirmation.html';
+  }
+
   const closeModal = () => modal?.classList.remove('active');
 
-  modalCloseBtn?.addEventListener('click', closeModal);
-  modalCloseSuccessBtn?.addEventListener('click', closeModal);
+  modalCloseBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    redirectToConfirmation();
+  });
+  modalCloseSuccessBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    redirectToConfirmation();
+  });
   modal?.addEventListener('click', (e) => {
     if (e.target === modal) closeModal();
   });

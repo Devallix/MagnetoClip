@@ -16,9 +16,7 @@
   <link rel="stylesheet" href="css/style.css">
 
   <!-- Paystack Payment Gateway -->
-  <script src="https://js.paystack.co/v1/inline.js"></script>
-  <!-- EmailJS SDK — https://www.emailjs.com/ -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="https://js.paystack.co/v2/inline.js"></script>
 </head>
 <body>
 
@@ -81,11 +79,11 @@
             <h3 class="pricing-name">Personal</h3>
             <p class="pricing-desc">For individual users seeking reliable acceleration.</p>
             <div class="price-display">
-              <span class="price-currency">$</span>
-              <span class="price-amount" id="price-personal">1.86</span>
+              <span class="price-currency">GHS</span>
+              <span class="price-amount" id="price-personal">21.00</span>
               <span class="price-period">/ month</span>
             </div>
-            <div class="billing-note" id="billed-personal">Billed $22.30 annually</div>
+            <div class="billing-note" id="billed-personal">Billed GHS262.00 annually</div>
           </div>
 
           <ul class="features-list">
@@ -110,15 +108,15 @@
             <h3 class="pricing-name text-gradient">Pro</h3>
             <p class="pricing-desc">Full power for streaming, torrents &amp; heavy files.</p>
             <div class="price-display">
-              <span class="price-currency">$</span>
-              <span class="price-amount" id="price-pro">2.50</span>
+              <span class="price-currency">GHS</span>
+              <span class="price-amount" id="price-pro">29.25</span>
               <span class="price-period">/ month</span>
             </div>
-            <div class="billing-note" id="billed-pro">Billed $30 annually ($2.50/mo)</div>
+            <div class="billing-note" id="billed-pro">Billed GHS351.00 annually</div>
           </div>
 
           <ul class="features-list">
-            <li><i class="fas fa-check-circle"></i> 1 PC Machine Binding License</li>
+            <li><i class="fas fa-check-circle"></i> 2 PC Machine Binding License</li>
             <li><i class="fas fa-check-circle"></i> <strong>Up to 64 Connections Turbo Core</strong></li>
             <li><i class="fas fa-check-circle"></i> <strong>Unlimited Support</strong> via Priority Queue</li>
             <li><i class="fas fa-check-circle"></i> yt-dlp &amp; FFmpeg Stream Grabber</li>
@@ -138,15 +136,15 @@
             <h3 class="pricing-name">Enterprise</h3>
             <p class="pricing-desc">Long-term ultra value with extended VIP support.</p>
             <div class="price-display">
-              <span class="price-currency">$</span>
-              <span class="price-amount" id="price-enterprise">2.00</span>
+              <span class="price-currency">GHS</span>
+              <span class="price-amount" id="price-enterprise">35.10</span>
               <span class="price-period">/ month</span>
             </div>
-            <div class="billing-note" id="billed-enterprise">Billed $48 for 2 years ($2.00/mo)</div>
+            <div class="billing-note" id="billed-enterprise">Billed GHS421.20 annually</div>
           </div>
 
           <ul class="features-list">
-            <li><i class="fas fa-check-circle"></i> 1 PC Extended 2-Year License</li>
+            <li><i class="fas fa-check-circle"></i> 3 PC Extended 2-Year License</li>
             <li><i class="fas fa-check-circle"></i> <strong>2 Years Unlimited VIP Support</strong></li>
             <li><i class="fas fa-check-circle"></i> All Pro Engine &amp; Torrent Features</li>
             <li><i class="fas fa-check-circle"></i> High-Speed Proxy Manager (HTTP/SOCKS5)</li>
@@ -169,7 +167,7 @@
       <div class="section-header">
         <span class="badge badge-cyan">Instant Delivery</span>
         <h2>Complete Your Purchase</h2>
-        <p>Instant serial key generation and email delivery upon secure confirmation.</p>
+        <p>License key & activation details via email after payment confirmation.</p>
       </div>
 
       <div class="checkout-grid">
@@ -206,6 +204,9 @@
             <button type="submit" class="btn btn-primary btn-lg btn-block" id="pay-submit-btn" style="margin-top: 24px;">
               <i class="fas fa-lock"></i> Pay Now
             </button>
+            <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 14px; font-size: 0.8rem; color: var(--text-muted);">
+              <img src="images/paystack.png" alt="Paystack" style="height: 16px; width: auto;"> Paystack Secure Payments
+            </div>
           </form>
         </div>
 
@@ -280,7 +281,7 @@
           <i class="fas fa-check-circle"></i>
         </div>
         <h2 style="font-size: 1.8rem; margin-bottom: 8px;">Payment Successful!</h2>
-        <p style="font-size: 0.95rem; color: #cbd5e1;">Your payment has been confirmed. A purchase confirmation email has been sent to your inbox.</p>
+        <p style="font-size: 0.95rem; color: #cbd5e1;">Your payment has been confirmed. You will be redirected to the confirmation page to review your order and request your license key.</p>
       </div>
 
       <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 18px; margin-bottom: 20px; font-size: 0.9rem;">
@@ -303,9 +304,9 @@
           <i class="fas fa-info-circle"></i> What's Next:
         </strong>
         <ol style="padding-left: 20px; line-height: 1.6; color: #cbd5e1;">
-          <li>Check your email inbox (and spam/promotions folder) for your purchase confirmation.</li>
-          <li>Our team will process your order and send your license details shortly.</li>
-          <li>For any questions, contact us at <code>compaxxe555@gmail.com</code>.</li>
+          <li>You'll be redirected to the order confirmation page in a moment.</li>
+          <li>Review your order details and click <strong>Request License Key</strong>.</li>
+          <li>Your license key &amp; activation details will be sent to your email.</li>
         </ol>
       </div>
 
@@ -374,6 +375,7 @@
     </div>
   </footer>
 
+  <script src="js/config.js"></script>
   <script src="js/main.js"></script>
   <script src="js/checkout.js"></script>
 </body>

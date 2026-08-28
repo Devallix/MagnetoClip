@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmation — MagnetoClip</title>
+  <meta name="description" content="Confirm your MagnetoClip order details and request your license key after a successful payment.">
+  <link rel="icon" type="image/png" href="images/logo.png">
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" id="nav-brand-logo">
+        <img src="images/logo.png" alt="MagnetoClip Logo" width="42" height="42">
+        <span class="brand-text">Magneto<span class="text-cyan">Clip</span></span>
+      </a>
+
+      <nav>
+        <ul class="nav-links" id="primary-nav-links">
+          <li><a href="index.html" class="nav-link" id="nav-link-home">Home</a></li>
+          <li><a href="download.html" class="nav-link" id="nav-link-download">Download</a></li>
+          <li><a href="buy.html" class="nav-link" id="nav-link-buy">Buy</a></li>
+          <li><a href="docs.html" class="nav-link" id="nav-link-docs">Documentation</a></li>
+          <li><a href="contact.html" class="nav-link" id="nav-link-contact">Contact Us</a></li>
+          <li class="mobile-only-cta">
+            <a href="download.html" class="btn btn-outline-cyan btn-sm btn-block"><i class="fas fa-download"></i> Get Free Trial</a>
+          </li>
+          <li class="mobile-only-cta">
+            <a href="buy.html" class="btn btn-primary btn-sm btn-block"><i class="fas fa-bolt"></i> Buy License</a>
+          </li>
+        </ul>
+      </nav>
+
+      <button class="mobile-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Confirmation Section -->
+  <section class="checkout-section" style="padding-top: 140px;">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-cyan"><i class="fas fa-check-circle"></i> Payment Confirmed</span>
+        <h1>Thank you, <span class="text-gradient" id="confirm-customer-first">Dear Customer</span>!</h1>
+        <p>Your order has been received. Please review your order details below and request your license key to unlock MagnetoClip.</p>
+      </div>
+
+      <!-- Product Package -->
+      <div class="product-showcase" style="max-width: 320px; margin: 0 auto 48px auto;">
+        <img src="images/product.png" alt="MagnetoClip Product Package" class="product-img">
+      </div>
+
+      <div id="confirm-missing" style="display: none;" class="badge badge-cyan">
+        <i class="fas fa-info-circle"></i> No recent order was found. Please <a href="buy.html">visit the Buy page</a> to place an order.
+      </div>
+
+      <div class="checkout-grid" style="align-items: stretch;">
+
+        <!-- Order Details -->
+        <div class="order-summary-card" style="position: static;">
+          <h3 class="summary-title"><i class="fas fa-receipt text-cyan"></i> Order Details</h3>
+
+          <div class="summary-row">
+            <span>Order Reference:</span>
+            <strong id="cf-order-no">—</strong>
+          </div>
+          <div class="summary-row">
+            <span>Customer Name:</span>
+            <strong id="cf-customer-name">—</strong>
+          </div>
+          <div class="summary-row">
+            <span>Email Address:</span>
+            <strong id="cf-customer-email" class="text-cyan">—</strong>
+          </div>
+          <div class="summary-row">
+            <span>Plan:</span>
+            <strong id="cf-plan-name">—</strong>
+          </div>
+          <div class="summary-row">
+            <span>Billing Cycle:</span>
+            <strong id="cf-billing-cycle">—</strong>
+          </div>
+          <div class="summary-row">
+            <span>Amount Paid:</span>
+            <strong id="cf-amount">—</strong>
+          </div>
+          <div class="summary-row">
+            <span>Transaction Reference:</span>
+            <strong id="cf-transaction-ref">—</strong>
+          </div>
+          <div class="summary-row">
+            <span>Order Date:</span>
+            <strong id="cf-order-date">—</strong>
+          </div>
+
+          <div class="guarantee-badge">
+            <i class="fas fa-shield-check"></i>
+            <div>
+              <strong>30-Day Money-Back Guarantee</strong>
+              <div>100% Risk-free. Self-service deactivation included.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- License Key Request -->
+        <div class="checkout-card">
+          <h3 class="summary-title"><i class="fas fa-key text-cyan"></i> Get Your License Key</h3>
+          <p style="font-size: 0.95rem; color: #cbd5e1; margin-bottom: 24px;">
+            Confirm the details look correct, then click the button below to receive your MagnetoClip license key and activation instructions by email.
+          </p>
+
+          <button class="btn btn-primary btn-lg btn-block" id="request-license-btn" style="margin-bottom: 16px;">
+            <i class="fas fa-key"></i> Request License Key
+          </button>
+
+          <div class="guarantee-badge">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <strong>Delivered by Email</strong>
+              <div>Your license key and activation details will be sent to your inbox.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <img src="images/logo.png" alt="MagnetoClip Logo" width="36" height="36">
+            <span class="brand-text">Magneto<span class="text-cyan">Clip</span></span>
+          </a>
+          <p>Advanced Windows desktop download manager. Accelerate, capture, and manage all your web media with high-speed precision.</p>
+          <div style="font-size: 0.85rem; color: var(--text-dim);">
+            Developed by <strong>Devallix</strong>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="download.html">Download App</a></li>
+            <li><a href="buy.html">Buy License</a></li>
+            <li><a href="docs.html">User Guide &amp; Docs</a></li>
+            <li><a href="contact.html">Contact &amp; Support</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Product Features</h4>
+          <ul class="footer-links">
+            <li><a href="docs.html#engine">Multi-Segment Engine</a></li>
+            <li><a href="docs.html#browser">Browser Extension</a></li>
+            <li><a href="docs.html#media">Stream Grabber (yt-dlp)</a></li>
+            <li><a href="docs.html#torrent">libtorrent Client</a></li>
+            <li><a href="docs.html#remote">Remote Dashboard (8477)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Legal &amp; Security</h4>
+          <ul class="footer-links">
+            <li><a href="docs.html#licensing">EULA &amp; License Terms</a></li>
+            <li><a href="docs.html#security">Privacy &amp; Security Policy</a></li>
+            <li><a href="contact.html">Report an Issue</a></li>
+            <li><a href="buy.html">Refund Policy</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 MagnetoClip by Devallix. All rights reserved.</div>
+        <div>Compatible with Windows 10 &amp; Windows 11 (64-Bit)</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/confirmation.js"></script>
+</body>
+</html>

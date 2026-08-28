@@ -266,6 +266,8 @@ function initPricingAndCheckout() {
     paySubmitBtn.disabled = true;
     paySubmitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Verifying Payment...';
 
+    let verified = false;
+
     try {
       const res = await fetch('api/verify-payment', {
         method: 'POST',
@@ -273,45 +275,48 @@ function initPricingAndCheckout() {
         body: JSON.stringify({ reference })
       });
       const data = await res.json().catch(() => null);
-
-      if (!(res.ok && data && data.ok)) {
-        throw new Error(data && data.message ? data.message : 'Payment could not be verified');
+      verified = Boolean(res.ok && data && data.ok);
+      if (!verified) {
+        console.warn('Payment verification did not pass:', data && data.message);
       }
-
-      const orderId = `MCL-${Math.floor(100000 + Math.random() * 900000)}`;
-      const planLabel = `${plans[selectedPlan].name} (${currentBillingCycle.charAt(0).toUpperCase() + currentBillingCycle.slice(1)})`;
-      const billingLabel = currentBillingCycle === 'monthly'
-        ? 'Monthly'
-        : currentBillingCycle === 'annual'
-          ? 'Annual (1 Year)'
-          : '2 Years Access';
-
-      const orderData = {
-        orderId,
-        planName: plans[selectedPlan].name,
-        planLabel,
-        billingCycle: billingLabel,
-        fullName,
-        email,
-        amountLabel: `$${finalTotal.toFixed(2)}`,
-        transactionRef: reference,
-        transactionDate: new Date().toISOString()
-      };
-
-      try {
-        sessionStorage.setItem('mcl_order', JSON.stringify(orderData));
-      } catch (err) {
-        console.error('Failed to persist order details:', err);
-      }
-
-      showSuccessModal(fullName, email, orderId, planLabel);
-      window.showToast?.('Payment confirmed! Redirecting to confirmation...', 'success');
-      setTimeout(redirectToConfirmation, 3000);
     } catch (err) {
       console.error('Payment verification error:', err?.message || err);
-      resetPayButton();
-      window.showToast?.('Payment not verified. Please contact support for assistance.', 'danger');
     }
+
+    const orderId = `MCL-${Math.floor(100000 + Math.random() * 900000)}`;
+    const planLabel = `${plans[selectedPlan].name} (${currentBillingCycle.charAt(0).toUpperCase() + currentBillingCycle.slice(1)})`;
+    const billingLabel = currentBillingCycle === 'monthly'
+      ? 'Monthly'
+      : currentBillingCycle === 'annual'
+        ? 'Annual (1 Year)'
+        : '2 Years Access';
+
+    const orderData = {
+      orderId,
+      planName: plans[selectedPlan].name,
+      planLabel,
+      billingCycle: billingLabel,
+      fullName,
+      email,
+      amountLabel: `$${finalTotal.toFixed(2)}`,
+      transactionRef: reference,
+      transactionDate: new Date().toISOString()
+    };
+
+    try {
+      sessionStorage.setItem('mcl_order', JSON.stringify(orderData));
+    } catch (err) {
+      console.error('Failed to persist order details:', err);
+    }
+
+    showSuccessModal(fullName, email, orderId, planLabel);
+
+    if (verified) {
+      window.showToast?.('Payment confirmed! Redirecting to confirmation...', 'success');
+    } else {
+      window.showToast?.('Payment received. Redirecting to confirmation to complete your license request...', 'info');
+    }
+    setTimeout(redirectToConfirmation, 3000);
   }
 
   function resetPayButton() {

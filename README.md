@@ -1,6 +1,6 @@
 # MagnetoClip Website
 
-Official marketing website for [MagnetoClip](https://magnetoclip.app) — an advanced Windows desktop download manager built with Python + PySide6.
+Official marketing website for [MagnetoClip](https://magnetoclip.vercel.app/) — an advanced Windows desktop download manager built with Python + PySide6.
 
 ## Pages
 

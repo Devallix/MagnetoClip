@@ -2,8 +2,7 @@
  * MagnetoClip Website - Main JavaScript
  * Handles Navbar interaction, Toasts, FAQ accordions, Download Engine Simulator, and Shared Utilities.
  */
-import { inject } from '@vercel/analytics';
-inject();
+
 
 
 document.addEventListener('DOMContentLoaded', () => {

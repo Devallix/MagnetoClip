@@ -28,6 +28,7 @@
       <nav>
         <ul class="nav-links" id="primary-nav-links">
           <li><a href="index.html" class="nav-link" id="nav-link-home">Home</a></li>
+          <li><a href="about.html" class="nav-link" id="nav-link-about">About</a></li>
           <li><a href="download.html" class="nav-link" id="nav-link-download">Download</a></li>
           <li><a href="buy.html" class="nav-link" id="nav-link-buy">Buy</a></li>
           <li><a href="docs.html" class="nav-link active" id="nav-link-docs">Documentation</a></li>
@@ -54,7 +55,7 @@
       <!-- Sticky Sidebar Navigation -->
       <aside class="docs-sidebar">
         <button class="docs-sidebar-toggle" id="docs-sidebar-toggle" aria-expanded="false">
-          <span><i class="fas fa-list-ul"></i> Table of Contents (13 Sections)</span>
+          <span><i class="fas fa-list-ul"></i> Table of Contents (17 Sections)</span>
           <i class="fas fa-chevron-down toggle-icon"></i>
         </button>
 
@@ -76,9 +77,13 @@
               <li><a href="#section-8" class="docs-nav-link">8. Remote Dashboard</a></li>
               <li><a href="#section-9" class="docs-nav-link">9. Proxy Profiles</a></li>
               <li><a href="#section-10" class="docs-nav-link">10. Settings Reference</a></li>
-              <li><a href="#section-11" class="docs-nav-link">11. System Tray</a></li>
-              <li><a href="#section-12" class="docs-nav-link">12. Data Storage &amp; Privacy</a></li>
-              <li><a href="#section-13" class="docs-nav-link">13. Troubleshooting</a></li>
+              <li><a href="#section-11" class="docs-nav-link">11. File Preview</a></li>
+              <li><a href="#section-12" class="docs-nav-link">12. Webpage Archive</a></li>
+              <li><a href="#section-13" class="docs-nav-link">13. Pause Control</a></li>
+              <li><a href="#section-14" class="docs-nav-link">14. Speed Test</a></li>
+              <li><a href="#section-15" class="docs-nav-link">15. System Tray</a></li>
+              <li><a href="#section-16" class="docs-nav-link">16. Data Storage &amp; Privacy</a></li>
+              <li><a href="#section-17" class="docs-nav-link">17. Troubleshooting</a></li>
             </ul>
           </div>
 
@@ -99,7 +104,7 @@
           <span class="badge badge-cyan" style="margin-bottom: 12px;">Official User Guide</span>
           <h1 style="font-size: 2.4rem; margin-bottom: 8px;">MagnetoClip <span class="text-gradient">User Manual</span></h1>
           <p style="font-size: 1.1rem; color: #cbd5e1;">
-            Comprehensive documentation covering setup, activation, download acceleration, browser extensions, torrents, remote control, and system architecture.
+            Comprehensive documentation covering setup, activation, download acceleration, browser extensions, torrents, remote control, file preview, webpage archiving, speed testing, and system architecture.
           </p>
         </div>
 
@@ -239,6 +244,16 @@
           <h3>Analytics Page</h3>
           <p>
             Six comprehensive telemetry cards (total files, completed, failed, data transferred, average speed, peak speed), two 14-day history bar charts (<strong>Downloads per day</strong> &amp; <strong>Bandwidth per day</strong>), and a full per-category storage breakdown &mdash; all calculated 100% locally.
+          </p>
+
+          <h3>Pause Page</h3>
+          <p>
+            A single switch that pauses every running and waiting download instantly, plus an optional auto-resume countdown timer (see <a href="#section-13" class="text-cyan">section 13</a>).
+          </p>
+
+          <h3>Speed Page</h3>
+          <p>
+            A built-in network speed test measuring download, upload and latency with an animated gauge, history tracking and ISP throttling detection (see <a href="#section-14" class="text-cyan">section 14</a>).
           </p>
         </article>
 
@@ -602,11 +617,268 @@
           <p>
             MagnetoClip periodically queries the secure update endpoint. Press <strong>Check Now</strong> in Settings to trigger a manual check. Updates are downloaded, verified with SHA-256 signatures, and applied automatically with an application restart.
           </p>
+
+          <h3>Network Speed Test</h3>
+          <div class="docs-table-wrapper">
+            <table class="docs-table">
+              <thead>
+                <tr>
+                  <th>Setting</th>
+                  <th>Default</th>
+                  <th>Meaning</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Enable built-in network speed tests</strong></td>
+                  <td><code>On</code></td>
+                  <td>Master switch for the Speed page</td>
+                </tr>
+                <tr>
+                  <td><strong>Run speed tests automatically</strong></td>
+                  <td><code>Off</code></td>
+                  <td>Periodically runs a test in the background</td>
+                </tr>
+                <tr>
+                  <td><strong>Test size</strong></td>
+                  <td><code>25 MB</code></td>
+                  <td>Amount downloaded per test</td>
+                </tr>
+                <tr>
+                  <td><strong>Interval</strong></td>
+                  <td><code>12 h</code></td>
+                  <td>How often automatic tests run</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>File Preview</h3>
+          <p>
+            <strong>Enable built-in file preview</strong> is the master switch for the in-app
+            viewer (see <a href="#section-11" class="text-cyan">section 11</a>).
+          </p>
+
+          <h3>Webpage Archive</h3>
+          <div class="docs-table-wrapper">
+            <table class="docs-table">
+              <thead>
+                <tr>
+                  <th>Setting</th>
+                  <th>Default</th>
+                  <th>Meaning</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Enable webpage archiving</strong></td>
+                  <td><code>On</code></td>
+                  <td>Master switch for the Archiver (see <a href="#section-12" class="text-cyan">section 12</a>)</td>
+                </tr>
+                <tr>
+                  <td><strong>Inline images as base64</strong></td>
+                  <td><code>On</code></td>
+                  <td>Embeds images directly in the HTML</td>
+                </tr>
+                <tr>
+                  <td><strong>Inline CSS</strong></td>
+                  <td><code>On</code></td>
+                  <td>Embeds stylesheets so they survive offline</td>
+                </tr>
+                <tr>
+                  <td><strong>Inline JavaScript</strong></td>
+                  <td><code>Off</code></td>
+                  <td>Embeds scripts too &mdash; can change how pages render</td>
+                </tr>
+                <tr>
+                  <td><strong>Max resource size</strong></td>
+                  <td><code>5 MB</code></td>
+                  <td>Skips page resources larger than this</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </article>
 
-        <!-- 11. System Tray -->
+        <!-- 11. File Preview -->
         <article class="docs-article" id="section-11">
-          <h2>11. System Tray</h2>
+          <h2>11. File Preview</h2>
+          <p>
+            Finished downloads can be previewed <strong>inside the app</strong> &mdash; images, text,
+            video, audio and torrent metadata &mdash; without opening an external program. Preview
+            only touches downloads you already have: nothing extra is downloaded and no new
+            files are created.
+          </p>
+
+          <h3>Where to Find It</h3>
+          <ul style="padding-left: 20px; color: #cbd5e1; line-height: 1.8; margin-bottom: 16px;">
+            <li><strong>Downloads page</strong> &mdash; right-click a completed download and choose <strong>Preview</strong>.</li>
+            <li><strong>Download Details</strong> &mdash; the <strong>Preview</strong> button on any finished download.</li>
+          </ul>
+
+          <h3>What the In-App Viewer Can Show</h3>
+          <div class="docs-table-wrapper">
+            <table class="docs-table">
+              <thead>
+                <tr>
+                  <th>Media Type</th>
+                  <th>Supported Formats</th>
+                  <th>Viewer Capabilities</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Images</strong></td>
+                  <td><code>.jpg</code> <code>.png</code> <code>.gif</code> <code>.webp</code> <code>.bmp</code> <code>.svg</code> <code>.heic</code> <code>.avif</code> and more</td>
+                  <td>Zoom &amp; fit-to-window controls</td>
+                </tr>
+                <tr>
+                  <td><strong>Text &amp; source code</strong></td>
+                  <td><code>.txt</code> <code>.json</code> <code>.csv</code> <code>.xml</code> <code>.md</code> <code>.py</code> <code>.js</code> <code>.css</code> and more</td>
+                  <td>Plain-text rendering up to 5 MB</td>
+                </tr>
+                <tr>
+                  <td><strong>Video</strong></td>
+                  <td><code>.mp4</code> <code>.mkv</code> <code>.webm</code> <code>.avi</code> <code>.mov</code> <code>.m4v</code> and more</td>
+                  <td>Full playback controls</td>
+                </tr>
+                <tr>
+                  <td><strong>Audio</strong></td>
+                  <td><code>.mp3</code> <code>.flac</code> <code>.ogg</code> <code>.wav</code> <code>.aac</code> <code>.m4a</code> and more</td>
+                  <td>Full playback controls</td>
+                </tr>
+                <tr>
+                  <td><strong>Torrents</strong></td>
+                  <td><code>.torrent</code></td>
+                  <td>Metadata: name, size, info hash &amp; file list</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="docs-callout">
+            <div class="docs-callout-title"><i class="fas fa-file-pdf text-cyan"></i> PDF Handling</div>
+            <strong>PDFs</strong> are handed to your system's default PDF viewer instead of the in-app viewer. Files the viewer does not recognise open in their default application. To switch the whole feature off, clear <strong>Settings &rarr; Built-in File Preview</strong>.
+          </div>
+        </article>
+
+        <!-- 12. Webpage Archive -->
+        <article class="docs-article" id="section-12">
+          <h2>12. Webpage Archive</h2>
+          <p>
+            Save any webpage as a <strong>self-contained offline copy</strong>: one <code>.html</code> file with
+            its images and stylesheets embedded, ready to open with no internet connection
+            and nothing extra saved.
+          </p>
+
+          <h3>Archiving From the Browser</h3>
+          <p>
+            With browser integration enabled (see <a href="#section-5" class="text-cyan">section 5</a>), right-click any
+            <code>http://</code> or <code>https://</code> page and choose <strong>Archive this page with
+            MagnetoClip</strong>. The app fetches the page server-side &mdash; only the URL (and cookie/referrer
+            data) crosses the native-messaging bridge, never the page's bytes &mdash; and saves it as
+            <code>&lt;title&gt;.html</code> in your download folder as a <strong>Webpage</strong> download.
+          </p>
+
+          <h3>Archiving From the App</h3>
+          <p>
+            On the Downloads page click <strong>Add</strong>, paste the page's address, and tick
+            <strong>Save as a self-contained webpage archive (offline HTML)</strong>.
+          </p>
+
+          <h3>Tuning</h3>
+          <p>
+            Embedding options live under <strong>Settings &rarr; Webpage Archive</strong>. Images and CSS
+            are inlined by default for a faithful offline copy; JavaScript embedding is off by
+            default because it can change how pages render. <strong>Max resource size</strong> skips page
+            resources larger than the limit.
+          </p>
+        </article>
+
+        <!-- 13. Pause Control -->
+        <article class="docs-article" id="section-13">
+          <h2>13. Pause Control</h2>
+          <p>
+            The <strong>Pause</strong> page provides one unambiguous control: a single switch that pauses
+            everything at once, with an optional countdown that resumes downloads automatically.
+          </p>
+
+          <h3>Pausing</h3>
+          <ul style="padding-left: 20px; color: #cbd5e1; line-height: 1.8; margin-bottom: 16px;">
+            <li>Open <strong>Pause</strong> and tick <strong>Pause all downloads</strong> &mdash; every running and waiting download stops immediately.</li>
+            <li>Downloads added while paused stay in the paused list instead of starting.</li>
+            <li>The status label confirms the current state; the pause state is saved with your settings and survives restarts.</li>
+            <li>Untick the switch to resume, or wait for the auto-resume timer.</li>
+          </ul>
+
+          <h3>Auto-Resume Countdown</h3>
+          <div class="docs-callout purple">
+            <div class="docs-callout-title"><i class="fas fa-hourglass-half text-purple"></i> Resume Timer</div>
+            While paused, set <strong>Automatically resume after</strong> to a number of hours (1&ndash;168). The default <strong>0 h (off)</strong> keeps downloads paused until you flip the switch back. With a timer set, the page shows a live countdown (<em>Resuming in 3 h 05 min</em>) and downloads restart on their own when it reaches zero.
+          </div>
+        </article>
+
+        <!-- 14. Speed Test -->
+        <article class="docs-article" id="section-14">
+          <h2>14. Speed Test</h2>
+          <p>
+            The <strong>Speed</strong> page measures your connection with a built-in test &mdash; no third-party
+            tools or websites required.
+          </p>
+
+          <ul style="padding-left: 20px; color: #cbd5e1; line-height: 1.8; margin-bottom: 16px;">
+            <li><strong>Run Test</strong> &mdash; full test: download &rarr; upload &rarr; latency. Progress shows the current phase (<em>Download&hellip;</em> / <em>Upload&hellip;</em>) with a percentage, and the animated gauge centres on the upload speed while uploading.</li>
+            <li><strong>Upload Test</strong> &mdash; measures upload speed and latency only.</li>
+            <li><strong>Export CSV</strong> &mdash; saves your test history to a CSV file.</li>
+          </ul>
+
+          <h3>Results</h3>
+          <div class="docs-table-wrapper">
+            <table class="docs-table">
+              <thead>
+                <tr>
+                  <th>Card</th>
+                  <th>What It Shows</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Download / Upload</strong></td>
+                  <td>Throughput in Mbps</td>
+                </tr>
+                <tr>
+                  <td><strong>Latency</strong></td>
+                  <td>Ping in milliseconds</td>
+                </tr>
+                <tr>
+                  <td><strong>Server</strong></td>
+                  <td>The test server used</td>
+                </tr>
+                <tr>
+                  <td><strong>ISP</strong></td>
+                  <td>Your provider, when identified</td>
+                </tr>
+                <tr>
+                  <td><strong>History</strong></td>
+                  <td>Recent test runs with timestamps</td>
+                </tr>
+                <tr>
+                  <td><strong>ISP Throttling</strong></td>
+                  <td>Compares runs over time and warns when a result looks throttled</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="docs-callout">
+            <div class="docs-callout-title"><i class="fas fa-sliders-h text-cyan"></i> Configuration</div>
+            A card shows <code>--</code> until its metric has been measured at least once. Use <strong>Settings &rarr; Network Speed Test</strong> to enable the page, turn on automatic background tests, and tune the test size (default 25 MB) and interval (default 12 h).
+          </div>
+        </article>
+
+        <!-- 15. System Tray -->
+        <article class="docs-article" id="section-15">
+          <h2>15. System Tray</h2>
           <p>
             MagnetoClip minimizes to the Windows taskbar notification area (System Tray). Hovering over the icon displays active download counts and aggregate throughput speed.
           </p>
@@ -622,10 +894,10 @@
           <p>Clicking a finished download notification balloon reveals the downloaded file directly in Windows Explorer.</p>
         </article>
 
-        <!-- 12. Data Storage & Privacy -->
+        <!-- 16. Data Storage & Privacy -->
         <span id="security"></span>
-        <article class="docs-article" id="section-12">
-          <h2>12. Where MagnetoClip Stores Your Data</h2>
+        <article class="docs-article" id="section-16">
+          <h2>16. Where MagnetoClip Stores Your Data</h2>
           <div class="docs-table-wrapper">
             <table class="docs-table">
               <thead>
@@ -661,9 +933,9 @@
           </div>
         </article>
 
-        <!-- 13. Troubleshooting -->
-        <article class="docs-article" id="section-13">
-          <h2>13. Troubleshooting</h2>
+        <!-- 17. Troubleshooting -->
+        <article class="docs-article" id="section-17">
+          <h2>17. Troubleshooting</h2>
           <p>Quick solutions to common configuration and networking questions:</p>
 
           <div class="faq-accordion" style="margin-top: 24px;">
@@ -766,6 +1038,7 @@
           <h4>Navigation</h4>
           <ul class="footer-links">
             <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
             <li><a href="download.html">Download App</a></li>
             <li><a href="buy.html">Buy License</a></li>
             <li><a href="docs.html">User Guide &amp; Docs</a></li>
@@ -780,17 +1053,18 @@
             <li><a href="docs.html#section-5">Browser Extension</a></li>
             <li><a href="docs.html#section-6">Stream Capture</a></li>
             <li><a href="docs.html#section-7">libtorrent Engine</a></li>
-            <li><a href="docs.html#section-13">Troubleshooting Guide</a></li>
+            <li><a href="docs.html#section-17">Troubleshooting Guide</a></li>
           </ul>
         </div>
 
         <div class="footer-column">
           <h4>Legal &amp; Security</h4>
           <ul class="footer-links">
-            <li><a href="docs.html#section-2">EULA &amp; Terms</a></li>
-            <li><a href="docs.html#section-12">Data Privacy Policy</a></li>
-            <li><a href="contact.html">Support Desk</a></li>
-            <li><a href="buy.html">Refund Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="eula.html">EULA &amp; License Terms</a></li>
+            <li><a href="privacy.html">Privacy &amp; Security Policy</a></li>
+            <li><a href="contact.html">Report an Issue</a></li>
+            <li><a href="refund.html">Refund Policy</a></li>
           </ul>
         </div>
 

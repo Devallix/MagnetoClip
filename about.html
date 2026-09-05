@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About MagnetoClip — Capture the Web</title>
+  <meta name="description" content="About MagnetoClip, the advanced download manager for Windows developed by Devallix: multi-segment downloads, browser companion extension, torrents, stream capture, and local-first privacy.">
+  <link rel="icon" type="image/png" href="images/logo.png">
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" id="nav-brand-logo">
+        <img src="images/logo.png" alt="MagnetoClip Logo" width="42" height="42">
+        <span class="brand-text">Magneto<span class="text-cyan">Clip</span></span>
+      </a>
+
+      <nav>
+        <ul class="nav-links" id="primary-nav-links">
+          <li><a href="index.html" class="nav-link" id="nav-link-home">Home</a></li>
+          <li><a href="about.html" class="nav-link active" id="nav-link-about">About</a></li>
+          <li><a href="download.html" class="nav-link" id="nav-link-download">Download</a></li>
+          <li><a href="buy.html" class="nav-link" id="nav-link-buy">Buy</a></li>
+          <li><a href="docs.html" class="nav-link" id="nav-link-docs">Documentation</a></li>
+          <li><a href="contact.html" class="nav-link" id="nav-link-contact">Contact Us</a></li>
+          <li class="mobile-only-cta">
+            <a href="download.html" class="btn btn-outline-cyan btn-sm btn-block"><i class="fas fa-download"></i> Get Free Trial</a>
+          </li>
+          <li class="mobile-only-cta">
+            <a href="buy.html" class="btn btn-primary btn-sm btn-block"><i class="fas fa-bolt"></i> Buy License</a>
+          </li>
+        </ul>
+      </nav>
+
+      <button class="mobile-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- About Hero -->
+  <section class="about-hero">
+    <div class="container">
+      <div class="hero-tag">
+        <span class="pulse-dot"></span>
+        <span>Developed by Devallix • v0.2.7</span>
+      </div>
+      <h1>About <span class="text-gradient">MagnetoClip</span></h1>
+      <p class="about-lead">
+        <em>Capture the Web.</em> MagnetoClip is an advanced download manager for Windows that turns the chaos of
+        web downloads into an organized, one-click experience. Files, videos, music, documents, and torrents &mdash;
+        MagnetoClip detects them as you browse, captures them reliably, and files them into smart, auto-sorted categories.
+      </p>
+      <div class="hero-cta" style="justify-content: center;">
+        <a href="download.html" class="btn btn-primary btn-lg"><i class="fas fa-download"></i> Download MagnetoClip</a>
+        <a href="docs.html" class="btn btn-secondary btn-lg"><i class="fas fa-book"></i> Read the Docs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What is MagnetoClip -->
+  <section class="features-section" style="padding-top: 40px;" id="about-what">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-cyan">What is MagnetoClip?</span>
+        <h2>Three Things It Does Especially Well</h2>
+      </div>
+
+      <div class="about-value-grid">
+        <div class="about-value-card">
+          <div class="feature-icon-wrapper">
+            <i class="fas fa-search"></i>
+          </div>
+          <h3>It Finds Downloadable Content</h3>
+          <p>A companion browser extension watches the pages you visit and flags downloadable files, video and audio streams, and media you may not have noticed.</p>
+        </div>
+
+        <div class="about-value-card">
+          <div class="feature-icon-wrapper">
+            <i class="fas fa-rocket"></i>
+          </div>
+          <h3>It Downloads Anything, Reliably</h3>
+          <p>Whether it is a single file, a segmented multi-connection download, a live HLS/DASH stream, or a torrent, MagnetoClip fetches it with parallel connections, resumes interrupted transfers, and verifies finished files.</p>
+        </div>
+
+        <div class="about-value-card">
+          <div class="feature-icon-wrapper">
+            <i class="fas fa-folder-open"></i>
+          </div>
+          <h3>It Keeps You Organized</h3>
+          <p>Every finished download is auto-sorted into a category &mdash; Image, Video, Audio, Document, Compressed, App/Software, Torrent, or Other &mdash; so your download folder stays tidy without any effort.</p>
+        </div>
+      </div>
+
+      <p style="text-align: center; max-width: 680px; margin: 0 auto; color: #cbd5e1;">
+        Its tagline, <em>"Capture the Web"</em>, sums up the idea in three words: whatever is on the web,
+        MagnetoClip can bring it home.
+      </p>
+    </div>
+  </section>
+
+  <!-- Feature Groups -->
+  <section class="features-section" id="about-features">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-purple">What's Inside</span>
+        <h2>Built to Handle Everything You Download</h2>
+      </div>
+
+      <div class="features-grid">
+        <div class="card feature-card">
+          <div class="feature-icon-wrapper">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h3>Downloads That Just Work</h3>
+          <p>
+            Multi-connection engine (up to 64 connections), resume &amp; retry with <code>.mclip</code> sidecar files,
+            integrity checking before completion, global and per-download speed caps, pause with auto-resume,
+            and a built-in speed test that measures download, upload, and latency.
+          </p>
+        </div>
+
+        <div class="card feature-card">
+          <div class="feature-icon-wrapper">
+            <i class="fab fa-chrome"></i>
+          </div>
+          <h3>Browser Companion Extension</h3>
+          <p>
+            Works with Chrome, Edge, Firefox, Brave, Vivaldi, and Chromium. Detects files and streamed media as you browse,
+            resolves <code>blob:</code> URLs, captures streaming media with bundled FFmpeg, and can become your default downloader.
+          </p>
+        </div>
+
+        <div class="card feature-card">
+          <div class="feature-icon-wrapper">
+            <i class="fas fa-magnet"></i>
+          </div>
+          <h3>Full Torrent Manager</h3>
+          <p>
+            Magnet links and <code>.torrent</code> files, DHT/PEX and protocol encryption, sequential download for near-instant
+            preview playback, optional auto-seed mode, and live status with a detailed file list.
+          </p>
+        </div>
+
+        <div class="card feature-card">
+          <div class="feature-icon-wrapper">
+            <i class="fas fa-copy"></i>
+          </div>
+          <h3>Duplicate Detection</h3>
+          <p>
+            MagnetoClip indexes finished files and warns you before you download the same thing twice.
+          </p>
+        </div>
+
+        <div class="card feature-card">
+          <div class="feature-icon-wrapper">
+            <i class="fas fa-eye"></i>
+          </div>
+          <h3>File Preview &amp; Archiver</h3>
+          <p>
+            Preview images, video, audio, PDFs, text, and torrents right from the Downloads page, plus a built-in
+            tool for archiving web content.
+          </p>
+        </div>
+
+        <div class="card feature-card">
+          <div class="feature-icon-wrapper">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h3>Remote Dashboard &amp; More</h3>
+          <p>
+            Watch and control downloads from your phone or another computer on your local network (protected by a pairing token),
+            route downloads through <code>http</code>, <code>https</code>, or <code>socks5</code> proxies, and use the system tray for instant control.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Privacy -->
+  <section class="features-section" style="background: rgba(4, 7, 13, 0.6);" id="about-privacy">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-cyan">Local-First by Design</span>
+        <h2>Built with Privacy in Mind</h2>
+        <p>MagnetoClip is designed around one conviction &mdash; your files and history belong to you.</p>
+      </div>
+
+      <div class="about-note">
+        <div class="docs-callout" style="font-size: 1rem;">
+          <ul style="padding-left: 20px; margin: 0; line-height: 2;">
+            <li>Your download history, analytics, and settings live in a local database on your own computer.</li>
+            <li><strong>No telemetry.</strong> Nothing about what you download is uploaded anywhere.</li>
+            <li>Your serial key and proxy passwords are stored in the <strong>Windows Credential Manager</strong>, never in plain files.</li>
+            <li>The <strong>Analytics</strong> dashboard is computed locally from your own history.</li>
+          </ul>
+        </div>
+        <p style="text-align: center; margin-top: 20px; font-size: 0.95rem;">
+          <a href="privacy.html" class="text-cyan">Read the full Privacy Policy &rarr;</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About the Developer -->
+  <section class="features-section" id="about-developer">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-purple">The Developer</span>
+        <h2>About Devallix</h2>
+      </div>
+
+      <div class="about-developer">
+        <div class="about-developer-avatar">
+          <i class="fas fa-code"></i>
+        </div>
+        <div>
+          <h3>One Developer, One Focused Tool</h3>
+          <p>
+            <strong>Devallix</strong> is the developer behind MagnetoClip &mdash; a self-taught software
+            developer with two years of hands-on experience building desktop applications,
+            download technology, and tools that people use every day.
+          </p>
+          <p>
+            MagnetoClip is the product of that journey: a single, focused tool designed
+            around one conviction &mdash; that managing web downloads should be fast, reliable,
+            and entirely under your control. Every feature in MagnetoClip was built and
+            tested with the same care that goes into software the developer uses personally.
+          </p>
+          <p>
+            Devallix personally maintains MagnetoClip, plans its roadmap, and responds to
+            user feedback.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- A Note on Usage -->
+  <section class="features-section" style="padding-top: 0;" id="about-usage">
+    <div class="container">
+      <div class="about-note">
+        <div class="docs-callout purple">
+          <div class="docs-callout-title"><i class="fas fa-balance-scale text-purple"></i> A Note on Usage</div>
+          <p style="margin: 0;">
+            MagnetoClip is a general-purpose download tool. It is designed to help you save content you are legally
+            entitled to download &mdash; your own files, public-domain material, licensed content you own, and media offered
+            for downloading by their owners. As with any download tool, the responsibility for the content you download
+            rests with you. Please respect copyright and applicable laws, and see the
+            <a href="terms.html" class="text-cyan">Terms of Service</a> for acceptable use.
+          </p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 48px;">
+        <h2 style="margin-bottom: 24px;">Ready to Try MagnetoClip?</h2>
+        <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+          <a href="download.html" class="btn btn-primary btn-lg"><i class="fas fa-download"></i> Get Free Trial</a>
+          <a href="buy.html" class="btn btn-secondary btn-lg"><i class="fas fa-shopping-cart"></i> Buy License</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <img src="images/logo.png" alt="MagnetoClip Logo" width="36" height="36">
+            <span class="brand-text">Magneto<span class="text-cyan">Clip</span></span>
+          </a>
+          <p>Advanced Windows desktop download manager. Accelerate, capture, and manage all your web media with high-speed precision.</p>
+          <div style="font-size: 0.85rem; color: var(--text-dim);">
+            Developed by <strong>Devallix</strong>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="download.html">Download App</a></li>
+            <li><a href="buy.html">Buy License</a></li>
+            <li><a href="docs.html">User Guide &amp; Docs</a></li>
+            <li><a href="contact.html">Contact &amp; Support</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Product Features</h4>
+          <ul class="footer-links">
+            <li><a href="docs.html#engine">Multi-Segment Engine</a></li>
+            <li><a href="docs.html#browser">Browser Extension</a></li>
+            <li><a href="docs.html#media">Stream Grabber (yt-dlp)</a></li>
+            <li><a href="docs.html#torrent">libtorrent Client</a></li>
+            <li><a href="docs.html#remote">Remote Dashboard (8477)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Legal &amp; Security</h4>
+          <ul class="footer-links">
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="eula.html">EULA &amp; License Terms</a></li>
+            <li><a href="privacy.html">Privacy &amp; Security Policy</a></li>
+            <li><a href="contact.html">Report an Issue</a></li>
+            <li><a href="refund.html">Refund Policy</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 MagnetoClip by Devallix. All rights reserved.</div>
+        <div>Compatible with Windows 10 &amp; Windows 11 (64-Bit)</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

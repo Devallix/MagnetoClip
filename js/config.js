@@ -5,6 +5,6 @@
  * used exclusively by the serverless functions under /api.
  */
 
-const PAYSTACK_PUBLIC_KEY = 'pk_test_cb41932561435e820ba7979f380f46f6a9cdb2b7';
+const PAYSTACK_PUBLIC_KEY = 'pk_live_06e8819b675c475cda3c7ab8663dbfcebbbd6481';
 
 const SITE_BASE_URL = 'https://magnetoclip.vercel.app/';

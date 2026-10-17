@@ -119,7 +119,7 @@
           <ul style="padding-left: 20px; color: #cbd5e1; line-height: 1.8; margin-bottom: 16px;">
             <li><strong>Operating System:</strong> Windows 10 or Windows 11 (64-Bit editions).</li>
             <li><strong>Network:</strong> An active internet connection for multi-chunk downloads and stream capture.</li>
-            <li><strong>License:</strong> A valid serial key (release builds only — development builds skip licensing).</li>
+            <li><strong>License:</strong> A valid serial key (release builds only — development builds skip licensing); new machines also get a free 7-day trial.</li>
           </ul>
 
           <h3>Starting the App</h3>
@@ -241,6 +241,11 @@
             A focused historical archive containing only finished, failed, or stopped downloads for rapid search and opening.
           </p>
 
+          <h3>Torrents Page</h3>
+          <p>
+            Dedicated torrent manager — see <a href="#section-7" class="text-cyan">section 7</a> for adding and managing magnet links and <code>.torrent</code> files.
+          </p>
+
           <h3>Analytics Page</h3>
           <p>
             Six comprehensive telemetry cards (total files, completed, failed, data transferred, average speed, peak speed), two 14-day history bar charts (<strong>Downloads per day</strong> &amp; <strong>Bandwidth per day</strong>), and a full per-category storage breakdown &mdash; all calculated 100% locally.
@@ -254,6 +259,25 @@
           <h3>Speed Page</h3>
           <p>
             A built-in network speed test measuring download, upload and latency with an animated gauge, history tracking and ISP throttling detection (see <a href="#section-14" class="text-cyan">section 14</a>).
+          </p>
+
+          <h3>Browser Page</h3>
+          <p>
+            Setup hub for the MagnetoClip Companion extension (see <a href="#section-5" class="text-cyan">section 5</a>).
+          </p>
+
+          <h3>Sites Page</h3>
+          <p>
+            A built-in, offline reference of third-party websites useful for finding content, grouped into three tabs — <strong>Torrents</strong>, <strong>Anime</strong> and <strong>Streaming</strong> — sitting just before <strong>Settings</strong> in the toolbar. Each tab is a table with four columns: Site, Description, URL, and Usage (always **Free**). Click any **URL** cell to open that site in your default browser. Everything else is read-only. The reference ships with the app, so the page works with no internet connection, and nothing on it is fetched or refreshed at runtime.
+          </p>
+          <div class="docs-callout">
+            <div class="docs-callout-title"><i class="fas fa-triangle-exclamation text-warning"></i> Note</div>
+            MagnetoClip is a general-purpose download tool. It is not affiliated with, does not endorse, and is not responsible for any of the listed sites or for the content available through them. Always confirm that you are entitled to download the content you save, and review each site's own terms and the law in your jurisdiction.
+          </div>
+
+          <h3>Settings Page</h3>
+          <p>
+            Every tunable option, grouped into General, Downloads, Duplicate Detection, Network Speed Test, File Preview, Webpage Archiver, Browser &amp; Capture, Torrent, Proxy, Updates, Remote Control and License (see <a href="#section-10" class="text-cyan">section 10</a>).
           </p>
         </article>
 
@@ -322,7 +346,7 @@
             Transfers are split into byte ranges fetched simultaneously. State is recorded continuously in a <code>.mclip</code> JSON sidecar file. If your machine restarts or experiences connection loss, downloads resume from the exact byte offset without wasting bandwidth.
           </p>
           <p>
-            <strong>Download Status Flow:</strong> <code>Queued</code> &rarr; <code>Scheduled</code> &rarr; <code>Connecting</code> &rarr; <code>Downloading</code> &rarr; <code>Paused</code> &rarr; <code>Retrying</code> &rarr; <code>Verifying</code> &rarr; <code>Completed</code> (or <code>Failed</code> / <code>Verification Failed</code>).
+            <strong>Download Status Flow:</strong> <code>Queued</code> &rarr; <code>Scheduled</code> &rarr; <code>Connecting</code> &rarr; <code>Downloading</code> &rarr; <code>Paused</code> &rarr; <code>Retrying</code> &rarr; <code>Verifying</code> &rarr; <code>Completed</code> (or <code>Failed</code> / <code>Verification Failed</code> / <code>Stopped</code>).
           </p>
         </article>
 
@@ -348,6 +372,7 @@
               </ul>
             </li>
             <li>The status indicator at the bottom turns <span class="text-cyan">Green</span> when connected.</li>
+            <li>Use <strong>Re-detect browsers</strong> after installing a new browser. The <strong>Auto-install</strong> button (when shown) pushes the published extension via browser policy.</li>
           </ol>
 
           <h3>Capture Modes &amp; Settings</h3>
@@ -380,12 +405,16 @@
                   <td><strong>Notify when files are found</strong></td>
                   <td>Fires Windows tray notification balloons upon detection.</td>
                 </tr>
+                <tr>
+                  <td><strong>Skip all detected files without asking</strong></td>
+                  <td>Silences confirmation popups entirely — detected files are skipped automatically. Turn it back on in the same setting to restore prompts.</td>
+                </tr>
               </tbody>
             </table>
           </div>
 
           <p>
-            When a file is intercepted, the <strong>Downloadable File Detected</strong> popup offers four quick actions: <strong>Download now</strong>, <strong>Download later</strong> (queues to list), <strong>Skip</strong>, or <strong>Skip all</strong> (suppresses alerts for 1 hour or permanently).
+            When a file is intercepted, the <strong>Downloadable File Detected</strong> popup offers four quick actions: <strong>Download now</strong>, <strong>Download later</strong> (queues to list), <strong>Skip</strong> (reject just this file), or <strong>Skip all</strong> (moves all currently detected files to the <strong>Detected</strong> page; future files still ask for confirmation).
           </p>
         </article>
 
@@ -399,7 +428,7 @@
 
           <h3>Embedded yt-dlp &amp; FFmpeg Bridge</h3>
           <p>
-            Streaming services are processed through a dedicated engine supporting dozens of video and music platforms, alongside direct HTTP Live Streaming (<code>.m3u8</code>) and Dynamic Adaptive Streaming over HTTP (<code>.mpd</code>) manifests.
+            Streaming services are processed through a dedicated engine supporting dozens of video and music platforms, alongside direct HTTP Live Streaming (<code>.m3u8</code>) and Dynamic Adaptive Streaming over HTTP (<code>.mpd</code>) manifests. The app can also sniff audio/video manifests directly from the pages you visit, and fall back to browser-assisted capture for challenge-protected streams.
           </p>
 
           <div class="docs-callout purple">
@@ -410,10 +439,16 @@
               <li><strong>1080p Full HD:</strong> Caps video resolution at 1920&times;1080.</li>
               <li><strong>720p HD:</strong> Optimizes bandwidth with standard high definition.</li>
               <li><strong>Audio Only:</strong> Extracts audio track directly into MP3/AAC container.</li>
+              <li><strong>Ask each time:</strong> Shows a resolution-ladder picker so you can choose the exact format before downloading.</li>
             </ul>
           </div>
           <p>
             Separate audio and video DASH streams are multiplexed automatically by the bundled FFmpeg binary into a single synchronized container with metadata intact.
+          </p>
+
+          <h3>Playlists</h3>
+          <p>
+            Paste a playlist URL into the <strong>Add</strong> dialog and MagnetoClip lists every video with name and duration. Tick the ones you want (or <strong>Select all</strong>), cap the number of items if you like, and download them in one shot. Already-downloaded videos are tracked in an archive so you are not asked about them again. Streamed video and audio tracks are merged automatically (via bundled FFmpeg tooling) into a single playable file, and titles/metadata are inferred where possible.
           </p>
         </article>
 
@@ -425,11 +460,16 @@
             The dedicated <strong>Torrents</strong> page provides complete BitTorrent capability without requiring third-party clients.
           </p>
 
+          <h3>Finding Torrent Sites</h3>
+          <p>
+            Open the <strong>Sites</strong> page for an offline reference of third-party sites that host torrents, anime and streaming content — each entry has a description and a clickable URL. See <a href="#section-3" class="text-cyan">Sites Page</a> in the interface tour.
+          </p>
+
           <h3>Adding Torrents</h3>
           <ul style="padding-left: 20px; color: #cbd5e1; line-height: 1.8; margin-bottom: 16px;">
             <li><strong>Add Magnet:</strong> Paste a magnet URI (<code>magnet:?xt=urn:btih:...</code>) or <code>.torrent</code> URL.</li>
             <li><strong>Upload File:</strong> Select a local <code>.torrent</code> file from disk.</li>
-            <li><strong>Metadata Preview:</strong> Displays torrent name, total size, tracker list, info hash, and full interactive file selection tree.</li>
+            <li><strong>Metadata Preview:</strong> After loading you get a preview: name, total size, tracker, info hash and the full file list, then options for save folder, category, <strong>sequential download</strong> and <strong>seed after download</strong>.</li>
           </ul>
 
           <h3>System Protocol Registration</h3>
@@ -448,63 +488,101 @@
                 <tr>
                   <th>Setting</th>
                   <th>Default</th>
-                  <th>Description</th>
+                  <th>Meaning</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><strong>Enable DHT</strong></td>
                   <td><code>On</code></td>
-                  <td>Distributed Hash Table for decentralized trackerless peer discovery.</td>
+                  <td>Trackerless peer discovery.</td>
                 </tr>
                 <tr>
                   <td><strong>Enable PEX</strong></td>
                   <td><code>On</code></td>
-                  <td>Peer Exchange between connected swarms.</td>
+                  <td>Peer exchange from connected peers.</td>
                 </tr>
                 <tr>
-                  <td><strong>Enable Encryption</strong></td>
+                  <td><strong>Enable encryption</strong></td>
                   <td><code>On</code></td>
-                  <td>Obfuscates BitTorrent protocol traffic from ISP throttling.</td>
+                  <td>Obfuscate peer traffic.</td>
                 </tr>
                 <tr>
-                  <td><strong>Listen Port</strong></td>
+                  <td><strong>Listen port</strong></td>
                   <td><code>6881</code></td>
-                  <td>Incoming TCP/UDP peer connection port.</td>
+                  <td>Incoming peer connections.</td>
                 </tr>
                 <tr>
-                  <td><strong>Max Connections</strong></td>
-                  <td><code>200</code></td>
-                  <td>Global peer connection ceiling.</td>
+                  <td><strong>Max connections</strong></td>
+                  <td><code>500</code></td>
+                  <td>Per-torrent peer ceiling.</td>
                 </tr>
                 <tr>
-                  <td><strong>Max Upload Slots</strong></td>
+                  <td><strong>Max upload slots</strong></td>
                   <td><code>4</code></td>
-                  <td>Simultaneous upload slots allocated per torrent.</td>
+                  <td>Simultaneous uploads per torrent.</td>
                 </tr>
                 <tr>
-                  <td><strong>Max Active Torrents</strong></td>
+                  <td><strong>Prefer TCP over uTP</strong></td>
+                  <td><code>On</code></td>
+                  <td>Favour plain TCP for transfers.</td>
+                </tr>
+                <tr>
+                  <td><strong>Disk cache</strong></td>
+                  <td><code>256 MB</code></td>
+                  <td>Memory used for disk read/write caching.</td>
+                </tr>
+                <tr>
+                  <td><strong>Hashing threads</strong></td>
+                  <td><code>4</code></td>
+                  <td>Threads that hash incoming pieces.</td>
+                </tr>
+                <tr>
+                  <td><strong>Request queue</strong></td>
+                  <td><code>1500</code></td>
+                  <td>Outstanding requests per peer.</td>
+                </tr>
+                <tr>
+                  <td><strong>Connections per torrent</strong></td>
+                  <td><code>0</code></td>
+                  <td>Cap per-torrent connections (0 = no cap).</td>
+                </tr>
+                <tr>
+                  <td><strong>Max download speed</strong></td>
+                  <td><code>Unlimited</code></td>
+                  <td>Global torrent download limit.</td>
+                </tr>
+                <tr>
+                  <td><strong>Max upload speed</strong></td>
+                  <td><code>Unlimited</code></td>
+                  <td>Global upload limit.</td>
+                </tr>
+                <tr>
+                  <td><strong>Max active torrents</strong></td>
                   <td><code>5</code></td>
-                  <td>Maximum unfinished torrents in active rotation.</td>
+                  <td>Queue size for unfinished torrents.</td>
                 </tr>
                 <tr>
-                  <td><strong>Max Active Downloads</strong></td>
+                  <td><strong>Max active downloads</strong></td>
                   <td><code>3</code></td>
-                  <td>Concurrent transferring torrent limit.</td>
+                  <td>How many actually transfer at once.</td>
                 </tr>
                 <tr>
-                  <td><strong>Sequential Download</strong></td>
+                  <td><strong>Sequential download</strong></td>
                   <td><code>Off</code></td>
-                  <td>Fetches pieces in chronological order for near-instant video preview playback.</td>
+                  <td>Fetch pieces in order (enables near-instant preview playback).</td>
                 </tr>
                 <tr>
-                  <td><strong>Auto-Seed</strong></td>
+                  <td><strong>Auto-seed</strong></td>
                   <td><code>Off</code></td>
-                  <td>Maintains active seeding upon 100% transfer completion.</td>
+                  <td>Keep seeding after completion.</td>
                 </tr>
               </tbody>
             </table>
           </div>
+          <p>
+            The table shows progress, speed, <strong>peers/seeds</strong> counts and ETA. Right-click a completed torrent and choose <strong>Start Seeding</strong> to share it manually.
+          </p>
         </article>
 
         <!-- 8. Remote Dashboard -->
@@ -521,13 +599,12 @@
               <button class="copy-btn"><i class="fas fa-copy"></i> Copy</button>
             </div>
             <pre><code>1. Open Settings -> Remote Control
-2. Tick "Enable remote dashboard" (Default port: 8477)
-3. Click "Show QR..." and scan with your phone camera
-4. Authenticate using the generated Bearer + HMAC token</code></pre>
+2. Tick "Enable remote dashboard" (Default port: 8477; leave it unless it conflicts)
+3. Click "Show QR..." and scan the code with your phone, or type the displayed URL into its browser</code></pre>
           </div>
 
           <p>
-            Clicking <strong>Regenerate Token</strong> instantly revokes all paired mobile devices. The remote web application runs on a lightweight Python <code>aiohttp</code> server and never exposes local files or credentials outside the network.
+            Access is protected by a pairing token; clicking <strong>Regenerate Token</strong> invalidates all previously paired devices at once. The dashboard can pause, resume and watch downloads — it never exposes your filesystem. The remote web application runs on a lightweight Python <code>aiohttp</code> server and never exposes local files or credentials outside the network.
           </p>
         </article>
 
@@ -555,67 +632,115 @@
                 <tr>
                   <th>Setting</th>
                   <th>Default</th>
-                  <th>Valid Range / Options</th>
+                  <th>Range</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><strong>Simultaneous downloads</strong></td>
                   <td><code>3</code></td>
-                  <td>1 &ndash; 32 concurrent transfers</td>
+                  <td>1–32</td>
                 </tr>
                 <tr>
                   <td><strong>Connections per download</strong></td>
-                  <td><code>8</code></td>
-                  <td>1 &ndash; 64 multi-segment connections</td>
+                  <td><code>16</code></td>
+                  <td>1–64</td>
                 </tr>
                 <tr>
-                  <td><strong>Max bandwidth</strong></td>
-                  <td><code>Unlimited (0)</code></td>
-                  <td>Custom MB/s throttle ceiling</td>
+                  <td><strong>Write in place (skip post-download merge)</strong></td>
+                  <td><code>on</code></td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><strong>Max bandwidth (0 = unlimited)</strong></td>
+                  <td><code>unlimited</code></td>
+                  <td>MB/s cap</td>
                 </tr>
                 <tr>
                   <td><strong>Network timeout</strong></td>
                   <td><code>30 s</code></td>
-                  <td>5 &ndash; 300 seconds</td>
+                  <td>5–300 s</td>
                 </tr>
                 <tr>
                   <td><strong>Max retries</strong></td>
                   <td><code>5</code></td>
-                  <td>0 &ndash; 20 exponential backoff attempts</td>
+                  <td>0–20</td>
+                </tr>
+                <tr>
+                  <td><strong>Verify TLS certificates for downloads</strong></td>
+                  <td><code>on</code></td>
+                  <td>—</td>
                 </tr>
                 <tr>
                   <td><strong>Custom User-Agent</strong></td>
-                  <td><em>(empty)</em></td>
-                  <td>Custom browser header string</td>
+                  <td><code>a modern desktop browser UA</code></td>
+                  <td>free text</td>
                 </tr>
                 <tr>
                   <td><strong>Default download folder</strong></td>
-                  <td><code>Downloads</code></td>
-                  <td>Custom Windows file system directory</td>
+                  <td><code>*(choose)*</code></td>
+                  <td>folder</td>
                 </tr>
                 <tr>
                   <td><strong>Auto-categorize by file type</strong></td>
-                  <td><code>On</code></td>
-                  <td>Toggle smart sorting</td>
+                  <td><code>on</code></td>
+                  <td>—</td>
                 </tr>
                 <tr>
                   <td><strong>Theme</strong></td>
-                  <td><code>Dark</code></td>
-                  <td>Cyber Dark / Clean Light</td>
+                  <td><code>dark</code></td>
+                  <td>dark / light</td>
                 </tr>
                 <tr>
                   <td><strong>Start with system</strong></td>
-                  <td><code>On</code></td>
-                  <td>Windows startup auto-launch</td>
+                  <td><code>on</code></td>
+                  <td>—</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
+          <h3>Browser</h3>
+          <p>
+            See the capture-modes table in <a href="#section-5" class="text-cyan">section 5</a>, plus <strong>Streaming quality</strong> (Best / 1080p / 720p / Audio only / <em>Ask each time</em>) and <strong>Video quality</strong> (the default resolution/format behavior, including <em>Ask each time</em> for the per-video resolution picker). <strong>FFmpeg folder</strong> lets you point the app at your own FFmpeg installation instead of the bundled one.
+          </p>
+
+          <h3>Duplicate Detection</h3>
+          <div class="docs-table-wrapper">
+            <table class="docs-table">
+              <thead>
+                <tr>
+                  <th>Setting</th>
+                  <th>Default</th>
+                  <th>Meaning</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Detect files you have already downloaded</strong></td>
+                  <td><code>on</code></td>
+                  <td>Compare new downloads against a local hash index</td>
+                </tr>
+                <tr>
+                  <td><strong>Skip duplicates automatically</strong></td>
+                  <td><code>off</code></td>
+                  <td>When on, duplicates are skipped instead of asking</td>
+                </tr>
+                <tr>
+                  <td><strong>Index files after a download completes</strong></td>
+                  <td><code>on</code></td>
+                  <td>Add finished files to the duplicate index</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            Filenames are matched first (fast); a hash comparison (xxHash-based) confirms a true duplicate. When a duplicate is found you can <strong>Open the existing file</strong>, <strong>Download anyway</strong>, or <strong>Skip</strong>. Use <strong>Scan Downloads Folder</strong> to build the index from files you already have.
+          </p>
+
           <h3>Updates Engine</h3>
           <p>
-            MagnetoClip periodically queries the secure update endpoint. Press <strong>Check Now</strong> in Settings to trigger a manual check. Updates are downloaded, verified with SHA-256 signatures, and applied automatically with an application restart.
+            Automatic checking is on by default; press <strong>Check Now</strong> to look manually. When an update is found: <strong>Download</strong> fetches it (progress shown, integrity verified), then <strong>Install</strong> closes MagnetoClip, applies the update and restarts the app automatically.
           </p>
 
           <h3>Network Speed Test</h3>
@@ -729,7 +854,7 @@
               <tbody>
                 <tr>
                   <td><strong>Images</strong></td>
-                  <td><code>.jpg</code> <code>.png</code> <code>.gif</code> <code>.webp</code> <code>.bmp</code> <code>.svg</code> <code>.heic</code> <code>.avif</code> and more</td>
+                  <td><code>.jpg</code> <code>.jpeg</code> <code>.png</code> <code>.gif</code> <code>.webp</code> <code>.bmp</code> <code>.svg</code> <code>.tiff</code> <code>.heic</code> <code>.heif</code> <code>.avif</code> and more</td>
                   <td>Zoom &amp; fit-to-window controls</td>
                 </tr>
                 <tr>
@@ -891,7 +1016,7 @@
             <li><strong>License&hellip;:</strong> Displays masked key and validation status.</li>
             <li><strong>Exit:</strong> Terminates engines and saves all <code>.mclip</code> sidecars.</li>
           </ul>
-          <p>Clicking a finished download notification balloon reveals the downloaded file directly in Windows Explorer.</p>
+          <p>Clicking a finished download notification reveals the file in Explorer; clicking a detected-file notification jumps to the <strong>Detected</strong> page.</p>
         </article>
 
         <!-- 16. Data Storage & Privacy -->
@@ -957,6 +1082,16 @@
               </div>
               <div class="faq-answer">
                 The transferred file checksum (MD5/SHA-256) did not match the manifest supplied by the server. Right-click the download item and choose <strong>Retry Download</strong> to re-fetch corrupted chunks.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Speed test cards show `--`</span>
+                <i class="fas fa-chevron-down faq-arrow"></i>
+              </div>
+              <div class="faq-answer">
+                A card stays `--` until its metric has been measured: run <strong>Run Test</strong> to fill all cards, or <strong>Upload Test</strong> for upload + latency only.
               </div>
             </div>
 

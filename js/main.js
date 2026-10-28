@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initFaqAccordion();
   initDownloadSimulator();
   initGlobalDownloadButtons();
+  initCarouselTour();
+  initPreviewModal();
 });
 
 /* ==========================================================================
@@ -219,3 +221,109 @@ function initGlobalDownloadButtons() {
 
 window.showToast = showToast;
 window.copyToClipboard = copyToClipboard;
+
+/* ==========================================================================
+   Ui Interface Tour Carousel Slideshow
+   ========================================================================== */
+function initCarouselTour() {
+  const slides = document.querySelectorAll('.carousel-slide');
+  const dots = document.querySelectorAll('.carousel-dot');
+  const track = document.querySelector('.carousel-track');
+  if (!slides.length || !dots.length) return;
+
+  let current = 0;
+  const intervalMs = 2000;
+  let timer = null;
+
+  function showSlide(index, animate = true) {
+    slides.forEach((s, i) => {
+      s.classList.toggle('active', i === index);
+      if (!animate) s.style.transition = 'none';
+    });
+    dots.forEach((d, i) => {
+      d.classList.toggle('active', i === index);
+      d.setAttribute('aria-pressed', i === index ? 'true' : 'false');
+    });
+    current = index;
+    if (!animate) {
+      requestAnimationFrame(() => {
+        slides.forEach(s => { s.style.transition = ''; });
+      });
+    }
+  }
+
+  function nextSlide() {
+    showSlide((current + 1) % slides.length);
+  }
+
+  function startTimer() {
+    stopTimer();
+    timer = setInterval(nextSlide, intervalMs);
+  }
+
+  function stopTimer() {
+    if (timer) clearInterval(timer);
+    timer = null;
+  }
+
+  dots.forEach((dot, idx) => {
+    dot.addEventListener('click', () => {
+      stopTimer();
+      showSlide(idx);
+      startTimer();
+    });
+  });
+
+  // Pause on hover, resume on leave
+  if (track) {
+    track.addEventListener('mouseenter', stopTimer);
+    track.addEventListener('mouseleave', startTimer);
+  }
+
+  showSlide(0, false);
+  startTimer();
+}
+
+/* ==========================================================================
+   Image Preview Lightbox
+   ========================================================================== */
+function initPreviewModal() {
+  const modal = document.getElementById('preview-modal');
+  const modalImg = document.getElementById('preview-modal-img');
+  const modalCaption = document.getElementById('preview-modal-caption');
+  const closeBtn = document.getElementById('preview-modal-close');
+  const slides = document.querySelectorAll('.carousel-slide');
+
+  if (!modal || !modalImg || !slides.length) return;
+
+  function openPreview(src, alt) {
+    modalImg.src = src;
+    modalImg.alt = alt;
+    if (modalCaption && alt) modalCaption.textContent = alt;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  slides.forEach(slide => {
+    const img = slide.querySelector('img');
+    if (!img) return;
+    slide.addEventListener('click', () => {
+      openPreview(img.src, img.alt || 'Carousel preview');
+    });
+  });
+
+  closeBtn?.addEventListener('click', closePreview);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closePreview();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closePreview();
+  });
+
+  function closePreview() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    modalImg.src = '';
+  }
+}

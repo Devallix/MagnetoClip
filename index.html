@@ -425,6 +425,101 @@
     </div>
   </section>
 
+  <!-- Ui Interface Tour - Animated Carousel -->
+  <section class="carousel-tour-section" id="ui-interface-tour">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-cyan">Interface Tour</span>
+        <h2>Ui Interface Tour</h2>
+        <p>Explore the MagnetoClip desktop interface through a guided visual walkthrough of the app.</p>
+      </div>
+
+      <div class="carousel-track" role="region" aria-label="Ui interface tour slideshow">
+        <div class="carousel-slide active">
+          <img src="images/carousel/1.png" alt="Dashboard Home" loading="lazy">
+          <div class="carousel-caption">Dashboard Home</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="images/carousel/2.png" alt="Download Manager" loading="lazy">
+          <div class="carousel-caption">Download Manager</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="images/carousel/3.png" alt="Torrents Manager" loading="lazy">
+          <div class="carousel-caption">Torrents Manager</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="images/carousel/4.png" alt="Download Analytics" loading="lazy">
+          <div class="carousel-caption">Download Analytics</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="images/carousel/5.png" alt="Schedule Downloads" loading="lazy">
+          <div class="carousel-caption">Schedule Downloads</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="images/carousel/6.png" alt="Network Speed Test" loading="lazy">
+          <div class="carousel-caption">Network Speed Test</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="images/carousel/7.png" alt="Browser Integration" loading="lazy">
+          <div class="carousel-caption">Browser Integration</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="images/carousel/8.png" alt="Settings & Update" loading="lazy">
+          <div class="carousel-caption">Settings &amp; Update</div>
+        </div>
+           <div class="carousel-slide">
+          <img src="images/carousel/9.png" alt="Extension Capture Popup" loading="lazy">
+          <div class="carousel-caption">Extension Capture Popup</div>
+        </div>
+      </div>
+
+      <div class="carousel-nav" role="tablist" aria-label="Slide navigation">
+        <button class="carousel-dot active" role="tab" aria-selected="true" aria-label="Slide 1"></button>
+        <button class="carousel-dot" role="tab" aria-selected="false" aria-label="Slide 2"></button>
+        <button class="carousel-dot" role="tab" aria-selected="false" aria-label="Slide 3"></button>
+        <button class="carousel-dot" role="tab" aria-selected="false" aria-label="Slide 4"></button>
+        <button class="carousel-dot" role="tab" aria-selected="false" aria-label="Slide 5"></button>
+        <button class="carousel-dot" role="tab" aria-selected="false" aria-label="Slide 6"></button>
+        <button class="carousel-dot" role="tab" aria-selected="false" aria-label="Slide 7"></button>
+        <button class="carousel-dot" role="tab" aria-selected="false" aria-label="Slide 8"></button>
+        <button class="carousel-dot" role="tab" aria-selected="false" aria-label="Slide 9"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Steps Card -->
+  <section class="steps-card-section" id="steps-card-section">
+    <div class="container">
+      <div class="steps-card">
+        <h3><i class="fas fa-bolt text-cyan"></i> How It Works</h3>
+        <p class="steps-intro">Downloading videos has never been easier. Turn links into files in seconds.</p>
+
+        <ol class="steps-list">
+          <li class="step-item">
+            <span class="step-number">1</span>
+            <span>Install Browser Extension</span>
+          </li>
+          <li class="step-item">
+            <span class="step-number">2</span>
+            <span>Visit Website and play video</span>
+          </li>
+          <li class="step-item">
+            <span class="step-number">3</span>
+            <span>Click on the Download with MagnetoClip Button</span>
+          </li>
+          <li class="step-item">
+            <span class="step-number">4</span>
+            <span>Enjoy!</span>
+          </li>
+        </ol>
+
+        <a href="download.html" class="btn btn-primary btn-lg" id="steps-free-download-cta">
+          <i class="fas fa-download"></i> Free Download
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ Section -->
   <section class="features-section" style="background: rgba(4, 7, 13, 0.6);" id="faq-section">
     <div class="container">
@@ -553,11 +648,21 @@
       </div>
 
       <div class="footer-bottom">
-        <div>&copy; 2026 MagnetoClip by Devallix. All rights reserved.</div>
-        <div>Compatible with Windows 10 &amp; Windows 11 (64-Bit)</div>
+        <div>&copy; 2026 MagnetoClip. All rights reserved.</div>
+        <div><a href="https://www.devallix.com." target="_blank" style="color: var(--primary-cyan);">Powered by Devallix</a></div>
       </div>
     </div>
   </footer>
+
+  <!-- Preview Modal (Lightbox) -->
+  <div class="preview-modal" id="preview-modal" role="dialog" aria-modal="true" aria-label="Image preview">
+    <button class="preview-modal-close" id="preview-modal-close" aria-label="Close preview">&times;</button>
+    <div class="preview-modal-content">
+      <img id="preview-modal-img" src="" alt="" />
+      <div class="preview-modal-caption" id="preview-modal-caption"></div>
+      <div class="preview-modal-hint">Press <kbd>Esc</kbd> to close</div>
+    </div>
+  </div>
 
   <!-- Scripts -->
   <script src="js/main.js"></script>

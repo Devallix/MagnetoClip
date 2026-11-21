@@ -136,6 +136,7 @@
         <span id="licensing"></span>
         <article class="docs-article" id="section-2">
           <h2>2. Activating Your License</h2>
+          <img class="docs-tour-img" src="images/carousel/activation.png" alt="MagnetoClip license activation dialog" />
           <p>
             Each serial key binds cryptographically to one PC. License keys follow the Ed25519 standard format:
           </p>
@@ -151,6 +152,7 @@
             <li>On success, the application unlocks immediately. The PC's unique machine ID is recorded by the license server, binding this computer as the authorized hardware.</li>
             <li>If the key is already bound to another PC, the dialog displays the specific hostname holding the activation. Deactivate it on that machine first (<strong>Settings &rarr; License &rarr; Deactivate this PC&hellip;</strong>) or contact support to request a reset.</li>
           </ol>
+          <img class="docs-tour-img" src="images/carousel/license-settings.png" alt="License settings in MagnetoClip" />
 
           <h3>License Activation Messages Reference</h3>
           <div class="docs-table-wrapper">
@@ -201,18 +203,20 @@
         <article class="docs-article" id="section-3">
           <h2>3. Interface Tour</h2>
           <p>
-            The top toolbar switches between pages, while the collapsible left sidebar filters the download workbench. Use the &#9776; toggle button to collapse the sidebar for extra screen workspace.
+            The top toolbar switches between pages, while the collapsible left sidebar filters the download workbench. Use the &#9776; toggle button to collapse the sidebar for extra screen workspace. The former <strong>Sites</strong> page has been removed — recommendations for third-party download sites now appear as links at the bottom of the <strong>Downloads</strong> and <strong>Torrents</strong> pages.
           </p>
 
-          <h3>Overview Page</h3>
+          <h3>Overview</h3>
           <p>
             A real-time command dashboard featuring four live stat cards (<strong>Active downloads</strong>, <strong>Completed</strong>, <strong>Total downloaded</strong>, <strong>Current speed</strong>) plus up to five recent transfer cards with dynamic progress bars, throughput speeds, and time estimates (ETAs).
           </p>
+          <img class="docs-tour-img" src="images/carousel/1.png" alt="MagnetoClip Overview page" />
 
-          <h3>Downloads Workbench</h3>
+          <h3>Downloads</h3>
           <p>
             The central management hub. Each item row displays filename, file size, segmented color progress bar, percentage, speed, remaining time, and addition timestamp.
           </p>
+          <img class="docs-tour-img" src="images/carousel/2.png" alt="MagnetoClip Downloads workbench" />
           <div class="docs-callout">
             <strong>Toolbar Controls:</strong> Select All &middot; Add &middot; Start &middot; Pause &middot; Remove
           </div>
@@ -225,60 +229,62 @@
             <li><strong>Universal actions:</strong> Copy Source URL, Remove from List.</li>
           </ul>
           <p>Double-clicking any download row opens the <strong>Download Details</strong> modal with full segment telemetry, connection status, and manual overrides.</p>
+          <p>
+            At the bottom of the page, the link <strong>Best Sites to download anime and streaming videos for free</strong> opens a Devallix guide in your default browser. MagnetoClip is not affiliated with, and does not endorse, any site listed there.
+          </p>
 
           <h4>Sidebar Filter Categories:</h4>
           <p>
             Filter by <strong>All Downloads</strong>, <strong>Finished</strong>, <strong>Unfinished</strong>, or any of the 8 smart categories: <em>Image, Video, Audio, Document, Compressed, App/Software, Torrent, Other</em>. Real-time counter badges show exact matching item counts.
           </p>
 
-          <h3>Detected Page</h3>
+          <h3>Detected</h3>
           <p>
             Gathers all multimedia files and stream links detected by the browser extension: filename, size, MIME type, source URL, and timestamp. Select items and click <strong>Download</strong>, or double-click to start immediately.
           </p>
+          <img class="docs-tour-img" src="images/carousel/detected.png" alt="MagnetoClip Detected page" />
 
-          <h3>Completed Page</h3>
+          <h3>Completed</h3>
           <p>
             A focused historical archive containing only finished, failed, or stopped downloads for rapid search and opening.
           </p>
+          <img class="docs-tour-img" src="images/carousel/completed.png" alt="MagnetoClip Completed page" />
 
-          <h3>Torrents Page</h3>
+          <h3>Torrents</h3>
           <p>
-            Dedicated torrent manager — see <a href="#section-7" class="text-cyan">section 7</a> for adding and managing magnet links and <code>.torrent</code> files.
+            Dedicated torrent manager — see <a href="#section-7" class="text-cyan">section 7</a> for adding and managing magnet links and <code>.torrent</code> files. At the bottom of the page, the link <strong>Best Sites to download torrent files</strong> opens a guide to torrent sites in your default browser.
           </p>
+          <img class="docs-tour-img" src="images/carousel/3.png" alt="MagnetoClip Torrents page" />
 
-          <h3>Analytics Page</h3>
+          <h3>Analytics</h3>
           <p>
             Six comprehensive telemetry cards (total files, completed, failed, data transferred, average speed, peak speed), two 14-day history bar charts (<strong>Downloads per day</strong> &amp; <strong>Bandwidth per day</strong>), and a full per-category storage breakdown &mdash; all calculated 100% locally.
           </p>
+          <img class="docs-tour-img" src="images/carousel/4.png" alt="MagnetoClip Analytics page" />
 
-          <h3>Pause Page</h3>
+          <h3>Pause</h3>
           <p>
             A single switch that pauses every running and waiting download instantly, plus an optional auto-resume countdown timer (see <a href="#section-13" class="text-cyan">section 13</a>).
           </p>
+          <img class="docs-tour-img" src="images/carousel/5.png" alt="MagnetoClip Pause page" />
 
-          <h3>Speed Page</h3>
+          <h3>Speed</h3>
           <p>
             A built-in network speed test measuring download, upload and latency with an animated gauge, history tracking and ISP throttling detection (see <a href="#section-14" class="text-cyan">section 14</a>).
           </p>
+          <img class="docs-tour-img" src="images/carousel/6.png" alt="MagnetoClip Speed page" />
 
-          <h3>Browser Page</h3>
+          <h3>Browser</h3>
           <p>
             Setup hub for the MagnetoClip Companion extension (see <a href="#section-5" class="text-cyan">section 5</a>).
           </p>
+          <img class="docs-tour-img" src="images/carousel/7.png" alt="MagnetoClip Browser page" />
 
-          <h3>Sites Page</h3>
-          <p>
-            A built-in, offline reference of third-party websites useful for finding content, grouped into three tabs — <strong>Torrents</strong>, <strong>Anime</strong> and <strong>Streaming</strong> — sitting just before <strong>Settings</strong> in the toolbar. Each tab is a table with four columns: Site, Description, URL, and Usage (always **Free**). Click any **URL** cell to open that site in your default browser. Everything else is read-only. The reference ships with the app, so the page works with no internet connection, and nothing on it is fetched or refreshed at runtime.
-          </p>
-          <div class="docs-callout">
-            <div class="docs-callout-title"><i class="fas fa-triangle-exclamation text-warning"></i> Note</div>
-            MagnetoClip is a general-purpose download tool. It is not affiliated with, does not endorse, and is not responsible for any of the listed sites or for the content available through them. Always confirm that you are entitled to download the content you save, and review each site's own terms and the law in your jurisdiction.
-          </div>
-
-          <h3>Settings Page</h3>
+          <h3>Settings</h3>
           <p>
             Every tunable option, grouped into General, Downloads, Duplicate Detection, Network Speed Test, File Preview, Webpage Archiver, Browser &amp; Capture, Torrent, Proxy, Updates, Remote Control and License (see <a href="#section-10" class="text-cyan">section 10</a>).
           </p>
+          <img class="docs-tour-img" src="images/carousel/8.png" alt="MagnetoClip Settings page" />
         </article>
 
         <!-- 4. Adding Downloads -->
@@ -288,6 +294,7 @@
           <p>
             Click the <strong>Add</strong> button on the Downloads page (or paste directly from clipboard).
           </p>
+          <img class="docs-tour-img" src="images/carousel/new-download.png" alt="Adding a new download in MagnetoClip" />
 
           <h3>New Download Dialog Fields</h3>
           <div class="docs-table-wrapper">
@@ -358,21 +365,41 @@
             The Manifest V3 companion extension bridges MagnetoClip with your web browsers via Chrome Native Messaging to detect media, intercept links, and capture chunked streams.
           </p>
           <p>
-            <strong>Supported Browsers:</strong> Google Chrome, Microsoft Edge, Mozilla Firefox, Brave, Vivaldi, and Chromium.
+            <strong>Supported Browsers:</strong> Google Chrome, Microsoft Edge, Mozilla Firefox, Brave, Vivaldi, Chromium, and Opera.
+          </p>
+          <p>
+            <strong>Store availability:</strong> The extension is available on <strong>Firefox Add-ons (AMO)</strong>, <strong>Microsoft Edge Add-ons</strong>, and <strong>Opera Add-ons</strong>. The <strong>Chrome Web Store</strong> listing is coming soon; Brave, Vivaldi, and other Chromium browsers can use it when it becomes available.
           </p>
 
-          <h3>Setup Instructions</h3>
+          <h3>Install and setup (recommended)</h3>
           <ol style="padding-left: 20px; color: #cbd5e1; line-height: 1.8; margin-bottom: 20px;">
-            <li>Open the <strong>Browser</strong> page in MagnetoClip and tick <strong>Enable browser integration</strong>.</li>
-            <li>Under <strong>Installed browsers</strong>, locate your browser and click <strong>Install host</strong> (registers the native messaging registry key).</li>
-            <li>Under <strong>Browser extension</strong>, click <strong>Prepare extension</strong> and load it:
+            <li>Install the <strong>MagnetoClip desktop app</strong> and open it.</li>
+            <li>Open the <strong>Browser</strong> page and tick <strong>Enable browser integration</strong>.</li>
+            <li>Under <strong>Installed browsers</strong>, find your browser and click <strong>Install host</strong> to register MagnetoClip's native messaging host (<code>com.magnetoclip.host</code>).</li>
+            <li>Install the <strong>MagnetoClip Companion</strong> extension from your browser's store:
               <ul style="padding-left: 20px; margin-top: 6px;">
-                <li><strong>Chrome / Edge / Brave / Vivaldi / Chromium:</strong> Open <code>chrome://extensions</code>, enable <strong>Developer mode</strong>, click <strong>Load unpacked</strong>, and select the extension folder shown on the screen.</li>
-                <li><strong>Firefox:</strong> Open <code>about:debugging#/runtime/this-firefox</code>, click <strong>Load Temporary Add-on</strong>, and select the extension manifest file.</li>
+                <li><strong>Firefox:</strong> Firefox Add-ons (AMO).</li>
+                <li><strong>Microsoft Edge:</strong> Microsoft Edge Add-ons.</li>
+                <li><strong>Opera:</strong> Opera Add-ons.</li>
+                <li><strong>Chrome / Brave / Vivaldi / Chromium:</strong> Chrome Web Store listing coming soon — use the development/unpacked option below in the meantime.</li>
               </ul>
             </li>
-            <li>The status indicator at the bottom turns <span class="text-cyan">Green</span> when connected.</li>
-            <li>Use <strong>Re-detect browsers</strong> after installing a new browser. The <strong>Auto-install</strong> button (when shown) pushes the published extension via browser policy.</li>
+            <li>Reload or restart the browser if prompted, keep MagnetoClip running, and confirm the Browser page status shows the host/extension as ready. The status indicator at the bottom turns <span class="text-cyan">Green</span> when connected.</li>
+          </ol>
+          <p>
+            If you update MagnetoClip and the store extension stops connecting, return to the <strong>Browser</strong> page and click <strong>Install host</strong> again for that browser to refresh the native messaging host registration. Use <strong>Re-detect browsers</strong> after installing a new browser. The <strong>Auto-install</strong> button (when shown) may push the published extension via browser policy (where supported by the browser/environment).
+          </p>
+
+          <h3>Development option: load unpacked extension</h3>
+          <ol style="padding-left: 20px; color: #cbd5e1; line-height: 1.8; margin-bottom: 20px;">
+            <li>Open the <strong>Browser</strong> page and click <strong>Prepare extension</strong> (or use the staged extension folder prepared by the app/build).</li>
+            <li>Load it in your browser:
+              <ul style="padding-left: 20px; margin-top: 6px;">
+                <li><strong>Chrome / Edge / Brave / Vivaldi / Chromium / Opera:</strong> Open the browser's extensions page (for example <code>chrome://extensions</code>, <code>edge://extensions</code>, or <code>opera://extensions</code>), enable <strong>Developer mode</strong>, click <strong>Load unpacked</strong>, and select the Chromium extension folder shown on the Browser page.</li>
+                <li><strong>Firefox:</strong> Open <code>about:debugging#/runtime/this-firefox</code>, choose <strong>Load Temporary Add-on</strong>, and pick the extension manifest from the Firefox extension folder.</li>
+              </ul>
+            </li>
+            <li>Keep MagnetoClip running and install/verify the native messaging host for that browser. After reloading or rebuilding the unpacked extension, reload it in the browser extensions page and test again.</li>
           </ol>
 
           <h3>Capture Modes &amp; Settings</h3>
@@ -425,6 +452,10 @@
           <p>
             MagnetoClip recognizes over 100 extensions across 10 media categories and automatically sorts them into dedicated folders when <strong>Auto-categorize by file type</strong> is enabled.
           </p>
+          <img class="docs-tour-img" src="images/carousel/s1.png" alt="Capturing files with MagnetoClip - step 1" />
+          <img class="docs-tour-img" src="images/carousel/s2.png" alt="Capturing files with MagnetoClip - step 2" />
+          <img class="docs-tour-img" src="images/carousel/s3.png" alt="Capturing files with MagnetoClip - step 3" />
+          <img class="docs-tour-img" src="images/carousel/s4.png" alt="Capturing files with MagnetoClip - step 4" />
 
           <h3>Embedded yt-dlp &amp; FFmpeg Bridge</h3>
           <p>
@@ -450,6 +481,7 @@
           <p>
             Paste a playlist URL into the <strong>Add</strong> dialog and MagnetoClip lists every video with name and duration. Tick the ones you want (or <strong>Select all</strong>), cap the number of items if you like, and download them in one shot. Already-downloaded videos are tracked in an archive so you are not asked about them again. Streamed video and audio tracks are merged automatically (via bundled FFmpeg tooling) into a single playable file, and titles/metadata are inferred where possible.
           </p>
+          <img class="docs-tour-img" src="images/carousel/playlist.png" alt="Downloading a playlist in MagnetoClip" />
         </article>
 
         <!-- 7. Torrents -->
@@ -460,9 +492,12 @@
             The dedicated <strong>Torrents</strong> page provides complete BitTorrent capability without requiring third-party clients.
           </p>
 
-          <h3>Finding Torrent Sites</h3>
+          <h3>Finding sites to download from</h3>
           <p>
-            Open the <strong>Sites</strong> page for an offline reference of third-party sites that host torrents, anime and streaming content — each entry has a description and a clickable URL. See <a href="#section-3" class="text-cyan">Sites Page</a> in the interface tour.
+            The built-in <strong>Sites</strong> page has been removed. Instead, two links at the bottom of the app open curated Devallix guides in your default browser: <a href="https://www.devallix.com/blog/useful-websites/top-5-best-anime-streaming-sites-in-2026/" target="_blank" class="text-cyan">Best Sites to download anime and streaming videos for free</a> on the Downloads page, and <a href="https://www.devallix.com/blog/useful-websites/10-best-torrent-sites-in-2026-features-categories-and-safety-tips/" target="_blank" class="text-cyan">Best Sites to download torrent files</a> on the Torrents page.
+          </p>
+          <p>
+            MagnetoClip is a general-purpose download tool. It is not affiliated with, does not endorse, and is not responsible for any third-party site or its content. Always confirm that you are entitled to download the content you save, and review each site's terms and the law in your jurisdiction.
           </p>
 
           <h3>Adding Torrents</h3>
@@ -471,6 +506,7 @@
             <li><strong>Upload File:</strong> Select a local <code>.torrent</code> file from disk.</li>
             <li><strong>Metadata Preview:</strong> After loading you get a preview: name, total size, tracker, info hash and the full file list, then options for save folder, category, <strong>sequential download</strong> and <strong>seed after download</strong>.</li>
           </ul>
+          <img class="docs-tour-img" src="images/carousel/new-torrent.png" alt="Adding a new torrent in MagnetoClip" />
 
           <h3>System Protocol Registration</h3>
           <p>
@@ -482,6 +518,7 @@
           </ul>
 
           <h3>Torrent Engine Configuration (Settings &rarr; Torrent)</h3>
+          <img class="docs-tour-img" src="images/carousel/torrents.png" alt="Torrent engine configuration settings in MagnetoClip" />
           <div class="docs-table-wrapper">
             <table class="docs-table">
               <thead>
@@ -592,6 +629,7 @@
           <p>
             Control and monitor your downloads from a smartphone, tablet, or secondary PC on the same local network.
           </p>
+          <img class="docs-tour-img" src="images/carousel/remote.png" alt="MagnetoClip remote dashboard" />
 
           <div class="code-box">
             <div class="code-header">
@@ -742,8 +780,10 @@
           <p>
             Automatic checking is on by default; press <strong>Check Now</strong> to look manually. When an update is found: <strong>Download</strong> fetches it (progress shown, integrity verified), then <strong>Install</strong> closes MagnetoClip, applies the update and restarts the app automatically.
           </p>
+          <img class="docs-tour-img" src="images/carousel/updates.png" alt="MagnetoClip updates engine" />
 
           <h3>Network Speed Test</h3>
+          <img class="docs-tour-img" src="images/carousel/6.png" alt="Network speed test in MagnetoClip" />
           <div class="docs-table-wrapper">
             <table class="docs-table">
               <thead>
@@ -834,6 +874,7 @@
             only touches downloads you already have: nothing extra is downloaded and no new
             files are created.
           </p>
+          <img class="docs-tour-img" src="images/carousel/preview.png" alt="In-app file preview in MagnetoClip" />
 
           <h3>Where to Find It</h3>
           <ul style="padding-left: 20px; color: #cbd5e1; line-height: 1.8; margin-bottom: 16px;">
@@ -895,6 +936,7 @@
             its images and stylesheets embedded, ready to open with no internet connection
             and nothing extra saved.
           </p>
+          <img class="docs-tour-img" src="images/carousel/archive.png" alt="Webpage archive in MagnetoClip" />
 
           <h3>Archiving From the Browser</h3>
           <p>
@@ -927,6 +969,7 @@
             The <strong>Pause</strong> page provides one unambiguous control: a single switch that pauses
             everything at once, with an optional countdown that resumes downloads automatically.
           </p>
+          <img class="docs-tour-img" src="images/carousel/5.png" alt="Pause control in MagnetoClip" />
 
           <h3>Pausing</h3>
           <ul style="padding-left: 20px; color: #cbd5e1; line-height: 1.8; margin-bottom: 16px;">
@@ -950,6 +993,7 @@
             The <strong>Speed</strong> page measures your connection with a built-in test &mdash; no third-party
             tools or websites required.
           </p>
+          <img class="docs-tour-img" src="images/carousel/6.png" alt="Speed test in MagnetoClip" />
 
           <ul style="padding-left: 20px; color: #cbd5e1; line-height: 1.8; margin-bottom: 16px;">
             <li><strong>Run Test</strong> &mdash; full test: download &rarr; upload &rarr; latency. Progress shows the current phase (<em>Download&hellip;</em> / <em>Upload&hellip;</em>) with a percentage, and the animated gauge centres on the upload speed while uploading.</li>
@@ -1007,6 +1051,7 @@
           <p>
             MagnetoClip minimizes to the Windows taskbar notification area (System Tray). Hovering over the icon displays active download counts and aggregate throughput speed.
           </p>
+          <img class="docs-tour-img" src="images/carousel/tray.png" alt="MagnetoClip system tray menu" />
 
           <h4>Tray Context Menu:</h4>
           <ul style="padding-left: 20px; color: #cbd5e1; line-height: 1.8; margin-bottom: 16px;">
@@ -1023,6 +1068,7 @@
         <span id="security"></span>
         <article class="docs-article" id="section-16">
           <h2>16. Where MagnetoClip Stores Your Data</h2>
+          <img class="docs-tour-img" src="images/carousel/save.png" alt="Where MagnetoClip stores your data" />
           <div class="docs-table-wrapper">
             <table class="docs-table">
               <thead>
@@ -1207,7 +1253,7 @@
 
       <div class="footer-bottom">
         <div>&copy; 2026 MagnetoClip by Devallix. All rights reserved.</div>
-        <div>Compatible with Windows 10 &amp; Windows 11 (64-Bit)</div>
+        <div><a href="https://devallix.com" target="_blank" style="color: var(--primary-cyan);">Powered by Devallix</a></div>
       </div>
     </div>
   </footer>

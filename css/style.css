@@ -1261,6 +1261,22 @@ a {
   margin-bottom: 12px;
 }
 
+.ext-soon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 6px;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #fbbf24;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
 /* Documentation Page */
 .docs-layout {
   display: grid;
@@ -1338,6 +1354,20 @@ a {
 
 .docs-article h3 {
   margin: 28px 0 12px 0;
+}
+
+.docs-tour-img {
+  display: block;
+  clear: both;
+  width: auto;
+  max-width: 100%;
+  max-height: 360px;
+  height: auto;
+  margin: 16px 0 28px 0;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: #050811;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
 }
 
 .code-box {

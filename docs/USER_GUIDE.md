@@ -88,7 +88,9 @@ serial can activate elsewhere.
 ## 3. Interface tour
 
 The top toolbar switches between pages; the left sidebar filters the download
-list and can be collapsed with the ☰ button.
+list and can be collapsed with the ☰ button. The former **Sites** page has been
+removed — recommendations for third-party download sites now appear as links at
+the bottom of the **Downloads** and **Torrents** pages.
 
 ### Overview
 
@@ -113,6 +115,10 @@ Right-click any row for actions:
 Double-click a row to open the **Download details** dialog (live progress,
 status, speed, ETA, Start/Pause controls).
 
+At the bottom of the page, the link **Best Sites to download anime and
+streaming videos for free** opens a Devallix guide in your default browser.
+MagnetoClip is not affiliated with, and does not endorse, any site listed there.
+
 The sidebar narrows the view: **All Downloads**, **Finished**, **Unfinished**,
 or any of the eight categories (Image, Video, Audio, Document, Compressed,
 App/Software, Torrent, Other). Counter badges show how many items match each
@@ -131,7 +137,9 @@ Only finished, failed or stopped downloads — handy for finding files to open.
 
 ### Torrents
 
-Dedicated torrent manager (see [section 7](#7-torrents)).
+Dedicated torrent manager (see [section 7](#7-torrents)). At the bottom of the
+page, the link **Best Sites to download torrent files** opens a guide to
+torrent sites in your default browser.
 
 ### Analytics
 
@@ -154,37 +162,6 @@ animated gauge, keeps a history and flags possible ISP throttling (see
 
 Setup hub for the MagnetoClip Companion extension (see
 [section 5](#5-browser-integration)).
-
-### Sites
-
-A built-in, offline reference of third-party websites useful for finding
-content, grouped into three tabs — **Torrents**, **Anime** and **Streaming** —
-sitting just before **Settings** in the toolbar.
-
-Each tab is a table with four columns:
-
-| Column | What it holds |
-|---|---|
-| Site | The site's name, bold, with the full description on hover |
-| Description | What the site is good for |
-| URL | The address, shown in blue and clickable |
-| Usage | Always **Free**, in green |
-
-Click any **URL** cell to open that site in your default browser — the cursor
-turns into a pointing hand over URL cells, so it is clear which ones are live
-links. Everything else is read-only.
-
-The reference ships with the app, so the page works with no internet
-connection, and nothing on it is fetched or refreshed at runtime.
-
-> **Note.** MagnetoClip is a general-purpose download tool. It is not
-> affiliated with, does not endorse, and is not responsible for any of the
-> listed sites or for the content available through them. Always confirm that
-> you are entitled to download the content you save, and review each site's own
-> terms and the law in your jurisdiction.
-
-To get here from a torrent, click **Browse more** at the bottom of the
-**Torrents** page.
 
 ### Settings
 
@@ -232,28 +209,61 @@ Verifying, Completed, Failed, Verification failed, Stopped.
 
 ## 5. Browser integration
 
-The companion extension lets MagnetoClip see downloadable files as you browse,
+The MagnetoClip Companion extension lets MagnetoClip see downloadable files as you browse,
 capture media streams, resolve `blob:` URLs, and optionally take over every
 browser download.
 
-Supported browsers: **Google Chrome, Microsoft Edge, Firefox, Brave, Vivaldi,
-Chromium**.
+**Supported browsers:** Google Chrome, Microsoft Edge, Firefox, Brave, Vivaldi,
+Chromium, Opera.
 
-### Setup
+**Store availability:** The extension is available on **Firefox Add-ons (AMO)**,
+**Microsoft Edge Add-ons**, and **Opera Add-ons**. **Chrome Web Store** support
+is coming soon. Brave, Vivaldi, and other Chromium browsers can use the Chrome
+Web Store listing when it becomes available.
 
-1. Open the **Browser** page and tick **Enable browser integration**.
-2. Under **Installed browsers** find your browser and click **Install host**
-   (this registers MagnetoClip as its native messaging host).
-3. Under **Browser extension** click **Prepare extension**, then load it:
-   - Chrome/Edge/Brave/Vivaldi/Chromium: open `chrome://extensions`, enable
-     **Developer mode**, click **Load unpacked**, choose the folder shown on
-     the page.
-   - Firefox: open `about:debugging#/runtime/this-firefox`, choose **Load
-     Temporary Add-on**, pick the extension manifest.
-4. The status dot at the bottom turns green when everything is ready.
+### Install and setup (recommended)
+
+1. **Install the MagnetoClip desktop app** and open it.
+2. In MagnetoClip, open the **Browser** page and tick **Enable browser integration**.
+3. Under **Installed browsers**, find your browser and click **Install host**.
+   This registers MagnetoClip's native messaging host (`com.magnetoclip.host`) so the
+   browser extension can communicate with the desktop app.
+4. Install the **MagnetoClip Companion** extension from your browser's store:
+   - **Firefox:** install from Firefox Add-ons (AMO).
+   - **Microsoft Edge:** install from Microsoft Edge Add-ons.
+   - **Opera:** install from Opera Add-ons.
+   - **Chrome/Brave/Vivaldi/Chromium:** Chrome Web Store listing coming soon; use the
+     development/unpacked option below in the meantime.
+5. Reload/restart the browser if prompted, keep MagnetoClip running, and confirm the
+   Browser page status shows the host/extension as ready. The status dot turns green
+   when everything is ready.
+
+If you update MagnetoClip and the store extension stops connecting, return to the
+**Browser** page and click **Install host** again for that browser to refresh the
+native messaging host registration.
 
 Use **Re-detect browsers** after installing a new browser. The **Auto-install**
-button (when shown) pushes the published extension via browser policy.
+button (when shown) may push the published extension via browser policy (where
+supported by the browser/environment).
+
+### Development option: load unpacked extension
+
+For development, testing, or before a store listing is available, you can load the
+unpacked extension manually:
+
+1. In MagnetoClip, open **Browser** and click **Prepare extension** (or use the staged
+   extension folder prepared by the app/build).
+2. Load it in your browser:
+   - **Chrome/Edge/Brave/Vivaldi/Chromium/Opera:** open the browser's extensions page
+     (for example `chrome://extensions`, `edge://extensions`, or `opera://extensions`),
+     enable **Developer mode**, click **Load unpacked**, and choose the Chromium
+     extension folder shown on the Browser page.
+   - **Firefox:** open `about:debugging#/runtime/this-firefox`, choose **Load
+     Temporary Add-on**, and pick the extension manifest from the Firefox extension
+     folder.
+3. Keep MagnetoClip running and install/verify the native messaging host for that
+   browser. After reloading or rebuilding the unpacked extension, reload it in the
+   browser extensions page and test again.
 
 ### Capture modes
 
@@ -313,11 +323,20 @@ single playable file, and titles/metadata are inferred where possible.
 
 Open the **Torrents** page to manage magnet links and `.torrent` files.
 
-### Finding torrent sites
+### Finding sites to download from
 
-Open the **Sites** page for an offline reference of third-party sites that host
-torrents, anime and streaming content — each entry has a description and a
-clickable URL. See [Sites](#sites) in the interface tour.
+The built-in **Sites** page has been removed. Instead, two links at the bottom
+of the app open curated Devallix guides in your default browser:
+
+- On the **Downloads** page:
+  [Best Sites to download anime and streaming videos for free](https://www.devallix.com/blog/useful-websites/top-5-best-anime-streaming-sites-in-2026/)
+- On the **Torrents** page:
+  [Best Sites to download torrent files](https://www.devallix.com/blog/useful-websites/10-best-torrent-sites-in-2026-features-categories-and-safety-tips/)
+
+MagnetoClip is a general-purpose download tool. It is not affiliated with, does
+not endorse, and is not responsible for any third-party site or its content.
+Always confirm that you are entitled to download the content you save, and
+review each site's terms and the law in your jurisdiction.
 
 ### Adding a torrent
 
@@ -643,8 +662,10 @@ Keep the browser tab the URL was copied from open until the fetch completes.
 
 **Extension not detecting anything.**
 On the Browser page confirm: integration enabled, host installed for your
-browser, extension loaded unpacked, and the status dot green. Then reload the
-page you are browsing.
+browser, the MagnetoClip Companion extension installed (from your browser store
+or loaded unpacked for development), and the status dot green. If needed, click
+**Install host** again, reload/restart the browser, then reload the page you are
+browsing.
 
 **Torrents show no peers.**
 Enable DHT and PEX in Settings, verify the listen port is reachable if you

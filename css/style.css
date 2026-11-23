@@ -1261,6 +1261,42 @@ a {
   margin-bottom: 12px;
 }
 
+.ext-icon-brave {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ext-icon-brave img {
+  width: 30px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.ext-store-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  text-decoration: none;
+}
+
+.ext-store-btn:disabled,
+button.ext-store-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+button.ext-store-btn:disabled:hover {
+  transform: none;
+  box-shadow: none;
+  background: var(--bg-card);
+  border-color: var(--border-color);
+}
+
 .ext-soon {
   display: inline-block;
   vertical-align: middle;

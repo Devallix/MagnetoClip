@@ -2830,6 +2830,16 @@ pre {
     text-align: center;
   }
 
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-brand .logo {
+    justify-content: center;
+  }
+
   .footer-brand p {
     margin-left: auto;
     margin-right: auto;
@@ -2940,5 +2950,59 @@ pre {
   .legal-card ol > li::before {
     padding: 1px 5px;
     font-size: 0.7rem;
+  }
+}
+
+
+/* Scroll To Top Button */
+.scroll-top-btn {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 210, 255, 0.45);
+  background: rgba(7, 11, 20, 0.85);
+  color: var(--primary-cyan);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), 0 0 18px rgba(0, 210, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease, background 0.25s ease, color 0.25s ease;
+  z-index: 1100;
+}
+
+.scroll-top-btn.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scroll-top-btn:hover {
+  background: var(--cyan-gradient);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.scroll-top-btn:focus-visible {
+  outline: 2px solid var(--primary-cyan);
+  outline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+  .scroll-top-btn {
+    right: 16px;
+    bottom: 16px;
+    width: 44px;
+    height: 44px;
+    font-size: 1rem;
   }
 }

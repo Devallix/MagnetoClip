@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initGlobalDownloadButtons();
   initCarouselTour();
   initPreviewModal();
+  initScrollTop();
 });
 
 /* ==========================================================================
@@ -326,4 +327,35 @@ function initPreviewModal() {
     document.body.style.overflow = '';
     modalImg.src = '';
   }
+}
+
+
+/* ==========================================================================
+   Scroll To Top Button
+   ========================================================================== */
+function initScrollTop() {
+  let btn = document.querySelector('.scroll-top-btn');
+  if (!btn) {
+    btn = document.createElement('button');
+    btn.className = 'scroll-top-btn';
+    btn.type = 'button';
+    btn.setAttribute('aria-label', 'Scroll to top');
+    btn.innerHTML = '<i class="fas fa-arrow-up" aria-hidden="true"></i>';
+    document.body.appendChild(btn);
+  }
+
+  const toggle = () => {
+    const scrolled = window.scrollY || document.documentElement.scrollTop;
+    const nearBottom = window.innerHeight + scrolled >= document.documentElement.scrollHeight - 300;
+    btn.classList.toggle('visible', scrolled > 400 || nearBottom);
+  };
+
+  window.addEventListener('scroll', toggle, { passive: true });
+  window.addEventListener('resize', toggle);
+  toggle();
+
+  btn.addEventListener('click', () => {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+  });
 }
